@@ -86,19 +86,9 @@
   .sidebar::-webkit-scrollbar-thumb{background:#332f3a;border-radius:3px;}
 
   .brand{
-    padding:0 24px 20px;
+    padding:20px 24px 20px;
     border-bottom:1px solid #2b2830;
     margin-bottom:6px;
-  }
-  .brand .mark{
-    font-family:'Inter',sans-serif;
-    font-weight:700;
-    font-size:10px;
-    letter-spacing:.14em;
-    text-transform:uppercase;
-    color:#87849050;
-    color:#8b8894;
-    margin-bottom:8px;
   }
   .brand h1{
     font-family:'Fraunces',serif;
@@ -244,6 +234,9 @@
     margin:0 0 22px;
   }
   .brand-accent{color:var(--pink1);}
+  .anchor-example{display:flex;gap:6px;margin-top:8px;}
+  .anchor-example .example-label{flex-shrink:0;font-weight:600;}
+  .anchor-example .example-text{flex:1;}
   .checkpoint{
     border-left:3px solid var(--hotpink);
     padding:2px 0 2px 18px;
@@ -702,11 +695,11 @@
 
 <div class="cover" id="cover">
   <div class="cover-main">
-    <div class="cover-eyebrow">The Strategic Campaign Framework for AI-Powered Product Marketing</div>
+    <div class="cover-eyebrow">The Strategic Framework for AI-Collaborative Product Marketing</div>
     <h1 class="cover-title">Smart Kind OS</h1>
     <p class="cover-byline">By Noel Liz Smart</p>
     <p class="cover-tagline">From Prompt to Pipeline</p>
-    <p class="cover-sub">An intelligence‑driven operating system that transforms research into strategy and strategy into execution.</p>
+    <p class="cover-sub">A connected operating system that transforms research into strategy and strategy into campaigns ready to launch.</p>
 
     <div class="cover-flow-wrap">
       <svg class="cover-flow-svg" viewBox="0 0 1000 222" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Workflow: Market Intelligence, Buyer Strategy, Competitive Intelligence, Product Value, Positioning and Insight, Campaign Execution">
@@ -784,7 +777,6 @@
 <div class="shell">
   <nav class="sidebar" id="sidebar">
     <div class="brand" id="brandReopen" title="View cover" style="cursor:pointer;">
-      <div class="mark">Product Marketing / Framework</div>
       <h1>Smart Kind OS</h1>
       <div class="brand-tagline">Research. Position. Launch.</div>
     </div>
@@ -1170,6 +1162,7 @@ For each competitor document:
 - target market
 - positioning message
 - key differentiators
+- AI/agent discoverability signals (review platform presence, structured data maturity, category ownership)
 
 Present this as a table with one row per competitor.`, true)}
 
@@ -1189,6 +1182,7 @@ Focus on:
 - capabilities competitors lack
 - operational problems competitors fail to address
 - messaging narratives that appear overused
+- AI/agent discoverability gaps competitors haven't closed (thin review presence, inconsistent structured data, unclear category ownership)
 
 Present this as a table with one row per competitor.`)}
 
@@ -1378,6 +1372,7 @@ For channels, consider:
 - email / nurture
 - account‑based marketing (for target accounts)
 - partner or co‑marketing channels
+- AI/agent visibility (structured data, review platforms, category positioning)
 
 Present this as a single table with the following columns: Stage, Goal, Recommended Content Type(s), Channels.`, true)}
 
@@ -1430,13 +1425,25 @@ Format this so it can be shared with stakeholders outside this conversation, suc
 
   <div class="checkpoint"><strong>Checkpoint</strong>This is what everything before it was building toward. Real content, grounded in real strategy, ready to put in front of your team.</div>
 
+  <h3 class="block-title">Anchoring the Narrative</h3>
+  <p>The Content Creation prompt below stays intentionally generic, pulling only from what's already established in this conversation to avoid pushing every asset toward one angle by default. This gives you the space to customize the content you're working on while staying within your campaign's established guardrails.</p>
+  <p>To sharpen a specific piece further, direct the AI to anchor it in one or more of the following before you run the prompt. Pick one or two — stacking every anchor into a single piece dilutes the focus rather than sharpening it.</p>
+
+  <p><strong>Value-based</strong> — Pulls the AI toward opening with the business outcome the buyer cares about, not the feature that produces it.<span class="anchor-example"><span class="example-label">Example:</span><em class="example-text">Anchor this in the business outcomes established in Product Value Architecture.</em></span></p>
+
+  <p><strong>Product-based</strong> — Pushes the AI toward more technical depth on a specific capability or differentiator, useful when the content type calls for it, like a solution brief or comparison guide.<span class="anchor-example"><span class="example-label">Example:</span><em class="example-text">Lead with [specific feature] and how it works.</em></span></p>
+
+  <p><strong>Competitive-based</strong> — Frames the AI's output around where you outperform a named alternative, pulling from the differentiation work already done in Competitive Research.<span class="anchor-example"><span class="example-label">Example:</span><em class="example-text">Position this against [competitor], drawing on the differentiators identified earlier.</em></span></p>
+
+  <p><strong>Discoverability-based</strong> — Write in the language buyers, AI tools, and agents actually search with.<span class="anchor-example"><span class="example-label">Example:</span><em class="example-text">the best [category] for [use case], an alternative to [competitor]</em></span></p>
+
   ${calloutCollapsible('strengthen','💬','Pro Tip','Repeat this prompt for each content type identified in your Campaign Architecture, swapping in the content type and funnel stage each time.')}
 
-  ${promptCard('Content Creation', `Using everything established so far in this campaign (positioning, theme, messaging pillars, campaign architecture, and recommended content types), create [content type] for the [stage] of the funnel.
+  ${promptCard('Content Creation', `Using everything established so far in this campaign, create [content type] for the [stage] of the funnel.
 
 Ensure it aligns with the campaign theme, narrative, messaging pillars, and tone established earlier in this conversation.`, true)}
 
-  ${calloutCollapsible('example','📋','Example','Using everything established so far in this campaign, create a thought leadership blog post for the Awareness stage of the funnel. Ensure it aligns with the campaign theme, narrative, messaging pillars, and tone established earlier in this conversation.')}
+  ${calloutCollapsible('example','📋','Example','Using everything established so far in this campaign, create a thought leadership blog post for the Awareness stage of the funnel. Anchor it in the business outcomes established in Product Value Architecture, and write it in language a buyer, AI tool, or agent would actually search with. Ensure it aligns with the campaign theme, narrative, messaging pillars, and tone established earlier in this conversation.')}
 `},
 
 ];
