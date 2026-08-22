@@ -491,7 +491,7 @@
   }
   .table-wrap.example-wrap[open] summary.example-tag::after{content:'Hide ▾';}
 
-  /* Quick Start step flow (vertical) */
+  /* Quick Starts step flow (vertical) */
   .qflow{display:flex;flex-direction:column;margin:18px 0 22px;max-width:480px;}
   .qchip{
     display:flex;align-items:center;gap:14px;
@@ -513,6 +513,44 @@
   }
   .qchip .qtitle{font-size:14px;font-weight:600;color:var(--ink);}
   .qarrow{color:var(--silver);font-size:15px;text-align:center;padding:4px 0;margin-left:29px;}
+  .qchip.qchip-bridge{background:var(--lav1-soft);border:1.5px dashed var(--lav1);}
+  .qchip.qchip-bridge .qnum{background:#fff;border:1.5px solid var(--lav1);font-size:15px;}
+  .qchip.qchip-bridge .qtitle{color:var(--lav1);}
+
+  details.qsection{
+    border:1px solid var(--rule);
+    border-radius:14px;
+    margin-bottom:18px;
+    overflow:hidden;
+    box-shadow:var(--shadow);
+  }
+  details.qsection > summary{
+    display:flex;align-items:center;justify-content:space-between;
+    gap:14px;
+    padding:18px 22px;
+    cursor:pointer;
+    list-style:none;
+    background:#fff;
+  }
+  details.qsection > summary::-webkit-details-marker{display:none;}
+  details.qsection > summary::marker{content:'';}
+  details.qsection .qsection-title{
+    font-family:'Fraunces',serif;
+    font-weight:600;
+    font-size:20px;
+    color:var(--hotpink);
+  }
+  details.qsection > summary::after{
+    content:'Show ▸';
+    font-family:'Inter',sans-serif;
+    font-size:11px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;
+    color:var(--ink);
+    flex-shrink:0;
+  }
+  details.qsection[open] > summary::after{content:'Hide ▾';}
+  details.qsection[open] > summary{border-bottom:1px solid var(--rule);}
+  details.qsection .qsection-body{padding:22px;}
+  details.qsection .qsection-body > *:last-child{margin-bottom:0;}
 
   /* Framework overview table */
   .table-wrap td:first-child{font-weight:700;width:190px;}
@@ -933,48 +971,81 @@ const sections = [
   ${calloutHTML('strengthen','💬','Pro Tip','Optional guidance called out along the way — places where real customer or sales input (call notes, win/loss interviews, support tickets, customer quotes) would strengthen the output, extra prompts you can run for a head start, or context worth knowing before you proceed. None of these are required to keep moving — they’re just useful if you have the time or the input on hand.')}
 `},
 
-{id:'quickstart', layer:'Start Here', title:'Quick Start', kicker:'Accelerated Path', html: `
+{id:'quickstart', layer:'Start Here', title:'Quick Starts', kicker:'Accelerated Path', html: `
   <h2 class="step-kicker">Accelerated Path</h2>
-  <h1 class="step-title">Quick Start</h1>
+  <h1 class="step-title">Quick Starts</h1>
 
-  <h3 class="block-title">Skipping Steps</h3>
-  <p>If you already have research, positioning, or product messaging completed, you may skip earlier steps and begin at the step most relevant to your campaign needs. Quick Start allows experienced product marketers to accelerate campaign development by starting at a later stage of the framework.</p>
-  <p>However, later steps assume the following insights are already known:</p>
-  ${ul([['📊','Industry pressures'],['🧩','Buyer challenges'],['💎','Product value'],['💡','Positioning strategy']])}
-  <p>If these insights have not been defined, complete earlier steps before moving forward.</p>
+  <p><em class="brand-accent">Smart Kind OS</em> provides a framework to create integrated marketing campaigns, but not every use case calls for the full framework. That flexibility isn't a workaround, it's the design.</p>
+  <p>Quick Starts covers three ways to move faster than running the full 15‑step framework.</p>
+  ${ul([['🔹','<strong>Solo Prompts</strong>: run a single prompt on its own, no other steps required'],['🧩','<strong>Partial Sequences</strong>: skip around to just the steps relevant to what you\'re building'],['🚀','<strong>Accelerated Campaign Flow</strong>: an accelerated multi‑step path when the goal is still a full campaign, just smaller']])}
 
-  <h3 class="block-title">Example: Accelerated Campaign Flow</h3>
-  <p>Below is one example of how an experienced PMM might sequence Quick Start — skipping straight to the steps most relevant to a campaign where research, personas, and positioning already exist.</p>
-  <p>This type of flow tends to work well for smaller‑scope campaigns that build on existing research and positioning — a webinar campaign, an event promotion, a seasonal push, or a refresh of an existing campaign theme — rather than a full net‑new integrated campaign built from scratch. Your own path may look different depending on what you're skipping and where your campaign needs the most work.</p>
+  <details class="qsection">
+    <summary><span class="qsection-title">Solo Prompts</span></summary>
+    <div class="qsection-body">
+      <p>Each of the following works as a standalone entry point, with no earlier output required:</p>
+      ${ul([['🔍','Strategic Research Accelerator'],['👥','Buying Committee &amp; Persona Analysis'],['🎯','Competitive Research'],['💎','Product Value Architecture']])}
+      <p>None of these four depend on any other step's output, which is exactly why they work alone. Run one, and you'll have something finished, not something half-built.</p>
 
-  ${ (()=>{
-      const flow=[
-        {num:1,title:'Strategic Research Accelerator', layer:'Market Intelligence'},
-        {num:9,title:'Strategic Positioning', layer:'Positioning &amp; Insight'},
-        {num:11,title:'Campaign Theme Development', layer:'Campaign Execution'},
-        {num:12,title:'Campaign Architecture', layer:'Campaign Execution'},
-        {num:15,title:'Content Development', layer:'Campaign Execution'},
-      ];
-      const chips = flow.map((s,i)=>{
-        const chip = `<div class="qchip"><span class="qnum">${s.num}</span><span class="qtitle">${s.title}</span></div>`;
-        return chip + (i<flow.length-1 ? '<span class="qarrow">↓</span>' : '');
-      }).join('');
-      return `<div class="qflow">${chips}</div>`;
-    })() }
+      ${calloutCollapsible('example','📋','Example','You just need a fast competitive read before a leadership meeting. Open a new chat and run the Competitive Research prompt on its own, nothing else required. You\'ll walk away with a real, usable competitive table, not a partial answer waiting on other steps.')}
+    </div>
+  </details>
 
-  <p>Running a flow like this one produces:</p>
-  ${ul([['📖','Strategic campaign narrative'],['🎨','Campaign theme'],['🏛️','Messaging pillars'],['🗺️','Campaign architecture (content types and channels by buyer journey stage)'],['📦','Initial campaign assets']])}
+  <details class="qsection">
+    <summary><span class="qsection-title">Partial Sequences</span></summary>
+    <div class="qsection-body">
+      <p>Need a validated positioning statement and nothing more? Work through Positioning &amp; Insight and stop there. Already have research and positioning locked, and just need help turning that into a campaign? Skip ahead to Foundational Messaging and continue from there.</p>
+      <p>However, skipping ahead only works if the AI already has the context those earlier steps would have built. The quality and depth of your output depends on the insights you've loaded into the chat, specifically:</p>
+      ${ul([['📊','Industry pressures'],['🧩','Buyer challenges'],['💎','Product value'],['💡','Positioning strategy']])}
+      <p>If these insights have not been defined, complete earlier steps before moving forward.</p>
 
-  <h3 class="block-title">Upload &amp; Log Existing Intel</h3>
-  <p>Before starting at your chosen step, upload or paste any existing campaign‑related materials you already have — market research, personas, positioning docs, messaging guides, past campaign briefs, competitive analysis, and so on. Logging this into the chat first means the AI has the same foundation it would have built if you'd completed the earlier steps yourself.</p>
+      <p>Before starting at your chosen step, paste and customize the prompt below into your chat, and upload or paste any existing relevant materials you already have.</p>
+      <p>Logging this into the chat first means the AI has the same foundation it would have built if you'd completed the earlier steps yourself. Once that's logged, move on to whichever step you actually need next.</p>
 
-  ${promptCard('Upload &amp; Log', `We are going to use this chat to develop a full integrated product marketing campaign. I have a structured framework we'll work from to develop the campaign, and I already have existing campaign intelligence I'd like you to use as the foundation.
+      ${promptCard('Running a Partial Sequence', `I'm working on [task]. I'm sharing materials covering [research / personas / positioning / messaging, list what you're including].
 
-I'm sharing materials below covering [research / personas / positioning / messaging — list what you're including].
-
-Review this content and retain it as the foundational insights for this campaign so it can inform every step going forward.
+Review this content and retain it as the foundational insights so it can inform our work.
 
 [Paste or attach your materials here]`)}
+
+      ${calloutCollapsible('example','📋','Example','I\'m working on messaging for a product launch. I\'m sharing materials covering competitive research and a draft positioning statement. Review this content and retain it as the foundational insights so it can inform our work. [Paste or attach your materials here]')}
+
+      <div class="checkpoint"><strong>Checkpoint</strong>Once this is logged, jump to whichever step you need from the sidebar. The context above carries forward from here.</div>
+    </div>
+  </details>
+
+  <details class="qsection">
+    <summary><span class="qsection-title">Accelerated Campaign Flow</span></summary>
+    <div class="qsection-body">
+      <p>This framework works well for smaller‑scope campaigns building on existing work: a webinar, an event promotion, a seasonal push, or a theme refresh, rather than a full net‑new build.</p>
+      <p>Your own path may look different depending on what you're skipping. We recommend:</p>
+
+      ${ (()=>{
+          const flow=[
+            {num:1,title:'Strategic Research Accelerator', layer:'Market Intelligence'},
+            {num:5,title:'Competitive Research', layer:'Competitive Intelligence'},
+            {num:7,title:'Product Value Architecture', layer:'Product Value'},
+            {num:9,title:'Strategic Positioning', layer:'Positioning &amp; Insight'},
+            {num:11,title:'Campaign Theme Development', layer:'Campaign Execution'},
+            {num:12,title:'Campaign Architecture', layer:'Campaign Execution'},
+            {num:15,title:'Content Development', layer:'Campaign Execution'},
+          ];
+          const chips = flow.map((s,i)=>{
+            const chip = `<div class="qchip"><span class="qnum">${s.num}</span><span class="qtitle">${s.title}</span></div>`;
+            return chip + (i<flow.length-1 ? '<span class="qarrow">↓</span>' : '');
+          }).join('');
+          return `<div class="qflow">${chips}</div>`;
+        })() }
+
+      <p>Running a flow like this one produces:</p>
+      ${ul([['📖','Strategic campaign narrative'],['🎯','Competitive differentiation'],['🎨','Campaign theme'],['🏛️','Messaging pillars'],['🗺️','Campaign architecture (content types and channels by buyer journey stage)'],['📦','Initial campaign assets']])}
+
+      ${promptCard('Frame the Accelerated Campaign Flow', `I'm producing [campaign type]. We'll move through [steps you're incorporating] in this same chat. Retain everything generated at each step so it carries forward all the way through to content.`)}
+
+      ${calloutCollapsible('example','📋','Example','I\'m producing a webinar campaign. We\'ll move through research, competitive analysis, product value work, positioning, theme development, architecture, and content creation in this same chat. Retain everything generated at each step so it carries forward all the way through to content.')}
+
+      <div class="checkpoint"><strong>Checkpoint</strong>The flow is framed. Move on to Strategic Research Accelerator to begin.</div>
+    </div>
+  </details>
 `},
 
 {id:'statesummary', layer:'Start Here', title:'Continuing in a New Chat', kicker:'Utility', html: `
@@ -1243,11 +1314,14 @@ For each feature, identify the underlying capability it enables, the operational
 
   ${calloutCollapsible('strengthen','💬','Pro Tip','The table above translates each capability into a specific outcome. The prompt below rolls those individual outcomes up into the broader financial categories buyers and executives care about, which you\'ll reuse later when building ROI conversations, sales enablement, and the campaign narrative.')}
 
-  ${promptCard('Financial Impact', `Translate capabilities into measurable outcomes such as:
-- increased revenue
-- reduced operational cost
-- improved efficiency
-- reduced financial risk`)}
+  ${promptCard('Financial Impact', `Translate the business outcomes identified above into measurable financial impact. For each one, identify which financial category it drives, increased revenue, reduced operational cost, improved efficiency, or reduced financial risk, and describe how the capability actually produces that impact.
+
+Present this as a table with columns: Business Outcome, Financial Category, How It Drives Impact.`)}
+
+  ${exampleTable(['Business Outcome','Financial Category','How It Drives Impact'],[
+    ['Faster payment cycles, reduced lien‑related legal exposure','Reduced financial risk','Fewer payment disputes and legal holds means less capital tied up in unresolved claims'],
+    ['Improved cash flow predictability','Reduced operational cost','Less staff time spent manually reconciling payment status across scattered systems'],
+  ], 'Your AI-generated table will include a row like this for each business outcome identified above.')}
 
   ${promptCard('Competitive Differentiation', `Using the product capabilities and outcomes identified above, alongside the competitive research and SWOT analysis established earlier, create a table comparing [product] against each competitor on the capabilities and outcomes that matter most to buyers.
 
