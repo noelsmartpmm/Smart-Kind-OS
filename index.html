@@ -402,11 +402,16 @@
     background:var(--pink1-soft);
     border-style:solid;
   }
-  .chip-zone{
-    border-top:1px solid var(--rule);
-    padding:14px 18px;
-    background:#FAFAFC;
+  .popover{
+    position:fixed;z-index:200;
+    background:#fff;border:1px solid var(--pink1);border-radius:12px;
+    box-shadow:0 8px 24px rgba(23,23,26,.14);
+    padding:12px 14px;
+    display:none;
+    min-width:240px;max-width:340px;
+    max-height:60vh;overflow-y:auto;
   }
+  .popover.open{display:block;}
   .chip-row{margin-bottom:12px;}
   .chip-row:last-child{margin-bottom:0;}
   .chip-row-label{
@@ -423,6 +428,7 @@
   }
   .chip:hover{border-color:var(--pink1);color:var(--pink1);}
   .chip.selected{background:var(--pink1-soft);border-color:var(--pink1);color:var(--pink1);}
+  .fill.popover-open{background:var(--pink1-soft);border-bottom-style:solid;}
 
   /* Callouts */
   .callout{
@@ -539,6 +545,12 @@
     color:var(--ink-faint);
     border-top:1px solid var(--rule);
     background:var(--paper-alt);
+  }
+  .footnote{
+    font-size:12.5px;
+    font-style:italic;
+    color:var(--ink-faint);
+    margin:8px 0 0;
   }
   .table-wrap.example-wrap summary.example-tag{
     cursor:pointer;
@@ -910,23 +922,26 @@ const layerColors = {
 
 const PH = (s) => s.replace(/\[([^\]]+)\]/g, '<span class="ph">[$1]</span>');
 
-const BUYER_ROLES = ['VP of finance','Economic buyer','Procurement manager','Director of operations','IT director','Technical evaluator','VP of marketing','Chief revenue officer','Compliance officer','Department head'];
-const END_USER_ROLES = ['Day-to-day user','Power user','Admin or IT owner','Frontline employee','Team lead'];
-const PROBLEM_CATEGORIES = ['Rising costs or declining margins','Workforce or capacity constraints','Regulatory or compliance changes','Technology limitations or system failures','Competitive or market pressure','Revenue cycle management','Licensing','Compliance risk','Operational inefficiency','Data security','Customer retention','Scalability'];
+const BUYER_ROLES = ['VP of Finance','Economic Buyer','Procurement Manager','Director of Operations','IT Director','Technical Evaluator','VP of Marketing','Chief Revenue Officer','Compliance Officer','Department Head'];
+const END_USER_ROLES = ['Day-to-Day User','Power User','Admin or IT Owner','Frontline Employee','Team Lead'];
+const PROBLEM_CATEGORIES = ['Rising Costs or Declining Margins','Workforce or Capacity Constraints','Regulatory or Compliance Changes','Technology Limitations or System Failures','Competitive or Market Pressure','Revenue Cycle Management','Licensing','Compliance Risk','Operational Inefficiency','Data Security','Customer Retention','Scalability'];
+const INDUSTRIES = ['Healthcare','Life Sciences','Education','Legal Services','Financial Services and Fintech','Construction','Restaurants and Hospitality','Insurance','Retail','Manufacturing','HR'];
 
 const ALL_STEP_NAMES = ['Strategic Research Accelerator','Market & Industry Research','Stakeholder & Persona Analysis','Trigger & Economic Value','Competitive Research','Strategic Synthesis','Product Value Architecture','Campaign Intelligence & Insight Generator','Strategic Positioning','Foundational Messaging','Campaign Theme Development','Campaign Architecture','Measurement Planning','Campaign Messaging Brief','Content Development'];
 
 const CHIP_BANK = {
-  'campaign type': {multi:false, options:['webinar','event promotion','seasonal push','theme refresh','social media campaign','email campaign','mailer campaign','feature launch','customer story spotlight','retention campaign']},
-  'content type': {multi:false, options:['thought leadership blog','product-focused blog','product one-pager','infographic','solution brief','case study',"buyer's guide",'executive brief','video','webinar','white paper','ROI / business case tool','comparison guide','FAQ page','email nurture series','landing page','data / research report','sales/pitch deck','social media post(s)','podcast episode','press release','newsletter story']},
+  'campaign type': {multi:false, options:['Webinar','Event Promotion','Thought Leadership','Theme Refresh','Social Media Campaign','Email Campaign','Mailer Campaign','Feature Launch','Case Study','Retention Campaign','White Paper']},
+  'content type': {multi:false, options:['Thought Leadership Blog','Product-Focused Blog','Product One-Pager','Infographic','Solution Brief','Case Study',"Buyer's Guide",'Executive Brief','Video','Webinar','White Paper','ROI / Business Case Tool','Comparison Guide','FAQ Page','Email Nurture Series','Landing Page','Data / Research Report','Sales/Pitch Deck','Social Media Post(s)','Podcast Episode','Press Release','Newsletter Story']},
   'stage': {multi:false, options:['Awareness','Interest','Consideration','Decision','Post-Sale/Expansion']},
-  'industry / market segment': ['Construction','Hospitals','K-12','Cyber security','Healthcare','Manufacturing','Financial services','Retail','Logistics','Government and public sector'],
-  'targeted business type': ['Contracting','Clinic','School systems','SaaS','Non profit','Manufacturing','Retail','Professional services','Healthcare system','Municipality'],
-  'technology or trend': ['AI-assisted purchasing','Automation','Cloud migration','Real-time data integration','Agentic workflows','Digital transformation','Remote and hybrid work'],
-  'core business process or function': ['Payment reconciliation','Vendor selection','Compliance reporting','Customer onboarding','Supply chain management','Procurement','Revenue operations','Risk management'],
-  'target company profile': ['Enterprise (1,000+ employees)','Mid-market','Small business','$50M+ annual revenue','Multi-location','VC-backed startup'],
+  'industry': INDUSTRIES,
+  'targeted business type': ['Contracting','Clinic','School Systems','SaaS','Non Profit','Manufacturing','Retail','Professional Services','Healthcare System','Municipality'],
+  'core issues': ['Staffing Shortages','Reimbursement Pressure','Regulatory Complexity','Clinical Trial Timelines','Declining Enrollment','Funding Cuts','Cybersecurity Risk','Compliance Burden','Rising Material Costs','Rising Ingredient Costs','Supply Chain Disruption','Climate and Catastrophic Risk','Tariff Impact','Talent Retention','Benefits Cost Pressure'],
+  'business process or function': ['Patient Care Coordination','Clinical Trial and Pipeline Management','Curriculum and Enrollment Management','Case and Matter Management','Risk and Compliance Management','Project and Field Management','Guest Experience and Operations','Underwriting and Claims Management','Order Fulfillment and Customer Experience','Supply Chain and Production Management','Talent Acquisition and Retention'],
+  'market': ['Health Systems','Community Hospitals','Pharmacies','Clinics','Emerging Biotech','Large Pharma','K-12 Districts','Higher Education Institutions','AmLaw 100 Firms','Boutique Firms','Community Banks','Regional Banks','Consumers','Commercial General Contractors','Residential Builders','Multi-Unit Chains','Independent Restaurants','P&C Carriers','Life and Health Insurers','Businesses','Multi-Location Retail Chains','DTC Brands','Discrete Manufacturers','Process Manufacturers','Enterprise HR Teams','SMB HR Teams'],
+  'segment': ['1-19 Locations','20-99 Locations','100+ Locations','Independent / Single-Site','Regional','National','Under $10M Revenue','$10M-$50M Revenue','$50M+ Revenue','Enterprise (1,000+ Employees)','Mid-Market','Small Business'],
+  'report type': {multi:false, options:['Concise','Scannable','Robust','High-Level','Executive Summary','Detailed','Bullet-Point']},
   'target buyer roles': BUYER_ROLES,
-  'solution category': ['FinTech','HealthTech','EdTech','Construction tech','Revenue cycle management','Purchasing','Compliance','Non profit','MarTech','LegalTech','InsurTech','HRTech','Supply chain tech','Cybersecurity','PropTech','Professional services','Consulting','Staffing and recruiting','Facilities management','Equipment and hardware','Manufacturing'],
+  'solution category': ['FinTech','HealthTech','EdTech','Construction Tech','Revenue Cycle Management','Purchasing','Compliance','Non Profit','MarTech','LegalTech','InsurTech','HRTech','Supply Chain Tech','Cybersecurity','PropTech','Professional Services','Consulting','Staffing and Recruiting','Facilities Management','Equipment and Hardware','Manufacturing'],
   'problem category': PROBLEM_CATEGORIES,
   'problem': PROBLEM_CATEGORIES,
   'persona': [
@@ -934,7 +949,9 @@ const CHIP_BANK = {
     {group:'End-user / persona roles', options: END_USER_ROLES},
   ],
   "steps you're incorporating": ALL_STEP_NAMES,
-  'typical buying committee, end user': {multi:false, options:[{group:'Audience type', options:['typical buying committee','end user']}]},
+  'task': ['Positioning','Competitive Research','Messaging','Campaign Planning','Content Creation','Persona Analysis','Market Research','Measurement Planning'],
+  "list what you're including": ['Research','Personas','Positioning','Messaging','Customer Feedback','Customer Interviews','Sales Call Notes','Win/Loss Data','Product Usage Data','Product Roadmap'],
+  'typical buying committee, end user': {multi:false, options:[{group:'Audience type', options:['Typical Buying Committee','End User']}]},
 };
 
 function normalizeChipBank(bank, fallbackLabel){
@@ -958,9 +975,10 @@ function normalizeChipBank(bank, fallbackLabel){
   return {multi, groups};
 }
 
+const blankChipRegistry = {};
+
 function renderFillable(text, promptId, overrides){
   let blankIndex = 0;
-  const blanksWithChips = [];
   const html = text.replace(/\[([^\]]+)\]/g, (match, inner) => {
     const blankId = `${promptId}-b${blankIndex}`;
     blankIndex++;
@@ -970,18 +988,18 @@ function renderFillable(text, promptId, overrides){
     }
     const key = trimmed.toLowerCase();
     const bank = (overrides && overrides[key]) || CHIP_BANK[key];
-    if(bank) blanksWithChips.push({blankId, label: trimmed, bank});
+    if(bank) blankChipRegistry[blankId] = {label: trimmed, bank};
     return `<span class="fill" contenteditable="true" data-ph="${inner}" id="${blankId}"></span>`;
   });
-  return {html, blanksWithChips};
+  return html;
 }
 
-function renderChipRows(blankId, label, bank){
+function renderChipRows(label, bank){
   const {multi, groups} = normalizeChipBank(bank, label);
   return groups.map(g => `
     <div class="chip-row">
       <div class="chip-row-label">${g.group}</div>
-      <div class="chip-set" data-target="${blankId}" data-multi="${multi}">
+      <div class="chip-set" data-multi="${multi}">
         ${g.options.map(v => `<span class="chip" data-value="${v.replace(/"/g,'&quot;')}">${v}</span>`).join('')}
       </div>
     </div>`).join('');
@@ -999,17 +1017,13 @@ function calloutCollapsible(type, icon, label, text){
 function promptCard(label, text, isCore, chipOverrides){
   const id = 'p'+Math.random().toString(36).slice(2,9);
   const badge = isCore ? '<span class="core-badge">⚡ Core Prompt</span>' : '';
-  const {html, blanksWithChips} = renderFillable(text, id, chipOverrides);
-  const chipZone = blanksWithChips.length ? `
-    <div class="chip-zone">
-      ${blanksWithChips.map(b => renderChipRows(b.blankId, b.label, b.bank)).join('')}
-    </div>` : '';
+  const html = renderFillable(text, id, chipOverrides);
   return `<div class="prompt-card">
     <div class="prompt-head">
       <span class="prompt-head-left"><span class="prompt-label">${label}</span>${badge}</span>
       <button class="copy-btn" data-target="${id}">Copy</button>
     </div>
-    <div class="prompt-body" id="${id}" data-raw="${encodeURIComponent(text)}">${html}</div>${chipZone}
+    <div class="prompt-body" id="${id}" data-raw="${encodeURIComponent(text)}">${html}</div>
   </div>`;
 }
 function table(headers, rows){
@@ -1106,9 +1120,9 @@ const sections = [
   ${promptCard('Sample', `Everything inside a box like this is written to be copied in full and pasted directly into your AI chat. Text in [brackets] is a placeholder — swap it for your own details before you send it.`)}
 
   <h3 class="block-title">Keyword Chips</h3>
-  <p>Some blanks include a row of clickable keywords underneath, a starting vocabulary for that specific question. Clicking one adds it to the blank; click a few and they build into a running, comma‑separated list. You can also just type directly into any blank at any time — chips and typed text work together, not one instead of the other.</p>
+  <p>Some blanks come with a starting vocabulary for that specific prompt. Click into one of these blanks and a small popup box appears right there with relevant keywords to choose from. You can also just type directly into any blank at any time, because chips and typed text work together, not one instead of the other.</p>
   <p>Chips are a starting point, not a finished answer. They exist to jog your thinking or save you from typing a common term from scratch, not to replace the specific detail that actually makes a prompt sharp. The strongest results usually come from clicking a relevant chip or two, then adding your own context in that same blank, the exact nuance a generic keyword can't capture on its own.</p>
-  ${promptCard('Try It', `This step usually asks about [industry / market segment]. Click a chip below, then keep typing to add your own detail.`)}
+  ${promptCard('Try It', `This step usually asks about [industry]. Click a chip below, then keep typing to add your own detail.`)}
 
   <h3 class="block-title">⚡ Core Prompt Badges ⚡</h3>
   <p>Some prompts carry a <span class="core-badge">⚡ Core Prompt</span> badge — these are the roughly 17 prompts that make up a minimal path from research to content: one load‑bearing prompt per layer, enough to produce a complete campaign package without running every prompt in every step. If you're short on time, just getting started, or working a lower‑stakes campaign, you can follow just the Core Prompts end to end and still walk away with real research, positioning, a theme, an architecture, a measurement plan, and content. Come back and run the rest whenever you want more depth.</p>
@@ -1153,11 +1167,10 @@ const sections = [
 
       ${calloutCollapsible('example','📋','Example','I\'m working on messaging for a product launch. I\'m sharing materials covering competitive research and a draft positioning statement. Review this content and retain it as the foundational insights so it can inform our work. [Paste or attach your materials here]')}
 
-      ${promptCard('Running a Partial Sequence', `I'm working on [task]. I'm sharing materials covering [research / personas / positioning / messaging, list what you're including].
+      ${promptCard('Running a Partial Sequence', `I'm working on [task]. I'm sharing materials covering [list what you're including]*.
 
-Review this content and retain it as the foundational insights so it can inform our work.
-
-[Paste or attach your materials here]`)}
+Review this content and retain it as the foundational insights so it can inform our work.`)}
+      <p class="footnote">*Paste or attach your actual materials directly into your AI chat, so it's there for the AI to reference.</p>
 
       <div class="checkpoint"><strong>Checkpoint</strong>Once this is logged, jump to whichever step you need from the sidebar. The context above carries forward from here.</div>
     </div>
@@ -1166,7 +1179,7 @@ Review this content and retain it as the foundational insights so it can inform 
   <details class="qsection">
     <summary><span class="qsection-title">Accelerated Campaign Flow</span></summary>
     <div class="qsection-body">
-      <p>This framework works well for smaller‑scope campaigns building on existing work: a webinar, an event promotion, a seasonal push, a theme refresh, a social media campaign, an email campaign, a mailer campaign, a feature launch, a customer story spotlight, or a retention campaign, rather than a full net‑new build.</p>
+      <p>This framework works well for smaller‑scope campaigns building on existing work: a webinar, an event promotion, thought leadership, a theme refresh, a social media campaign, an email campaign, a mailer campaign, a feature launch, a case study, or a retention campaign, rather than a full net‑new build.</p>
       <p>Your own path may look different depending on what you're skipping. We recommend:</p>
 
       ${ (()=>{
@@ -1189,7 +1202,7 @@ Review this content and retain it as the foundational insights so it can inform 
       <p>Running a flow like this one produces:</p>
       ${ul([['📖','Strategic campaign narrative'],['🎯','Competitive differentiation'],['🎨','Campaign theme'],['🏛️','Messaging pillars'],['🗺️','Campaign architecture (content types and channels by buyer journey stage)'],['📦','Initial campaign assets']])}
 
-      ${calloutCollapsible('example','📋','Example','I\'m producing a webinar campaign. We\'ll move through research, competitive analysis, product value work, positioning, theme development, architecture, and content creation in this same chat. Retain everything generated at each step so it carries forward all the way through to content.')}
+      ${calloutCollapsible('example','📋','Example','I\'m producing a webinar focused on pharmacy reimbursement. We\'ll move through research, competitive analysis, product value work, positioning, theme development, architecture, and content creation in this same chat. Retain everything generated at each step so it carries forward all the way through to content.')}
 
       ${promptCard('Frame the Accelerated Campaign Flow', `I'm producing [campaign type]. We'll move through [steps you're incorporating] in this same chat. Retain everything generated at each step so it carries forward all the way through to content.`)}
 
@@ -1220,21 +1233,21 @@ Structure this so I can paste it as the first message in a new conversation and 
 {id:'init', layer:'Campaign Initialization', title:'Campaign Initialization', kicker:'Setup', html: `
   <h2 class="step-kicker">Setup</h2>
   <h1 class="step-title">Campaign Initialization</h1>
-  <p class="lede">The details you provide here become the shared context the AI references at every later step. The more specific you are now — product, industry, persona, and goal — the less generic and more usable your outputs will be later. Think of this as the brief you'd hand a new teammate before kicking off a campaign.</p>
+  <p class="lede">The details you provide here become the shared context the AI references at every later step. The more specific you are now, product, industry, market segment, and goal, the less generic and more usable your outputs will be later. Think of this as the brief you'd hand a new teammate before kicking off a campaign.</p>
 
   ${calloutCollapsible('strengthen','💬','Pro Tip','If you’re new to this product, industry, or market and don’t yet have confident answers for the fields below, don’t guess. Work cross‑functionally with sales, product, customer success, or other internal stakeholders to fill in these knowledge gaps before proceeding — the quality of everything downstream depends on how accurate this foundation is.')}
 
-  ${promptCard('Campaign Initialization', `We are going to use this chat to develop a full integrated product marketing campaign. I have a structured framework we'll work from to develop the campaign.
+  ${promptCard('Campaign Initialization', `You are acting as an experienced product marketing strategist helping me build a go-to-market campaign. We're going to use this chat to develop a full integrated campaign, working from a structured framework across the rest of this conversation.
 
 Campaign Details
 
 Product:
-Industry / Market Segment:
-Primary Campaign Persona:
+Industry:
+Market Segment:
 Core Problem the Product Solves:
 Primary Campaign Goal:
 
-Retain insights generated during each step so they can be referenced later.`)}
+Retain these details, along with everything generated at each step going forward, so they can be referenced throughout this conversation. If any of the details above are missing or unclear, ask before proceeding.`)}
 `},
 
 /* ---------------- STEP 1 ---------------- */
@@ -1246,9 +1259,9 @@ Retain insights generated during each step so they can be referenced later.`)}
   <h3 class="block-title">Why This Step Matters</h3>
   ${ul([['🧭','Sets the market context every later step will build on'],['🔗','Grounds your differentiation claims in real industry dynamics, not assumptions'],['⏱️','Surfaces the "why now" urgency your positioning will lean on'],['🗣️','Gives you a credible, sourced answer when stakeholders ask what\'s driving this campaign']])}
 
-  ${calloutCollapsible('example','📋','Example','Conduct deep strategic research on payment and lien management in commercial construction and how technology impacts subcontractor payment workflows. Focus specifically on implications for general contractors with $50M+ in annual revenue, and construction professionals in project accounting, executive management, finance, operations, and project management roles.')}
+  ${calloutCollapsible('example','📋','Example','Conduct deep strategic research on the construction industry, delivered as concise findings, let that choice govern the length and depth of every section below. Focus on labor shortages and rising material costs and other trends currently affecting organizations in this space and how they impact project and field management. Focus specifically on implications for commercial general contractors organizations, particularly those in the $50M+ annual revenue segment(s).')}
 
-  ${promptCard('Deep Strategic Research', `Conduct deep strategic research on [industry / market segment] and how [technology or trend] impacts [core business process or function].
+  ${promptCard('Deep Strategic Research', `Conduct deep strategic research on the [industry] industry, delivered as [report type] findings, let that choice govern the length and depth of every section below, not just this instruction. Focus on [core issues] and other trends currently affecting organizations in this space and how they impact [business process or function]. Write for a product marketing leader who needs to defend this research to executives, prioritize strategic interpretation over raw summary.
 
 Synthesize insights from:
 - industry reports
@@ -1256,6 +1269,8 @@ Synthesize insights from:
 - regulatory developments
 - technology innovation trends
 - economic pressures affecting buyers
+
+Prioritize signals backed by multiple sources or sustained over time. Ignore single-source anecdotes, outdated data, and generic commentary that doesn't point to a specific shift.
 
 Structure the output into:
 
@@ -1265,7 +1280,7 @@ Operational Challenges
 Technology Disruption
 Strategic Implications
 
-Focus specifically on implications for [target company profile]. Present the Strategic Implications section as a table sorted by company profile, showing how each implication affects each profile differently.`, true)}
+Focus specifically on implications for [market] organizations, particularly those in the [segment] segment(s). Present the Strategic Implications section as a table that shows how current trends apply to the segment(s) selected. Include links to sources throughout so these findings can be verified.`, true)}
 
   ${calloutHTML('validate','✅','Validate Before Moving On','Spot‑check the research above against at least one real source (analyst report, earnings call, credible trade publication) before logging it. This becomes the foundation for everything downstream.')}
 
@@ -1285,9 +1300,9 @@ These insights should inform later prompts.`)}
 
   ${calloutCollapsible('example','📋','Example','Conduct deep research on financial, operational, and regulatory trends affecting payment and lien management in commercial construction. Focus on pressures experienced by general contractors with $50M+ in annual revenue and construction professionals in project accounting, executive management, finance, operations, and project management roles. Keep the new information fresh and avoid redundancy.')}
 
-  ${promptCard('Deep Industry Research', `Conduct deep research on financial, operational, regulatory, and social trends affecting [industry / market segment].
+  ${promptCard('Deep Industry Research', `Conduct deep research on financial, operational, regulatory, and social trends affecting [industry].
 
-Focus on pressures experienced by [targeted business type] businesses and organizations. Keep the new information fresh and avoid redundancy.
+Focus on pressures experienced by [targeted business type] businesses and organizations. Prioritize developments from the past 12 months with clear strategic implications. Ignore information already established earlier in this conversation, or that doesn't point to a specific operational or financial impact.
 
 Include analysis of:
 - market and margin pressures
@@ -1354,7 +1369,7 @@ Present this as a table with one row per persona and columns for Persona, Object
 
   ${calloutCollapsible('strengthen','💬','Pro Tip: Strengthen With Real Input','Win/loss interviews, support ticket trends, and usage data are the best sources of real triggers. Paste the relevant excerpts directly into the chat, or upload the file if you have one, before running the prompt below, and tell the AI: "Use this real data to ground your research in actual triggers, not just industry assumptions." If you don\'t have this on hand, lean on the AI research and refine it as real data comes in.')}
 
-  ${promptCard('Deep Buying Trigger Research', `Conduct deep research to identify the events that trigger organizations to evaluate solutions for [problem category].`, true)}
+  ${promptCard('Deep Buying Trigger Research', `Conduct deep research to identify the events that trigger organizations to evaluate solutions for [problem category]. Prioritize triggers with clear timing, a specific event, deadline, or threshold crossed, not vague ongoing pressures. Ignore triggers too generic to act on, like "companies always want to save money."`, true)}
 
   ${promptCard('Deep Economic Impact Research', `Conduct deep research explaining, for each trigger identified above, the financial and operational consequences if the problem remains unresolved.
 
@@ -1373,12 +1388,14 @@ Examples include:
 
   ${promptCard('Competitive Landscape Deep Research', `Conduct deep competitive research on the following vendors [list competitors]
 
-OR vendors offering solutions related to [problem category].
+OR vendors offering solutions related to [problem category]. Write for a product marketing leader making strategic decisions, not a general industry summary.
 
 Identify:
 - established market leaders
 - emerging vendors
 - adjacent technology providers
+
+Prioritize recent positioning shifts, product or pricing changes, and campaign-driven activity. Ignore routine content, unchanged messaging, and minor copy edits without strategic implications.
 
 For each competitor document:
 - company name
@@ -1390,7 +1407,7 @@ For each competitor document:
 
 Present this as a table with one row per competitor.`, true, {'problem category': PROBLEM_CATEGORIES.slice(5)})}
 
-  ${promptCard('Competitor Messaging Analysis', `Analyze how competitors position their solutions.
+  ${promptCard('Competitor Messaging Analysis', `Analyze how competitors position their solutions right now, based on their most current public messaging. Deprioritize positioning that appears outdated or no longer active on their primary channels.
 
 Identify:
 - dominant messaging themes
@@ -1802,7 +1819,7 @@ document.addEventListener('click', (e)=>{
   }
 });
 
-// chip pickers
+// popup keyword boxes
 function appendChipValue(blank, value){
   const current = blank.textContent.trim();
   const parts = current ? current.split(/,\s*/).map(s=>s.trim()).filter(Boolean) : [];
@@ -1814,13 +1831,77 @@ function removeChipValue(blank, value){
   const parts = current ? current.split(/,\s*/).map(s=>s.trim()).filter(Boolean) : [];
   blank.textContent = parts.filter(p => p !== value).join(', ');
 }
-document.addEventListener('click', (e)=>{
-  if(e.target.classList.contains('chip')){
+function placeCaretAtEnd(el){
+  el.focus();
+  const range = document.createRange();
+  range.selectNodeContents(el);
+  range.collapse(false);
+  const sel = window.getSelection();
+  sel.removeAllRanges();
+  sel.addRange(range);
+}
+const keywordPopover = document.createElement('div');
+keywordPopover.className = 'popover';
+keywordPopover.id = 'keywordPopover';
+document.body.appendChild(keywordPopover);
+
+function positionPopover(blank){
+  const blankRect = blank.getBoundingClientRect();
+  const popRect = keywordPopover.getBoundingClientRect();
+  const margin = 6;
+  const spaceBelow = window.innerHeight - blankRect.bottom;
+  let top;
+  if(spaceBelow >= popRect.height + margin || spaceBelow >= blankRect.top){
+    top = blankRect.bottom + margin;
+  } else {
+    top = blankRect.top - popRect.height - margin;
+  }
+  let left = blankRect.left;
+  const maxLeft = window.innerWidth - popRect.width - 12;
+  if(left > maxLeft) left = Math.max(12, maxLeft);
+  if(top < 8) top = 8;
+  keywordPopover.style.top = top + 'px';
+  keywordPopover.style.left = left + 'px';
+}
+function openPopoverFor(blank){
+  const data = blankChipRegistry[blank.id];
+  if(!data) return;
+  const selectedVals = blank.textContent.split(/,\s*/).map(s=>s.trim());
+  keywordPopover.innerHTML = renderChipRows(data.label, data.bank).replace(/class="chip" data-value="([^"]*)"/g, (m, v) => {
+    const isSelected = selectedVals.includes(v.replace(/&quot;/g,'"'));
+    return `class="chip${isSelected?' selected':''}" data-value="${v}"`;
+  });
+  keywordPopover.classList.add('open');
+  document.querySelectorAll('.fill.popover-open').forEach(f=>f.classList.remove('popover-open'));
+  blank.classList.add('popover-open');
+  positionPopover(blank);
+}
+document.addEventListener('focus', (e)=>{
+  if(e.target.classList && e.target.classList.contains('fill')){
+    if(blankChipRegistry[e.target.id]){
+      openPopoverFor(e.target);
+    } else {
+      keywordPopover.classList.remove('open');
+      document.querySelectorAll('.fill.popover-open').forEach(f=>f.classList.remove('popover-open'));
+    }
+  }
+}, true);
+document.addEventListener('input', (e)=>{
+  if(e.target.classList && e.target.classList.contains('popover-open')){
+    positionPopover(e.target);
+  }
+});
+window.addEventListener('resize', ()=>{
+  const openBlank = document.querySelector('.fill.popover-open');
+  if(openBlank) positionPopover(openBlank);
+});
+document.addEventListener('mousedown', (e)=>{
+  if(e.target.classList.contains('chip') && e.target.closest('#keywordPopover')){
+    e.preventDefault(); // keep focus on the blank
     const chipSet = e.target.closest('.chip-set');
-    const targetId = chipSet.dataset.target;
-    const value = e.target.dataset.value;
-    const blank = document.getElementById(targetId);
+    const blank = document.querySelector('.fill.popover-open');
     if(!blank) return;
+    const value = e.target.dataset.value;
     if(chipSet.dataset.multi === 'true'){
       const selecting = !e.target.classList.contains('selected');
       e.target.classList.toggle('selected');
@@ -1831,6 +1912,13 @@ document.addEventListener('click', (e)=>{
       e.target.classList.add('selected');
       blank.textContent = value;
     }
+    placeCaretAtEnd(blank);
+    positionPopover(blank);
+    return;
+  }
+  if(!e.target.closest('#keywordPopover') && !e.target.classList.contains('fill')){
+    keywordPopover.classList.remove('open');
+    document.querySelectorAll('.fill.popover-open').forEach(f=>f.classList.remove('popover-open'));
   }
 });
 
