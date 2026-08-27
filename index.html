@@ -680,6 +680,273 @@
   .warn-box li{margin-bottom:10px;color:var(--ink);display:flex;align-items:flex-start;gap:12px;}
   .warn-box strong{color:var(--ink);font-weight:800;}
 
+  /* ---------- Workbooks ---------- */
+  .wb-indicator{
+    margin:14px 16px 0;
+    background:#1f1c23;
+    border:1px solid #35313c;
+    border-radius:10px;
+    padding:10px 12px;
+    cursor:pointer;
+    transition:border-color .12s ease;
+  }
+  .wb-indicator:hover{border-color:var(--pink1);}
+  .wb-indicator-label{
+    font-family:'Inter',sans-serif;font-size:9.5px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;
+    color:#726d80;margin-bottom:3px;
+  }
+  .wb-indicator-name{
+    font-family:'Inter',sans-serif;font-size:13px;font-weight:700;
+    color:#EDEAF0;
+    display:flex;align-items:center;justify-content:space-between;gap:8px;
+  }
+  .wb-indicator-name .wb-caret{color:#8b8894;font-size:11px;flex-shrink:0;}
+  .wb-indicator-name.wb-empty{color:#8b8894;font-weight:600;font-style:italic;}
+  .wb-indicator-name strong{color:#FBFAFD;font-weight:700;}
+
+  .wb-switch-panel{
+    position:fixed;z-index:210;
+    background:#fff;border:1px solid var(--pink1);border-radius:12px;
+    box-shadow:0 8px 24px rgba(23,23,26,.18);
+    padding:8px;
+    max-height:60vh;overflow-y:auto;
+    display:none;
+  }
+  .wb-switch-panel.open{display:block;}
+  .wb-switch-item{
+    display:flex;align-items:center;justify-content:space-between;gap:8px;
+    padding:9px 10px;border-radius:8px;cursor:pointer;
+    font-family:'Inter',sans-serif;font-size:13px;color:var(--ink);
+  }
+  .wb-switch-item:hover{background:var(--pink1-soft);}
+  .wb-switch-item.is-active{background:var(--pink1-soft);color:var(--pink1);font-weight:700;}
+  .wb-switch-item .wb-check{color:var(--pink1);font-size:12px;visibility:hidden;}
+  .wb-switch-item.is-active .wb-check{visibility:visible;}
+  .wb-switch-empty{padding:9px 10px;font-size:12.5px;color:var(--ink-faint);font-style:italic;}
+  .wb-switch-divider{height:1px;background:var(--rule);margin:6px 2px;}
+  .wb-switch-new{
+    display:flex;align-items:center;gap:8px;
+    padding:9px 10px;border-radius:8px;cursor:pointer;
+    font-family:'Inter',sans-serif;font-size:13px;font-weight:700;color:var(--pink1);
+  }
+  .wb-switch-new:hover{background:var(--pink1-soft);}
+  .wb-switch-newform{padding:6px 6px 2px;display:none;}
+  .wb-switch-newform.open{display:flex;gap:8px;}
+
+  .wb-name-input{
+    border:1.5px solid var(--rule-strong);border-radius:8px;
+    padding:8px 10px;font-family:'Inter',sans-serif;font-size:13px;
+    flex:1;min-width:0;
+  }
+  .wb-name-input:focus{outline:none;border-color:var(--pink1);}
+  .wb-confirm-btn{
+    font-family:'Inter',sans-serif;font-weight:700;font-size:12px;
+    background:var(--pink1);color:#fff;border:none;border-radius:999px;
+    padding:8px 16px;cursor:pointer;flex-shrink:0;
+  }
+  .wb-confirm-btn:hover{filter:brightness(1.08);}
+
+  /* Save to Workbook box */
+  .workbook-save-box{
+    background:var(--paper-alt);
+    border:1.5px dashed var(--silver);
+    border-radius:var(--radius);
+    padding:16px 18px;
+    margin:0 0 26px;
+  }
+  .wb-save-label{
+    font-family:'Inter',sans-serif;font-weight:800;font-size:13px;
+    letter-spacing:.02em;color:var(--ink-soft);
+    display:block;margin-bottom:10px;
+  }
+  .wb-save-textarea{
+    width:100%;box-sizing:border-box;min-height:80px;resize:vertical;
+    border:1.5px solid var(--rule-strong);border-radius:8px;
+    padding:10px 12px;font-family:'Inter',sans-serif;font-size:13.5px;
+    color:var(--ink);margin-bottom:10px;
+  }
+  .wb-save-textarea:focus{outline:none;border-color:var(--pink1);}
+  .wb-save-btn{
+    font-family:'Inter',sans-serif;font-weight:700;font-size:12px;letter-spacing:.02em;
+    background:var(--ink);color:#fff;border:none;border-radius:999px;
+    padding:9px 20px;cursor:pointer;
+  }
+  .wb-save-btn:hover{filter:brightness(1.3);}
+
+  .wb-picker{margin-top:0;padding-top:0;border-top:0 solid var(--rule);display:none;}
+  .wb-picker.open{margin-top:14px;padding-top:14px;border-top-width:1px;display:block;}
+  .wb-picker-label{font-family:'Inter',sans-serif;font-size:11.5px;font-weight:700;color:var(--ink-faint);margin-bottom:9px;}
+  .wb-picker-row{display:flex;flex-wrap:wrap;gap:8px;}
+  .wb-picker-chip{
+    font-family:'Inter',sans-serif;font-size:12.5px;font-weight:600;
+    background:#fff;border:1.5px solid var(--rule-strong);border-radius:999px;
+    padding:7px 15px;cursor:pointer;color:var(--ink-soft);
+  }
+  .wb-picker-chip:hover{border-color:var(--pink1);color:var(--pink1);}
+  .wb-picker-chip.is-default{border-color:var(--pink1);background:var(--pink1-soft);color:var(--pink1);}
+  .wb-picker-chip.wb-new-chip{border-style:dashed;}
+  .wb-picker-newform{margin-top:12px;display:none;gap:8px;}
+  .wb-picker-newform.open{display:flex;}
+  .wb-picker-zero p{font-size:13.5px;color:var(--ink-soft);margin:0 0 10px;}
+  .wb-picker-zero .wb-picker-newform{display:flex;margin-top:0;}
+  .wb-save-status{margin-top:10px;font-size:12.5px;font-weight:600;min-height:1em;}
+  .wb-save-status.ok{color:var(--green);}
+  .wb-save-status.err{color:var(--pink1);}
+
+  /* Workbooks page */
+  .wb-page-toolbar{display:flex;justify-content:flex-end;gap:10px;margin-bottom:18px;}
+  .wb-newbtn{
+    font-family:'Inter',sans-serif;font-weight:700;font-size:12.5px;
+    background:var(--ink);color:#fff;border:none;border-radius:999px;
+    padding:10px 20px;cursor:pointer;
+  }
+  .wb-newbtn:hover{filter:brightness(1.3);}
+  .wb-list{display:flex;flex-direction:column;gap:10px;}
+  .wb-list-item{
+    display:flex;align-items:center;justify-content:space-between;gap:14px;
+    background:#fff;border:1px solid var(--rule-strong);border-radius:var(--radius);
+    padding:16px 20px;box-shadow:var(--shadow);cursor:pointer;
+    transition:border-color .12s ease;
+  }
+  .wb-list-item:hover{border-color:var(--pink1);}
+  .wb-list-name{font-family:'Fraunces',serif;font-weight:600;font-size:17px;color:var(--ink);}
+  .wb-list-meta{font-family:'Inter',sans-serif;font-size:12px;color:var(--ink-faint);margin-top:4px;}
+  .wb-list-badge{
+    font-family:'Inter',sans-serif;font-weight:800;font-size:10px;letter-spacing:.04em;text-transform:uppercase;
+    color:var(--pink1);background:var(--pink1-soft);border-radius:999px;padding:4px 10px;flex-shrink:0;
+  }
+  .wb-empty-state{
+    text-align:center;padding:60px 20px;color:var(--ink-faint);font-family:'Fraunces',serif;font-style:italic;font-size:17px;
+  }
+
+  .wb-detail-back{
+    font-family:'Inter',sans-serif;font-weight:600;font-size:12.5px;
+    background:none;border:none;color:var(--ink-soft);cursor:pointer;
+    padding:0;margin-bottom:18px;display:inline-flex;align-items:center;gap:6px;
+  }
+  .wb-detail-back:hover{color:var(--pink1);}
+  .wb-detail-head{display:flex;align-items:flex-start;justify-content:space-between;gap:20px;margin-bottom:24px;}
+  .wb-detail-title{font-family:'Fraunces',serif;font-weight:600;font-size:28px;margin:0 0 6px;}
+  .wb-detail-meta{font-family:'Inter',sans-serif;font-size:12.5px;color:var(--ink-faint);}
+  .wb-activate-btn{
+    font-family:'Inter',sans-serif;font-weight:700;font-size:12px;
+    background:#fff;border:1.5px solid var(--pink1);color:var(--pink1);border-radius:999px;
+    padding:9px 18px;cursor:pointer;flex-shrink:0;
+  }
+  .wb-activate-btn:hover{background:var(--pink1);color:#fff;}
+  .wb-activate-btn.is-active{background:var(--pink1);color:#fff;cursor:default;}
+  .wb-entry-group{margin-bottom:26px;}
+  .wb-entry-group-title{
+    font-family:'Inter',sans-serif;font-weight:800;font-size:11.5px;letter-spacing:.05em;text-transform:uppercase;
+    color:var(--lav1);margin-bottom:10px;
+  }
+  .wb-entry{
+    background:#fff;border:1px solid var(--rule);border-radius:10px;
+    padding:14px 16px;margin-bottom:10px;box-shadow:var(--shadow);
+  }
+  .wb-entry-time{font-family:'Inter',sans-serif;font-size:11px;color:var(--ink-faint);margin-bottom:6px;}
+  .wb-entry-content{font-family:'Inter',sans-serif;font-size:13.5px;line-height:1.6;white-space:pre-wrap;color:var(--ink);}
+
+  /* ---------- Auth ---------- */
+  .account-row{
+    display:none;
+    align-items:center;
+    justify-content:space-between;
+    gap:8px;
+    padding:12px 24px 0;
+    font-family:'Inter',sans-serif;
+    font-size:11.5px;
+  }
+  .account-email{
+    color:#c4c1cc;
+    overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
+  }
+  .account-signout{
+    background:none;border:none;color:var(--hotpink);
+    font-family:'Inter',sans-serif;font-weight:700;font-size:11px;
+    cursor:pointer;flex-shrink:0;padding:0;
+  }
+  .account-signout:hover{text-decoration:underline;}
+
+  .auth-modal-backdrop{
+    position:fixed;inset:0;z-index:300;
+    background:rgba(23,23,26,.55);
+    display:none;
+    align-items:center;justify-content:center;
+    padding:20px;
+  }
+  .auth-modal-backdrop.open{display:flex;}
+  .auth-modal{
+    position:relative;
+    background:#fff;
+    border-radius:var(--radius);
+    box-shadow:0 20px 60px rgba(23,23,26,.3);
+    padding:32px 30px 26px;
+    max-width:380px;width:100%;
+    box-sizing:border-box;
+  }
+  .auth-modal-close{
+    position:absolute;top:14px;right:14px;
+    background:none;border:none;font-size:20px;line-height:1;
+    color:var(--ink-faint);cursor:pointer;padding:4px;
+  }
+  .auth-modal-close:hover{color:var(--ink);}
+  .auth-modal-title{
+    font-family:'Fraunces',serif;font-weight:600;font-size:22px;
+    margin:0 0 6px;
+  }
+  .auth-modal-sub{
+    font-family:'Inter',sans-serif;font-size:13px;color:var(--ink-soft);
+    margin:0 0 22px;
+  }
+  .auth-google-btn{
+    width:100%;box-sizing:border-box;
+    display:flex;align-items:center;justify-content:center;gap:10px;
+    background:#fff;border:1.5px solid var(--rule-strong);border-radius:999px;
+    padding:11px 16px;
+    font-family:'Inter',sans-serif;font-weight:600;font-size:14px;color:var(--ink);
+    cursor:pointer;
+  }
+  .auth-google-btn:hover{border-color:var(--silver-dark);background:var(--paper-alt);}
+  .auth-divider{
+    display:flex;align-items:center;gap:12px;
+    margin:18px 0;
+    font-family:'Inter',sans-serif;font-size:11.5px;color:var(--ink-faint);
+  }
+  .auth-divider::before,.auth-divider::after{content:'';flex:1;height:1px;background:var(--rule);}
+  .auth-email-form{display:flex;flex-direction:column;gap:10px;}
+  .auth-email-form input{
+    width:100%;box-sizing:border-box;
+    border:1.5px solid var(--rule-strong);border-radius:8px;
+    padding:11px 14px;font-family:'Inter',sans-serif;font-size:14px;color:var(--ink);
+  }
+  .auth-email-form input:focus{outline:none;border-color:var(--pink1);}
+  .auth-submit-btn{
+    font-family:'Inter',sans-serif;font-weight:700;font-size:13.5px;
+    background:var(--ink);color:#fff;border:none;border-radius:999px;
+    padding:11px 16px;cursor:pointer;margin-top:4px;
+  }
+  .auth-submit-btn:hover{filter:brightness(1.3);}
+  .auth-submit-btn:disabled{opacity:.6;cursor:not-allowed;}
+  .auth-modal-footer{
+    margin-top:16px;text-align:center;
+    font-family:'Inter',sans-serif;font-size:12.5px;color:var(--ink-soft);
+  }
+  .auth-link-btn{
+    background:none;border:none;color:var(--pink1);font-weight:700;
+    font-family:'Inter',sans-serif;font-size:12.5px;
+    cursor:pointer;padding:0;margin-left:4px;
+  }
+  .auth-link-btn:hover{text-decoration:underline;}
+  .auth-forgot-btn{
+    display:block;margin:10px auto 0;
+  }
+  .auth-status{
+    margin-top:14px;font-size:12.5px;font-weight:600;text-align:center;min-height:1em;
+  }
+  .auth-status.ok{color:var(--green);}
+  .auth-status.err{color:var(--pink1);}
+
   /* ---------- Cover ---------- */
   .cover{
     position:fixed;inset:0;z-index:200;
@@ -880,6 +1147,39 @@
   </div>
 </div>
 
+<div class="auth-modal-backdrop" id="authBackdrop">
+  <div class="auth-modal">
+    <button type="button" class="auth-modal-close" id="authModalClose" aria-label="Close">×</button>
+    <h2 class="auth-modal-title">Sign in to Smart Kind OS</h2>
+    <p class="auth-modal-sub">Your workbooks are saved to your account, so they're there whenever you come back.</p>
+
+    <button type="button" class="auth-google-btn" id="authGoogleBtn">
+      <svg width="18" height="18" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path fill="#4285F4" d="M17.64 9.2c0-.637-.057-1.251-.164-1.84H9v3.481h4.844a4.14 4.14 0 0 1-1.796 2.716v2.259h2.908c1.702-1.567 2.684-3.874 2.684-6.615z"/>
+        <path fill="#34A853" d="M9 18c2.43 0 4.467-.806 5.956-2.184l-2.908-2.259c-.806.54-1.837.86-3.048.86-2.344 0-4.328-1.584-5.036-3.711H.957v2.332A8.997 8.997 0 0 0 9 18z"/>
+        <path fill="#FBBC05" d="M3.964 10.706A5.41 5.41 0 0 1 3.682 9c0-.593.102-1.17.282-1.706V4.962H.957A8.996 8.996 0 0 0 0 9c0 1.452.348 2.827.957 4.038l3.007-2.332z"/>
+        <path fill="#EA4335" d="M9 3.58c1.321 0 2.508.454 3.44 1.345l2.582-2.58C13.463.891 11.426 0 9 0A8.997 8.997 0 0 0 .957 4.962L3.964 7.294C4.672 5.167 6.656 3.58 9 3.58z"/>
+      </svg>
+      Continue with Google
+    </button>
+
+    <div class="auth-divider"><span>or</span></div>
+
+    <form class="auth-email-form" id="authEmailForm">
+      <input type="email" id="authEmail" placeholder="Email" autocomplete="email" required>
+      <input type="password" id="authPassword" placeholder="Password" autocomplete="current-password" required minlength="6">
+      <button type="submit" class="auth-submit-btn" id="authSubmitBtn">Sign In</button>
+    </form>
+
+    <div class="auth-modal-footer">
+      <span id="authToggleText">New here?</span><button type="button" class="auth-link-btn" id="authToggleModeBtn">Create an account</button>
+    </div>
+    <button type="button" class="auth-link-btn auth-forgot-btn" id="authForgotBtn">Forgot password?</button>
+
+    <div class="auth-status" id="authStatus"></div>
+  </div>
+</div>
+
 <div class="mobile-bar">
   <strong style="font-family:'Fraunces',serif;font-size:15px;">Smart Kind OS</strong>
   <button id="navToggle">Menu</button>
@@ -891,6 +1191,14 @@
     <div class="brand" id="brandReopen" title="View cover" style="cursor:pointer;">
       <h1>Smart Kind OS</h1>
       <div class="brand-tagline">Research. Position. Launch.</div>
+    </div>
+    <div class="account-row" id="accountRow">
+      <span class="account-email" id="accountEmail"></span>
+      <button type="button" class="account-signout" id="signOutBtn">Sign out</button>
+    </div>
+    <div class="wb-indicator" id="wbIndicator" title="Click to switch which workbook is active">
+      <div class="wb-indicator-label">Working In</div>
+      <div class="wb-indicator-name wb-empty" id="wbIndicatorName"><span>No active workbook</span><span class="wb-caret">▾</span></div>
     </div>
     <div class="progress-line" id="progressLine"></div>
     <div class="sidebar-tools">
@@ -918,6 +1226,7 @@ const layerColors = {
   'Positioning &amp; Insight':  {c:'#5B9BD5', soft:'#EAF4FC'},
   'Campaign Execution':         {c:'#E0568B', soft:'#FDEAF1'},
   'Campaign Initialization':    {c:'#C9C8D1', soft:'#F4F4F6'},
+  'Workbooks':                  {c:'#B08A1E', soft:'#FBF2DA'},
 };
 
 const PH = (s) => s.replace(/\[([^\]]+)\]/g, '<span class="ph">[$1]</span>');
@@ -1042,6 +1351,18 @@ function exampleTable(headers, rows, note, defaultOpen){
 }
 function ul(items){ return `<ul class="plain">${items.map(i=> Array.isArray(i) ? `<li><span class="li-icon">${i[0]}</span><span class="li-text">${i[1]}</span></li>` : `<li>${i}</li>`).join('')}</ul>`; }
 
+let wbBoxSeq = 0;
+function workbookSaveBox(stepId, stepTitle){
+  const boxId = 'wbbox' + (wbBoxSeq++);
+  return `<div class="workbook-save-box" id="${boxId}" data-step-id="${stepId}" data-step-title="${stepTitle.replace(/"/g,'&quot;')}">
+    <span class="wb-save-label">💾 Save to Workbook</span>
+    <textarea class="wb-save-textarea" placeholder="Paste what you want to save from this step…"></textarea>
+    <button type="button" class="wb-save-btn">Save</button>
+    <div class="wb-picker"></div>
+    <div class="wb-save-status"></div>
+  </div>`;
+}
+
 /* ================= CONTENT ================= */
 
 const sections = [
@@ -1099,6 +1420,8 @@ const sections = [
       ];
       return `<ol class="plain">${steps.map(s=>`<li>${s}</li>`).join('')}</ol>`;
     })() }
+
+  <p>Throughout the framework you'll come across <strong>Save to Workbook</strong> boxes after key steps — use these to keep multiple projects or campaigns separate as you work, rather than letting them blur together in one long conversation history. Marking a workbook <strong>active</strong> using the indicator at the top of the sidebar routes every future save into it, and switching the active workbook whenever you start a new project is how you move between them without losing progress in either.</p>
 
   <h3 class="block-title">Turn On Web Search</h3>
   <p>Before running any research‑heavy prompt, confirm your AI tool has web search or browsing turned on. Without it, "deep research" draws only from the model's training knowledge — which may be outdated or entirely ungrounded — and the Validate checkpoints throughout this framework will have less real information to check against.</p>
@@ -1230,6 +1553,15 @@ Structure this so I can paste it as the first message in a new conversation and 
   <p>Paste the resulting summary as the very first message in your new chat, then continue with the next prompt you were about to run from this framework.</p>
 `},
 
+{id:'workbooks', layer:'Workbooks', title:'Workbooks', kicker:'Your Saved Work', html: `
+  <h2 class="step-kicker">Your Saved Work</h2>
+  <h1 class="step-title">Workbooks</h1>
+  <p class="lede">Workbooks keep everything you save from this framework organized by project or campaign. Save AI output into a workbook from any Save to Workbook box as you work, then come back here anytime to see everything you've saved, grouped by the step it came from.</p>
+
+  <div class="wb-page-toolbar"><button type="button" class="wb-newbtn" id="wbPageNewBtn">+ New Workbook</button></div>
+  <div id="wbPageBody"><div class="wb-empty-state">Loading your workbooks…</div></div>
+`},
+
 {id:'init', layer:'Campaign Initialization', title:'Campaign Initialization', kicker:'Setup', html: `
   <h2 class="step-kicker">Setup</h2>
   <h1 class="step-title">Campaign Initialization</h1>
@@ -1290,6 +1622,8 @@ Focus specifically on implications for [market] organizations, particularly thos
 - operational challenges organizations face
 
 These insights should inform later prompts.`)}
+
+  ${workbookSaveBox('step1','Strategic Research Accelerator')}
 `},
 
 /* ---------------- STEP 2 ---------------- */
@@ -1320,6 +1654,8 @@ Summarize the implications for organizations operating in this market and retain
 - implications for organizations operating in this market
 
 These insights should inform later prompts.`)}
+
+  ${workbookSaveBox('step2','Market &amp; Industry Research')}
 `},
 
 /* ---------------- STEP 3 ---------------- */
@@ -1436,6 +1772,8 @@ Present this as a table with one row per competitor.`)}
 
 These insights will inform positioning and campaign messaging.`)}
 
+  ${workbookSaveBox('step5','Competitive Research')}
+
   ${calloutCollapsible('strengthen','💬','Pro Tip','Run the SWOT prompt below separately for each individual competitor rather than all at once — this keeps the comparison focused and avoids blending multiple companies\' strengths and weaknesses together. Repeat the prompt for each competitor, swapping in the competitor name each time.')}
 
   ${promptCard('SWOT Analysis', `Using the research above, conduct a SWOT analysis (Strengths, Weaknesses, Opportunities, Threats) for [your product/company] relative to [competitor name].
@@ -1445,6 +1783,8 @@ Call out specific, named aspects of [competitor name] within each quadrant rathe
 Present this in a table with four columns: Strengths, Weaknesses, Opportunities, Threats.`)}
 
   ${promptCard('Memory Logging', `Summarize and retain the SWOT findings from this step, including any named competitor callouts. These insights will inform positioning and campaign messaging alongside the competitive research above.`)}
+
+  ${workbookSaveBox('step5','Competitive Research')}
 `},
 
 /* ---------------- STEP 6 ---------------- */
@@ -1463,6 +1803,8 @@ Present this in a table with four columns: Strengths, Weaknesses, Opportunities,
 Present this as a table with two columns: Category, Summary.`, true)}
 
   ${promptCard('Memory Logging', `Summarize and retain the strategic synthesis above. This is the north star for product value, positioning, messaging, and the campaign theme going forward.`)}
+
+  ${workbookSaveBox('step6','Strategic Synthesis')}
 
   <div class="checkpoint"><strong>Checkpoint</strong>The research phase is done. You've got real market intelligence, a mapped buying committee, competitive differentiation, and a synthesized point of view. Everything from here builds on what you just established.</div>
 `},
@@ -1507,6 +1849,8 @@ Present this as a table with the following columns: Competitor, How They Compare
 - operational benefits the product delivers
 - measurable business outcomes the product enables
 - competitive differentiators identified above`)}
+
+  ${workbookSaveBox('step7','Product Value Architecture')}
 `},
 
 /* ---------------- STEP 8 ---------------- */
@@ -1530,6 +1874,8 @@ Present them in a table with the following columns: Insight, Market Tension, Why
   ${calloutCollapsible('strengthen','💬','Pro Tip','Want an early working draft of your campaign narrative and messaging pillars before you get to Campaign Theme Development? Run this now: <em>“Using the campaign intelligence and strategic insights above, define the campaign narrative and messaging pillars that will anchor this campaign.”</em>')}
 
   ${promptCard('Memory Logging', `Summarize and retain the campaign intelligence and strategic insights generated in this step. These insights will inform positioning, messaging, and the campaign theme to follow.`)}
+
+  ${workbookSaveBox('step8','Campaign Intelligence &amp; Insight Generator')}
 `},
 
 /* ---------------- STEP 9 ---------------- */
@@ -1548,6 +1894,8 @@ Present them in a table with the following columns: Insight, Market Tension, Why
 - key differentiators
 - product positioning
 - the value narrative of the product`)}
+
+  ${workbookSaveBox('step9','Strategic Positioning')}
 
   <div class="checkpoint"><strong>Checkpoint</strong>Your strategy is locked. Research, differentiation, and positioning are behind you — from here, it's all about turning that strategy into a campaign people will actually see.</div>
 `},
@@ -1573,6 +1921,8 @@ Present this as a table with columns: Persona, Value Explanation.`)}
   ${promptCard('Discovery Questions', `Generate discovery questions sales teams can use to uncover the problems the product solves.`)}
 
   ${promptCard('Memory Logging', `Retain the one‑sentence value statement, why change/why now narrative, elevator pitch, value explanation, objection responses, and discovery questions produced in this section.`)}
+
+  ${workbookSaveBox('step10','Foundational Messaging')}
 `},
 
 /* ---------------- STEP 11 ---------------- */
@@ -1751,7 +2101,6 @@ function footerNav(id){
 /* ---- local persistence helpers ---- */
 const LS_LAST = 'campaignos_lastSection';
 const LS_VISITED = 'campaignos_visited';
-const LS_COVER_SEEN = 'campaignos_coverSeen';
 const LS_CORE_ONLY = 'campaignos_coreOnly';
 
 function getVisited(){
@@ -1938,15 +2287,147 @@ function closeMobileNav(){
 // cover
 const cover = document.getElementById('cover');
 document.getElementById('coverEnter').addEventListener('click', ()=>{
-  cover.classList.add('dismissed');
-  try { localStorage.setItem(LS_COVER_SEEN, '1'); } catch(e){}
+  if(currentUser){
+    cover.classList.add('dismissed');
+  } else {
+    openAuthModal();
+  }
 });
 document.getElementById('brandReopen').addEventListener('click', ()=>{
   cover.classList.remove('dismissed');
 });
-try {
-  if(localStorage.getItem(LS_COVER_SEEN) === '1'){ cover.classList.add('dismissed'); }
-} catch(e){}
+
+/* ================= AUTH ================= */
+let currentUser = null;
+
+function friendlyAuthError(err){
+  const map = {
+    'auth/invalid-email': 'That email address looks invalid.',
+    'auth/user-not-found': 'No account found with that email.',
+    'auth/wrong-password': 'Incorrect password.',
+    'auth/invalid-credential': 'Incorrect email or password.',
+    'auth/email-already-in-use': 'An account already exists with that email — try signing in instead.',
+    'auth/weak-password': 'Password should be at least 6 characters.',
+    'auth/popup-closed-by-user': null,
+    'auth/cancelled-popup-request': null,
+    'auth/network-request-failed': 'Network error — check your connection and try again.',
+    'auth/too-many-requests': 'Too many attempts — please wait a moment and try again.'
+  };
+  const code = err && err.code;
+  if(code && Object.prototype.hasOwnProperty.call(map, code)) return map[code];
+  return (err && err.message) || 'Something went wrong. Please try again.';
+}
+
+// called by the Firebase module script whenever the signed-in user changes
+function onAuthChanged(user){
+  currentUser = user;
+  const accountRow = document.getElementById('accountRow');
+  if(user){
+    document.getElementById('accountEmail').textContent = user.email || user.displayName || 'Signed in';
+    accountRow.style.display = 'flex';
+    cover.classList.add('dismissed');
+    closeAuthModal();
+  } else {
+    accountRow.style.display = 'none';
+    cover.classList.remove('dismissed');
+  }
+}
+
+const authBackdrop = document.getElementById('authBackdrop');
+function openAuthModal(){
+  const status = document.getElementById('authStatus');
+  status.textContent = '';
+  status.className = 'auth-status';
+  authBackdrop.classList.add('open');
+}
+function closeAuthModal(){
+  authBackdrop.classList.remove('open');
+}
+document.getElementById('authModalClose').addEventListener('click', closeAuthModal);
+authBackdrop.addEventListener('click', (e)=>{
+  if(e.target === authBackdrop) closeAuthModal();
+});
+
+let authMode = 'signin';
+function setAuthMode(mode){
+  authMode = mode;
+  const submitBtn = document.getElementById('authSubmitBtn');
+  const pwInput = document.getElementById('authPassword');
+  const toggleText = document.getElementById('authToggleText');
+  const toggleBtn = document.getElementById('authToggleModeBtn');
+  if(mode === 'signup'){
+    submitBtn.textContent = 'Create Account';
+    pwInput.autocomplete = 'new-password';
+    toggleText.textContent = 'Already have an account?';
+    toggleBtn.textContent = 'Sign in';
+  } else {
+    submitBtn.textContent = 'Sign In';
+    pwInput.autocomplete = 'current-password';
+    toggleText.textContent = 'New here?';
+    toggleBtn.textContent = 'Create an account';
+  }
+  const status = document.getElementById('authStatus');
+  status.textContent = '';
+  status.className = 'auth-status';
+}
+document.getElementById('authToggleModeBtn').addEventListener('click', ()=>{
+  setAuthMode(authMode === 'signin' ? 'signup' : 'signin');
+});
+
+document.getElementById('authGoogleBtn').addEventListener('click', ()=>{
+  const status = document.getElementById('authStatus');
+  if(!window.Auth){ status.textContent = 'Still connecting — try again in a moment.'; status.className = 'auth-status err'; return; }
+  status.textContent = '';
+  status.className = 'auth-status';
+  window.Auth.signInWithGoogle().catch(err=>{
+    const msg = friendlyAuthError(err);
+    if(msg){ status.textContent = msg; status.className = 'auth-status err'; }
+  });
+});
+
+document.getElementById('authEmailForm').addEventListener('submit', (e)=>{
+  e.preventDefault();
+  const email = document.getElementById('authEmail').value.trim();
+  const password = document.getElementById('authPassword').value;
+  const status = document.getElementById('authStatus');
+  const submitBtn = document.getElementById('authSubmitBtn');
+  if(!email || !password) return;
+  if(!window.Auth){ status.textContent = 'Still connecting — try again in a moment.'; status.className = 'auth-status err'; return; }
+  submitBtn.disabled = true;
+  status.textContent = '';
+  status.className = 'auth-status';
+  const action = authMode === 'signup' ? window.Auth.signUpWithEmail(email, password) : window.Auth.signInWithEmail(email, password);
+  action.then(()=>{
+    submitBtn.disabled = false;
+    if(authMode === 'signup'){
+      status.textContent = 'Account created — check your email to verify. You can start using Smart Kind OS right away.';
+      status.className = 'auth-status ok';
+      setTimeout(closeAuthModal, 2200);
+    }
+  }).catch(err=>{
+    submitBtn.disabled = false;
+    const msg = friendlyAuthError(err);
+    if(msg){ status.textContent = msg; status.className = 'auth-status err'; }
+  });
+});
+
+document.getElementById('authForgotBtn').addEventListener('click', ()=>{
+  const email = document.getElementById('authEmail').value.trim();
+  const status = document.getElementById('authStatus');
+  if(!email){ status.textContent = 'Enter your email above first, then click Forgot password.'; status.className = 'auth-status err'; return; }
+  if(!window.Auth) return;
+  window.Auth.resetPassword(email).then(()=>{
+    status.textContent = 'Password reset email sent to ' + email + '.';
+    status.className = 'auth-status ok';
+  }).catch(err=>{
+    const msg = friendlyAuthError(err);
+    if(msg){ status.textContent = msg; status.className = 'auth-status err'; }
+  });
+});
+
+document.getElementById('signOutBtn').addEventListener('click', ()=>{
+  if(window.Auth) window.Auth.signOutUser();
+});
 
 // mark previously-visited nav items
 document.querySelectorAll('.nav-item').forEach(btn=>{
@@ -1995,6 +2476,363 @@ coreOnlyToggle.addEventListener('change', ()=>{
   try { localStorage.setItem(LS_CORE_ONLY, coreOnlyToggle.checked ? '1' : '0'); } catch(e){}
 });
 
+/* ================= WORKBOOKS ================= */
+let workbooksCache = [];
+let activeWorkbookId = null;
+let wbConnectionError = null;
+let wbPageView = {mode:'list'};
+
+function escapeHtml(s){
+  return String(s).replace(/[&<>"']/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+function fmtDate(ts){
+  if(!ts) return 'just now';
+  const d = ts.toDate ? ts.toDate() : new Date(ts);
+  return d.toLocaleDateString(undefined,{month:'short',day:'numeric',year:'numeric'}) + ' at ' + d.toLocaleTimeString(undefined,{hour:'numeric',minute:'2-digit'});
+}
+
+// called by the Firebase module script once it's connected
+function showWorkbookError(msg){
+  wbConnectionError = msg;
+  renderWorkbookIndicator();
+  renderWorkbooksPage();
+}
+function onWorkbooksSnapshot(list){
+  workbooksCache = list.slice().sort((a,b)=>{
+    const ta = a.updatedAt && a.updatedAt.toMillis ? a.updatedAt.toMillis() : 0;
+    const tb = b.updatedAt && b.updatedAt.toMillis ? b.updatedAt.toMillis() : 0;
+    return tb - ta;
+  });
+  wbConnectionError = null;
+  renderWorkbookIndicator();
+  renderWorkbooksPage();
+}
+function onActiveWorkbookSnapshot(id){
+  activeWorkbookId = id;
+  renderWorkbookIndicator();
+  renderWorkbooksPage();
+}
+
+/* ---- sidebar indicator + switch panel ---- */
+function renderWorkbookIndicator(){
+  const nameEl = document.getElementById('wbIndicatorName');
+  if(!nameEl) return;
+  if(wbConnectionError){
+    nameEl.classList.add('wb-empty');
+    nameEl.innerHTML = `<span>⚠ Workbooks unavailable</span><span class="wb-caret">▾</span>`;
+    nameEl.title = wbConnectionError;
+    return;
+  }
+  nameEl.removeAttribute('title');
+  const active = workbooksCache.find(w=>w.id===activeWorkbookId);
+  if(active){
+    nameEl.classList.remove('wb-empty');
+    nameEl.innerHTML = `<span>Working in: <strong>${escapeHtml(active.name)}</strong></span><span class="wb-caret">▾</span>`;
+  } else {
+    nameEl.classList.add('wb-empty');
+    nameEl.innerHTML = `<span>No active workbook</span><span class="wb-caret">▾</span>`;
+  }
+}
+
+const wbSwitchPanel = document.createElement('div');
+wbSwitchPanel.className = 'wb-switch-panel';
+wbSwitchPanel.id = 'wbSwitchPanel';
+document.body.appendChild(wbSwitchPanel);
+
+function renderSwitchPanel(){
+  let html = '';
+  if(workbooksCache.length === 0){
+    html += `<div class="wb-switch-empty">No workbooks yet.</div>`;
+  } else {
+    html += workbooksCache.map(w => `
+      <div class="wb-switch-item ${w.id===activeWorkbookId?'is-active':''}" data-id="${w.id}">
+        <span>${escapeHtml(w.name)}</span><span class="wb-check">✓</span>
+      </div>`).join('');
+  }
+  html += `<div class="wb-switch-divider"></div>`;
+  html += `<div class="wb-switch-new" id="wbSwitchNewToggle">+ New Workbook</div>`;
+  html += `<div class="wb-switch-newform" id="wbSwitchNewForm">
+    <input type="text" class="wb-name-input" id="wbSwitchNewInput" placeholder="Workbook name">
+    <button type="button" class="wb-confirm-btn" id="wbSwitchNewConfirm">Create</button>
+  </div>`;
+  wbSwitchPanel.innerHTML = html;
+}
+function openSwitchPanel(){
+  renderSwitchPanel();
+  const rect = document.getElementById('wbIndicator').getBoundingClientRect();
+  wbSwitchPanel.style.width = Math.max(rect.width, 220) + 'px';
+  wbSwitchPanel.style.left = rect.left + 'px';
+  wbSwitchPanel.style.top = (rect.bottom + 6) + 'px';
+  wbSwitchPanel.classList.add('open');
+}
+function closeSwitchPanel(){
+  wbSwitchPanel.classList.remove('open');
+}
+
+/* ---- save-to-workbook boxes ---- */
+function renderPickerHTML(){
+  if(workbooksCache.length === 0){
+    return `<div class="wb-picker-zero">
+      <p>You don't have a workbook yet. What are you working on?</p>
+      <div class="wb-picker-newform open">
+        <input type="text" class="wb-name-input" placeholder="e.g. Q3 Webinar Campaign">
+        <button type="button" class="wb-confirm-btn">Create &amp; Save</button>
+      </div>
+    </div>`;
+  }
+  const recent = workbooksCache.slice(0,3);
+  const chips = recent.map(w => `<span class="wb-picker-chip ${w.id===activeWorkbookId?'is-default':''}" data-id="${w.id}">${escapeHtml(w.name)}</span>`).join('');
+  return `<div class="wb-picker-label">Save to:</div>
+    <div class="wb-picker-row">
+      ${chips}
+      <span class="wb-picker-chip wb-new-chip">+ New Workbook</span>
+    </div>
+    <div class="wb-picker-newform">
+      <input type="text" class="wb-name-input" placeholder="Workbook name">
+      <button type="button" class="wb-confirm-btn">Create &amp; Save</button>
+    </div>`;
+}
+function openPickerForBox(box){
+  const textarea = box.querySelector('.wb-save-textarea');
+  const content = textarea.value.trim();
+  const status = box.querySelector('.wb-save-status');
+  status.textContent = '';
+  status.className = 'wb-save-status';
+  if(!content){
+    status.textContent = 'Paste something to save first.';
+    status.className = 'wb-save-status err';
+    return;
+  }
+  const picker = box.querySelector('.wb-picker');
+  picker.innerHTML = renderPickerHTML();
+  picker.classList.add('open');
+}
+function commitSave(box, workbookId){
+  const textarea = box.querySelector('.wb-save-textarea');
+  const content = textarea.value.trim();
+  const status = box.querySelector('.wb-save-status');
+  const wbName = (workbooksCache.find(w=>w.id===workbookId)||{}).name || 'workbook';
+  if(!content) return;
+  if(!window.Workbooks){ status.textContent='Still connecting to Workbooks — try again in a moment.'; status.className='wb-save-status err'; return; }
+  window.Workbooks.saveEntry(workbookId, box.dataset.stepId, box.dataset.stepTitle, content).then(()=>{
+    status.textContent = `Saved to "${wbName}" ✓`;
+    status.className = 'wb-save-status ok';
+    textarea.value = '';
+    box.querySelector('.wb-picker').classList.remove('open');
+  }).catch(err=>{
+    status.textContent = 'Save failed: ' + err.message;
+    status.className = 'wb-save-status err';
+  });
+}
+function commitCreateAndSave(box, name){
+  const textarea = box.querySelector('.wb-save-textarea');
+  const content = textarea.value.trim();
+  const status = box.querySelector('.wb-save-status');
+  if(!content) return;
+  if(!window.Workbooks){ status.textContent='Still connecting to Workbooks — try again in a moment.'; status.className='wb-save-status err'; return; }
+  window.Workbooks.createWorkbook(name).then(id=>{
+    return window.Workbooks.saveEntry(id, box.dataset.stepId, box.dataset.stepTitle, content).then(()=>{
+      if(!activeWorkbookId) window.Workbooks.setActiveWorkbook(id);
+      status.textContent = `Created "${name}" and saved ✓`;
+      status.className = 'wb-save-status ok';
+      textarea.value = '';
+      box.querySelector('.wb-picker').classList.remove('open');
+    });
+  }).catch(err=>{
+    status.textContent = 'Save failed: ' + err.message;
+    status.className = 'wb-save-status err';
+  });
+}
+
+/* ---- Workbooks page ---- */
+let wbRenderToken = 0;
+function renderWorkbooksPage(){
+  const body = document.getElementById('wbPageBody');
+  if(!body) return;
+  wbRenderToken++;
+  if(wbPageView.mode === 'detail'){
+    renderWorkbookDetail(body, wbPageView.id, wbRenderToken);
+  } else {
+    renderWorkbookList(body);
+  }
+}
+function renderWorkbookList(body){
+  if(wbConnectionError){
+    body.innerHTML = `<div class="wb-empty-state">⚠ ${escapeHtml(wbConnectionError)}</div>`;
+    return;
+  }
+  if(workbooksCache.length === 0){
+    body.innerHTML = `<div class="wb-empty-state">No workbooks yet — create one to start saving your work.</div>`;
+    return;
+  }
+  body.innerHTML = `<div class="wb-list">${workbooksCache.map(w=>`
+    <div class="wb-list-item" data-id="${w.id}">
+      <div>
+        <div class="wb-list-name">${escapeHtml(w.name)}</div>
+        <div class="wb-list-meta">Last updated ${fmtDate(w.updatedAt)}</div>
+      </div>
+      ${w.id===activeWorkbookId ? '<span class="wb-list-badge">Active</span>' : ''}
+    </div>`).join('')}</div>`;
+}
+async function renderWorkbookDetail(body, id, token){
+  const wb = workbooksCache.find(w=>w.id===id);
+  if(!wb){ wbPageView = {mode:'list'}; renderWorkbookList(body); return; }
+  body.innerHTML = `<button type="button" class="wb-detail-back" id="wbBackBtn">← All Workbooks</button><div class="wb-empty-state">Loading…</div>`;
+  let entries = [];
+  try {
+    entries = window.Workbooks ? await window.Workbooks.getEntriesForWorkbook(id) : [];
+  } catch(err){
+    if(token !== wbRenderToken) return;
+    body.innerHTML = `<button type="button" class="wb-detail-back" id="wbBackBtn">← All Workbooks</button><div class="wb-empty-state">Could not load entries: ${escapeHtml(err.message)}</div>`;
+    return;
+  }
+  if(token !== wbRenderToken) return;
+  entries.sort((a,b)=>{
+    const ta = a.createdAt && a.createdAt.toMillis ? a.createdAt.toMillis() : 0;
+    const tb = b.createdAt && b.createdAt.toMillis ? b.createdAt.toMillis() : 0;
+    return ta - tb;
+  });
+  const groups = [];
+  const groupIndex = {};
+  entries.forEach(e=>{
+    if(!(e.stepId in groupIndex)){
+      groupIndex[e.stepId] = groups.length;
+      groups.push({stepId:e.stepId, stepTitle:e.stepTitle, entries:[]});
+    }
+    groups[groupIndex[e.stepId]].entries.push(e);
+  });
+  const isActive = id === activeWorkbookId;
+  body.innerHTML = `
+    <button type="button" class="wb-detail-back" id="wbBackBtn">← All Workbooks</button>
+    <div class="wb-detail-head">
+      <div>
+        <h2 class="wb-detail-title">${escapeHtml(wb.name)}</h2>
+        <div class="wb-detail-meta">Last updated ${fmtDate(wb.updatedAt)}</div>
+      </div>
+      <button type="button" class="wb-activate-btn ${isActive?'is-active':''}" id="wbActivateBtn" data-id="${id}" ${isActive?'disabled':''}>${isActive?'✓ Active Workbook':'Make Active'}</button>
+    </div>
+    ${groups.length===0 ? '<div class="wb-empty-state">Nothing saved into this workbook yet.</div>' :
+      groups.map(g=>`
+        <div class="wb-entry-group">
+          <div class="wb-entry-group-title">${escapeHtml(g.stepTitle)}</div>
+          ${g.entries.map(e=>`
+            <div class="wb-entry">
+              <div class="wb-entry-time">${fmtDate(e.createdAt)}</div>
+              <div class="wb-entry-content">${escapeHtml(e.content)}</div>
+            </div>`).join('')}
+        </div>`).join('')
+    }
+  `;
+}
+function toggleWbPageNewForm(){
+  const toolbar = document.querySelector('.wb-page-toolbar');
+  if(!toolbar) return;
+  const existing = document.getElementById('wbPageNewForm');
+  if(existing){ existing.remove(); return; }
+  const form = document.createElement('div');
+  form.id = 'wbPageNewForm';
+  form.style.cssText = 'display:flex;gap:8px;align-items:center;flex:1;max-width:340px;';
+  form.innerHTML = `<input type="text" class="wb-name-input" id="wbPageNewInput" placeholder="Workbook name">
+    <button type="button" class="wb-confirm-btn" id="wbPageNewConfirm">Create</button>`;
+  toolbar.insertBefore(form, toolbar.firstChild);
+  document.getElementById('wbPageNewInput').focus();
+}
+
+/* ---- delegated events ---- */
+document.addEventListener('click', (e)=>{
+  if(e.target.closest('#wbIndicator')){
+    if(wbSwitchPanel.classList.contains('open')) closeSwitchPanel();
+    else openSwitchPanel();
+    return;
+  }
+  const switchItem = e.target.closest('#wbSwitchPanel .wb-switch-item');
+  if(switchItem){
+    if(window.Workbooks) window.Workbooks.setActiveWorkbook(switchItem.dataset.id);
+    closeSwitchPanel();
+    return;
+  }
+  if(e.target.id === 'wbSwitchNewToggle'){
+    document.getElementById('wbSwitchNewForm').classList.add('open');
+    document.getElementById('wbSwitchNewInput').focus();
+    return;
+  }
+  if(e.target.id === 'wbSwitchNewConfirm'){
+    const input = document.getElementById('wbSwitchNewInput');
+    const name = input.value.trim();
+    if(!name || !window.Workbooks) return;
+    window.Workbooks.createWorkbook(name).then(id=>window.Workbooks.setActiveWorkbook(id));
+    closeSwitchPanel();
+    return;
+  }
+
+  const saveBtn = e.target.closest('.wb-save-btn');
+  if(saveBtn){
+    openPickerForBox(saveBtn.closest('.workbook-save-box'));
+    return;
+  }
+  const pickerChip = e.target.closest('.wb-picker-chip');
+  if(pickerChip && pickerChip.closest('.workbook-save-box')){
+    const box = pickerChip.closest('.workbook-save-box');
+    if(pickerChip.classList.contains('wb-new-chip')){
+      box.querySelector('.wb-picker-newform').classList.add('open');
+    } else {
+      commitSave(box, pickerChip.dataset.id);
+    }
+    return;
+  }
+  const wbConfirmBtn = e.target.closest('.workbook-save-box .wb-confirm-btn');
+  if(wbConfirmBtn){
+    const box = wbConfirmBtn.closest('.workbook-save-box');
+    const input = wbConfirmBtn.closest('.wb-picker-newform, .wb-picker-zero').querySelector('.wb-name-input');
+    const name = input.value.trim();
+    if(!name) return;
+    commitCreateAndSave(box, name);
+    return;
+  }
+
+  if(e.target.id === 'wbPageNewBtn'){
+    toggleWbPageNewForm();
+    return;
+  }
+  if(e.target.id === 'wbPageNewConfirm'){
+    const input = document.getElementById('wbPageNewInput');
+    const name = input.value.trim();
+    if(!name || !window.Workbooks) return;
+    window.Workbooks.createWorkbook(name);
+    const form = document.getElementById('wbPageNewForm');
+    if(form) form.remove();
+    return;
+  }
+  const listItem = e.target.closest('#wbPageBody .wb-list-item');
+  if(listItem){
+    wbPageView = {mode:'detail', id:listItem.dataset.id};
+    renderWorkbooksPage();
+    return;
+  }
+  if(e.target.id === 'wbBackBtn'){
+    wbPageView = {mode:'list'};
+    renderWorkbooksPage();
+    return;
+  }
+  if(e.target.id === 'wbActivateBtn'){
+    if(window.Workbooks) window.Workbooks.setActiveWorkbook(e.target.dataset.id);
+    return;
+  }
+
+  if(!e.target.closest('#wbSwitchPanel')){
+    closeSwitchPanel();
+  }
+});
+document.addEventListener('keydown', (e)=>{
+  if(e.key === 'Enter' && e.target.classList.contains('wb-name-input')){
+    e.preventDefault();
+    const btn = e.target.parentElement.querySelector('.wb-confirm-btn');
+    if(btn) btn.click();
+  }
+});
+
+renderWorkbookIndicator();
+
 // restore last-viewed section, if any
 let initialId = sections[0].id;
 try {
@@ -2002,6 +2840,119 @@ try {
   if(saved && sections.some(s=>s.id===saved)) initialId = saved;
 } catch(e){}
 showSection(initialId);
+</script>
+
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+  import { getAnalytics, isSupported as gaIsSupported } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-analytics.js";
+  import {
+    getAuth, GoogleAuthProvider, signInWithPopup,
+    createUserWithEmailAndPassword, signInWithEmailAndPassword,
+    sendEmailVerification, sendPasswordResetEmail, onAuthStateChanged, signOut
+  } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+  import {
+    getFirestore, collection, doc, addDoc, setDoc, updateDoc,
+    query, where, onSnapshot, getDocs, serverTimestamp
+  } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+  // Your web app's Firebase configuration
+  const firebaseConfig = {
+    apiKey: "AIzaSyA25Rlus8bdG7K0ILDbNhydgRKXpb36U_M",
+    authDomain: "smart-kind-os-workbooks.firebaseapp.com",
+    projectId: "smart-kind-os-workbooks",
+    storageBucket: "smart-kind-os-workbooks.firebasestorage.app",
+    messagingSenderId: "132528922909",
+    appId: "1:132528922909:web:64f58ef2659c83141301f4",
+    measurementId: "G-XZEE9E8355"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  gaIsSupported().then(ok => { if(ok) getAnalytics(app); }).catch(()=>{});
+
+  const db = getFirestore(app);
+  const auth = getAuth(app);
+  const googleProvider = new GoogleAuthProvider();
+  const workbooksCol = collection(db, 'workbooks');
+  const entriesCol = collection(db, 'workbookEntries');
+
+  // Firestore listeners are (re)bound to whoever is currently signed in, so
+  // signing out — or a different person signing in on the same browser —
+  // never leaves a stale listener showing someone else's data.
+  let unsubWorkbooks = null;
+  let unsubActive = null;
+
+  onAuthStateChanged(auth, (user) => {
+    if (unsubWorkbooks) { unsubWorkbooks(); unsubWorkbooks = null; }
+    if (unsubActive) { unsubActive(); unsubActive = null; }
+
+    if (typeof window.onAuthChanged === 'function') window.onAuthChanged(user);
+
+    if (!user) {
+      if (typeof window.onWorkbooksSnapshot === 'function') window.onWorkbooksSnapshot([]);
+      if (typeof window.onActiveWorkbookSnapshot === 'function') window.onActiveWorkbookSnapshot(null);
+      return;
+    }
+
+    const wbQuery = query(workbooksCol, where('ownerId', '==', user.uid));
+    unsubWorkbooks = onSnapshot(wbQuery, (snap) => {
+      const list = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+      if (typeof window.onWorkbooksSnapshot === 'function') window.onWorkbooksSnapshot(list);
+    }, (err) => {
+      if (typeof window.showWorkbookError === 'function') window.showWorkbookError('Could not load workbooks — check Firestore setup (' + err.message + ')');
+    });
+
+    const activeRef = doc(db, 'appState', user.uid);
+    unsubActive = onSnapshot(activeRef, (snap) => {
+      const id = snap.exists() ? snap.data().activeWorkbookId : null;
+      if (typeof window.onActiveWorkbookSnapshot === 'function') window.onActiveWorkbookSnapshot(id);
+    }, (err) => {
+      if (typeof window.showWorkbookError === 'function') window.showWorkbookError('Could not load active workbook — check Firestore setup (' + err.message + ')');
+    });
+  });
+
+  async function signInWithGoogle() {
+    await signInWithPopup(auth, googleProvider);
+  }
+  async function signInWithEmail(email, password) {
+    await signInWithEmailAndPassword(auth, email, password);
+  }
+  async function signUpWithEmail(email, password) {
+    const cred = await createUserWithEmailAndPassword(auth, email, password);
+    sendEmailVerification(cred.user).catch(() => {});
+    return cred.user;
+  }
+  async function resetPassword(email) {
+    await sendPasswordResetEmail(auth, email);
+  }
+  async function signOutUser() {
+    await signOut(auth);
+  }
+
+  async function createWorkbook(name) {
+    if (!auth.currentUser) throw new Error('Not signed in');
+    const now = serverTimestamp();
+    const ref = await addDoc(workbooksCol, { name: name, ownerId: auth.currentUser.uid, createdAt: now, updatedAt: now });
+    return ref.id;
+  }
+
+  async function setActiveWorkbook(id) {
+    if (!auth.currentUser) throw new Error('Not signed in');
+    await setDoc(doc(db, 'appState', auth.currentUser.uid), { activeWorkbookId: id });
+  }
+
+  async function saveEntry(workbookId, stepId, stepTitle, content) {
+    if (!auth.currentUser) throw new Error('Not signed in');
+    await addDoc(entriesCol, { workbookId, ownerId: auth.currentUser.uid, stepId, stepTitle, content, createdAt: serverTimestamp() });
+    await updateDoc(doc(db, 'workbooks', workbookId), { updatedAt: serverTimestamp() });
+  }
+
+  async function getEntriesForWorkbook(workbookId) {
+    const snap = await getDocs(query(entriesCol, where('workbookId', '==', workbookId)));
+    return snap.docs.map(d => ({ id: d.id, ...d.data() }));
+  }
+
+  window.Auth = { signInWithGoogle, signInWithEmail, signUpWithEmail, resetPassword, signOutUser };
+  window.Workbooks = { createWorkbook, setActiveWorkbook, saveEntry, getEntriesForWorkbook };
 </script>
 </body>
 </html>
