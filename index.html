@@ -815,6 +815,12 @@
     font-family:'Inter',sans-serif;font-weight:800;font-size:10px;letter-spacing:.04em;text-transform:uppercase;
     color:var(--pink1);background:var(--pink1-soft);border-radius:999px;padding:4px 10px;flex-shrink:0;
   }
+  .wb-list-actions{display:flex;align-items:center;gap:10px;flex-shrink:0;}
+  .wb-delete-btn{
+    background:none;border:none;font-size:15px;line-height:1;
+    color:var(--ink-faint);cursor:pointer;padding:5px;border-radius:6px;
+  }
+  .wb-delete-btn:hover{color:var(--pink1);background:var(--pink1-soft);}
   .wb-empty-state{
     text-align:center;padding:60px 20px;color:var(--ink-faint);font-family:'Fraunces',serif;font-style:italic;font-size:17px;
   }
@@ -835,11 +841,35 @@
   }
   .wb-activate-btn:hover{background:var(--pink1);color:#fff;}
   .wb-activate-btn.is-active{background:var(--pink1);color:#fff;cursor:default;}
-  .wb-entry-group{margin-bottom:26px;}
-  .wb-entry-group-title{
-    font-family:'Inter',sans-serif;font-weight:800;font-size:11.5px;letter-spacing:.05em;text-transform:uppercase;
-    color:var(--lav1);margin-bottom:10px;
+  details.wb-entry-group{
+    border:1px solid var(--rule);
+    border-radius:10px;
+    margin-bottom:14px;
+    overflow:hidden;
+    background:#fff;
+    box-shadow:var(--shadow);
   }
+  details.wb-entry-group summary.wb-entry-group-title{
+    display:flex;align-items:center;justify-content:space-between;gap:10px;
+    padding:14px 16px;
+    cursor:pointer;
+    list-style:none;
+    font-family:'Inter',sans-serif;font-weight:800;font-size:11.5px;letter-spacing:.05em;text-transform:uppercase;
+    color:var(--lav1);
+  }
+  details.wb-entry-group summary.wb-entry-group-title::-webkit-details-marker{display:none;}
+  details.wb-entry-group summary.wb-entry-group-title::marker{content:'';}
+  details.wb-entry-group summary.wb-entry-group-title::after{
+    content:'▸';
+    font-size:12px;
+    color:var(--ink-faint);
+    transition:transform .15s ease;
+    flex-shrink:0;
+  }
+  details.wb-entry-group[open] summary.wb-entry-group-title::after{transform:rotate(90deg);}
+  details.wb-entry-group[open] summary.wb-entry-group-title{border-bottom:1px solid var(--rule);}
+  .wb-entry-group-body{padding:14px 16px;}
+  .wb-entry-group-body .wb-entry:last-child{margin-bottom:0;}
   .wb-entry{
     background:#fff;border:1px solid var(--rule);border-radius:10px;
     padding:14px 16px;margin-bottom:10px;box-shadow:var(--shadow);
@@ -1226,7 +1256,7 @@ const layerColors = {
   'Positioning &amp; Insight':  {c:'#5B9BD5', soft:'#EAF4FC'},
   'Campaign Execution':         {c:'#E0568B', soft:'#FDEAF1'},
   'Campaign Initialization':    {c:'#C9C8D1', soft:'#F4F4F6'},
-  'Workbooks':                  {c:'#B08A1E', soft:'#FBF2DA'},
+  'Workbooks':                  {c:'#E4127D', soft:'#FCE1EC'},
 };
 
 const PH = (s) => s.replace(/\[([^\]]+)\]/g, '<span class="ph">[$1]</span>');
@@ -2137,6 +2167,10 @@ function showSection(id){
   saveVisited(visitedSet);
   updateProgress();
 
+  if(activeWorkbookId && window.Workbooks && window.Workbooks.setLastSection){
+    window.Workbooks.setLastSection(activeWorkbookId, id).catch(()=>{});
+  }
+
   // focus management: move focus to the section heading for keyboard/screen-reader users
   const heading = secEl.querySelector('h1');
   if(heading){
@@ -2569,6 +2603,15 @@ function closeSwitchPanel(){
   wbSwitchPanel.classList.remove('open');
 }
 
+function activateWorkbookAndNavigate(id){
+  if(!window.Workbooks) return;
+  window.Workbooks.setActiveWorkbook(id).catch(()=>{});
+  const wb = workbooksCache.find(w=>w.id===id);
+  if(wb && wb.lastSection){
+    showSection(wb.lastSection);
+  }
+}
+
 /* ---- save-to-workbook boxes ---- */
 function renderPickerHTML(){
   if(workbooksCache.length === 0){
@@ -2671,7 +2714,10 @@ function renderWorkbookList(body){
         <div class="wb-list-name">${escapeHtml(w.name)}</div>
         <div class="wb-list-meta">Last updated ${fmtDate(w.updatedAt)}</div>
       </div>
-      ${w.id===activeWorkbookId ? '<span class="wb-list-badge">Active</span>' : ''}
+      <div class="wb-list-actions">
+        ${w.id===activeWorkbookId ? '<span class="wb-list-badge">Active</span>' : ''}
+        <button type="button" class="wb-delete-btn" data-id="${w.id}" title="Delete workbook" aria-label="Delete workbook">🗑</button>
+      </div>
     </div>`).join('')}</div>`;
 }
 async function renderWorkbookDetail(body, id, token){
@@ -2713,14 +2759,16 @@ async function renderWorkbookDetail(body, id, token){
     </div>
     ${groups.length===0 ? '<div class="wb-empty-state">Nothing saved into this workbook yet.</div>' :
       groups.map(g=>`
-        <div class="wb-entry-group">
-          <div class="wb-entry-group-title">${escapeHtml(g.stepTitle)}</div>
-          ${g.entries.map(e=>`
-            <div class="wb-entry">
-              <div class="wb-entry-time">${fmtDate(e.createdAt)}</div>
-              <div class="wb-entry-content">${escapeHtml(e.content)}</div>
-            </div>`).join('')}
-        </div>`).join('')
+        <details class="wb-entry-group">
+          <summary class="wb-entry-group-title"><span>${escapeHtml(g.stepTitle)}</span></summary>
+          <div class="wb-entry-group-body">
+            ${g.entries.map(e=>`
+              <div class="wb-entry">
+                <div class="wb-entry-time">${fmtDate(e.createdAt)}</div>
+                <div class="wb-entry-content">${escapeHtml(e.content)}</div>
+              </div>`).join('')}
+          </div>
+        </details>`).join('')
     }
   `;
 }
@@ -2747,7 +2795,7 @@ document.addEventListener('click', (e)=>{
   }
   const switchItem = e.target.closest('#wbSwitchPanel .wb-switch-item');
   if(switchItem){
-    if(window.Workbooks) window.Workbooks.setActiveWorkbook(switchItem.dataset.id);
+    activateWorkbookAndNavigate(switchItem.dataset.id);
     closeSwitchPanel();
     return;
   }
@@ -2803,6 +2851,16 @@ document.addEventListener('click', (e)=>{
     if(form) form.remove();
     return;
   }
+  const deleteBtn = e.target.closest('.wb-delete-btn');
+  if(deleteBtn && deleteBtn.closest('#wbPageBody')){
+    const id = deleteBtn.dataset.id;
+    const wb = workbooksCache.find(w=>w.id===id);
+    const name = wb ? wb.name : 'this workbook';
+    if(confirm(`Delete "${name}"? This permanently deletes everything saved inside it. This can't be undone.`)){
+      if(window.Workbooks) window.Workbooks.deleteWorkbook(id).catch(err=>{ alert('Could not delete: ' + err.message); });
+    }
+    return;
+  }
   const listItem = e.target.closest('#wbPageBody .wb-list-item');
   if(listItem){
     wbPageView = {mode:'detail', id:listItem.dataset.id};
@@ -2815,7 +2873,7 @@ document.addEventListener('click', (e)=>{
     return;
   }
   if(e.target.id === 'wbActivateBtn'){
-    if(window.Workbooks) window.Workbooks.setActiveWorkbook(e.target.dataset.id);
+    activateWorkbookAndNavigate(e.target.dataset.id);
     return;
   }
 
@@ -2851,7 +2909,7 @@ showSection(initialId);
     sendEmailVerification, sendPasswordResetEmail, onAuthStateChanged, signOut
   } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
   import {
-    getFirestore, collection, doc, addDoc, setDoc, updateDoc,
+    getFirestore, collection, doc, addDoc, setDoc, updateDoc, getDoc, deleteDoc, writeBatch,
     query, where, onSnapshot, getDocs, serverTimestamp
   } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
@@ -2947,12 +3005,34 @@ showSection(initialId);
   }
 
   async function getEntriesForWorkbook(workbookId) {
-    const snap = await getDocs(query(entriesCol, where('workbookId', '==', workbookId)));
+    if (!auth.currentUser) throw new Error('Not signed in');
+    const snap = await getDocs(query(entriesCol, where('workbookId', '==', workbookId), where('ownerId', '==', auth.currentUser.uid)));
     return snap.docs.map(d => ({ id: d.id, ...d.data() }));
   }
 
+  async function setLastSection(workbookId, sectionId) {
+    if (!auth.currentUser) throw new Error('Not signed in');
+    await updateDoc(doc(db, 'workbooks', workbookId), { lastSection: sectionId });
+  }
+
+  async function deleteWorkbook(workbookId) {
+    if (!auth.currentUser) throw new Error('Not signed in');
+    const uid = auth.currentUser.uid;
+    const entrySnap = await getDocs(query(entriesCol, where('workbookId', '==', workbookId), where('ownerId', '==', uid)));
+    const batch = writeBatch(db);
+    entrySnap.docs.forEach(d => batch.delete(doc(db, 'workbookEntries', d.id)));
+    batch.delete(doc(db, 'workbooks', workbookId));
+    await batch.commit();
+
+    const activeRef = doc(db, 'appState', uid);
+    const activeSnap = await getDoc(activeRef);
+    if (activeSnap.exists() && activeSnap.data().activeWorkbookId === workbookId) {
+      await setDoc(activeRef, { activeWorkbookId: null });
+    }
+  }
+
   window.Auth = { signInWithGoogle, signInWithEmail, signUpWithEmail, resetPassword, signOutUser };
-  window.Workbooks = { createWorkbook, setActiveWorkbook, saveEntry, getEntriesForWorkbook };
+  window.Workbooks = { createWorkbook, setActiveWorkbook, saveEntry, getEntriesForWorkbook, setLastSection, deleteWorkbook };
 </script>
 </body>
 </html>
