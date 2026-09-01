@@ -1273,10 +1273,9 @@ const CHIP_BANK = {
   'content type': {multi:false, options:['Thought Leadership Blog','Product-Focused Blog','Product One-Pager','Infographic','Solution Brief','Case Study',"Buyer's Guide",'Executive Brief','Video','Webinar','White Paper','ROI / Business Case Tool','Comparison Guide','FAQ Page','Email Nurture Series','Landing Page','Data / Research Report','Sales/Pitch Deck','Social Media Post(s)','Podcast Episode','Press Release','Newsletter Story']},
   'stage': {multi:false, options:['Awareness','Interest','Consideration','Decision','Post-Sale/Expansion']},
   'industry': INDUSTRIES,
-  'targeted business type': ['Contracting','Clinic','School Systems','SaaS','Non Profit','Manufacturing','Retail','Professional Services','Healthcare System','Municipality'],
+  'market': ['Health Systems','Community Hospitals','Pharmacies','Clinics','Emerging Biotech','Large Pharma','K-12 Districts','Higher Education Institutions','AmLaw 100 Firms','Boutique Firms','Community Banks','Regional Banks','Consumers','Commercial General Contractors','Residential Builders','Multi-Unit Chains','Independent Restaurants','P&C Carriers','Life and Health Insurers','Businesses','Multi-Location Retail Chains','DTC Brands','Discrete Manufacturers','Process Manufacturers','Enterprise HR Teams','SMB HR Teams'],
   'core issues': ['Staffing Shortages','Reimbursement Pressure','Regulatory Complexity','Clinical Trial Timelines','Declining Enrollment','Funding Cuts','Cybersecurity Risk','Compliance Burden','Rising Material Costs','Rising Ingredient Costs','Supply Chain Disruption','Climate and Catastrophic Risk','Tariff Impact','Talent Retention','Benefits Cost Pressure'],
   'business process or function': ['Patient Care Coordination','Clinical Trial and Pipeline Management','Curriculum and Enrollment Management','Case and Matter Management','Risk and Compliance Management','Project and Field Management','Guest Experience and Operations','Underwriting and Claims Management','Order Fulfillment and Customer Experience','Supply Chain and Production Management','Talent Acquisition and Retention'],
-  'market': ['Health Systems','Community Hospitals','Pharmacies','Clinics','Emerging Biotech','Large Pharma','K-12 Districts','Higher Education Institutions','AmLaw 100 Firms','Boutique Firms','Community Banks','Regional Banks','Consumers','Commercial General Contractors','Residential Builders','Multi-Unit Chains','Independent Restaurants','P&C Carriers','Life and Health Insurers','Businesses','Multi-Location Retail Chains','DTC Brands','Discrete Manufacturers','Process Manufacturers','Enterprise HR Teams','SMB HR Teams'],
   'segment': ['1-19 Locations','20-99 Locations','100+ Locations','Independent / Single-Site','Regional','National','Under $10M Revenue','$10M-$50M Revenue','$50M+ Revenue','Enterprise (1,000+ Employees)','Mid-Market','Small Business'],
   'report type': {multi:false, options:['Concise','Scannable','Robust','High-Level','Executive Summary','Detailed','Bullet-Point']},
   'target buyer roles': BUYER_ROLES,
@@ -1562,6 +1561,8 @@ Review this content and retain it as the foundational insights so it can inform 
       <div class="checkpoint"><strong>Checkpoint</strong>The flow is framed. Move on to Strategic Research Accelerator to begin.</div>
     </div>
   </details>
+
+  ${workbookSaveBox('quickstart','Quick Starts')}
 `},
 
 {id:'statesummary', layer:'Start Here', title:'Continuing in a New Chat', kicker:'Utility', html: `
@@ -1610,6 +1611,8 @@ Core Problem the Product Solves:
 Primary Campaign Goal:
 
 Retain these details, along with everything generated at each step going forward, so they can be referenced throughout this conversation. If any of the details above are missing or unclear, ask before proceeding.`)}
+
+  ${workbookSaveBox('init','Campaign Initialization')}
 `},
 
 /* ---------------- STEP 1 ---------------- */
@@ -1662,20 +1665,19 @@ These insights should inform later prompts.`)}
   <h1 class="step-title">Market &amp; Industry Research</h1>
   <p class="lede">The Strategic Research Accelerator gave you the macro view — this step gets specific. You're layering in the day-to-day financial, operational, and regulatory pressures your buyers are actually navigating, which is what makes your messaging feel like it was written by someone who understands their world, rather than a vendor reciting industry buzzwords.</p>
 
-  ${calloutCollapsible('example','📋','Example','Conduct deep research on financial, operational, and regulatory trends affecting payment and lien management in commercial construction. Focus on pressures experienced by general contractors with $50M+ in annual revenue and construction professionals in project accounting, executive management, finance, operations, and project management roles. Keep the new information fresh and avoid redundancy.')}
+  ${calloutCollapsible('example','📋','Example','Conduct deep research on the financial and operational economics of general contractors, along with the social and workforce shifts affecting how organizations in this space operate. Focus on pressures experienced by $50M+ annual revenue businesses and organizations.')}
 
-  ${promptCard('Deep Industry Research', `Conduct deep research on financial, operational, regulatory, and social trends affecting [industry].
+  ${promptCard('Deep Industry Research', `Conduct deep research on the financial and operational economics of [market], along with the social and workforce shifts affecting how organizations in this space operate. Write for a product marketing leader who needs to defend this research to executives, prioritize strategic interpretation over raw summary.
 
-Focus on pressures experienced by [targeted business type] businesses and organizations. Prioritize developments from the past 12 months with clear strategic implications. Ignore information already established earlier in this conversation, or that doesn't point to a specific operational or financial impact.
+Focus on pressures experienced by [segment] businesses and organizations. Prioritize developments from the past 12 months with clear financial or operational implications. Ignore information already established earlier in this conversation, or that doesn't point to a specific financial or operational impact.
 
 Include analysis of:
-- market and margin pressures
-- workforce and capacity constraints
-- operational complexity
-- reimbursement or regulatory changes
-- technology adoption trends
+- Cost structures and margin economics
+- Workforce demographics and labor-market shifts
+- Customer expectation shifts
+- Capacity and scalability constraints
 
-Summarize the implications for organizations operating in this market and retain.`)}
+Summarize the implications for organizations operating in this space and retain. Include links to sources throughout so these findings can be verified.`)}
 
   ${calloutHTML('validate','✅','Validate Before Moving On','Confirm the pressures and trends identified above are current and sourced accurately before logging them — regulatory and margin data in particular can go stale fast.')}
 
@@ -1725,6 +1727,8 @@ Present this as a table with one row per persona and columns for Persona, Object
     ['VP of Finance','Protect cash flow and minimize compliance risk across active projects','Days sales outstanding (DSO); % of payment applications processed without dispute','Manually tracking lien waivers across dozens of subcontractors','Delayed payments tying up working capital needed for new project bids'],
     ['Project Accountant','Ensure every payment application is complete and compliant before submission','Application rejection rate; average days to approval','Chasing subcontractors for missing lien waivers before each billing cycle','Personal accountability for errors that delay GC payment'],
   ], 'Your AI-generated table will include a row like this for each persona identified in the Stakeholder Identification Prompt above.')}
+
+  ${workbookSaveBox('step3','Stakeholder &amp; Persona Analysis')}
 `},
 
 /* ---------------- STEP 4 ---------------- */
@@ -1973,6 +1977,8 @@ Present this as a table with the following columns: Pillar, Core Message, Compet
 
   ${promptCard('Finalize &amp; Log Theme', `This is my finalized campaign theme, hero narrative, and messaging pillars. Retain this as my established campaign theme so it can inform every step going forward.`)}
 
+  ${workbookSaveBox('step11','Campaign Theme Development')}
+
   <div class="checkpoint"><strong>Checkpoint</strong>The story is locked. Everything from here — architecture, measurement, the brief — is about building the machine around the narrative you just finalized, not deciding what that narrative is.</div>
 `},
 
@@ -2039,6 +2045,8 @@ Present this in a table with the following columns: Stage, Leading Indicators, L
 - Core Campaign Assets (a checklist of the content planned for this campaign, based on the content types identified in the Campaign Architecture)
 
 Format this so it can be shared with stakeholders outside this conversation, such as sales, creative, or leadership.`, true)}
+
+  ${workbookSaveBox('step14','Campaign Messaging Brief')}
 `},
 
 /* ---------------- STEP 15 ---------------- */
