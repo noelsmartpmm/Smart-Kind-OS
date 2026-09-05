@@ -268,6 +268,104 @@
   }
   .checkpoint strong{color:var(--hotpink);font-style:normal;font-family:'Inter',sans-serif;font-weight:800;letter-spacing:.02em;text-transform:uppercase;font-size:12px;display:block;margin-bottom:4px;}
 
+  /* ---- Step intro modal ---- */
+  .intro-overlay{
+    position:fixed;inset:0;
+    background:rgba(23,23,26,.45);
+    z-index:500;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .intro-modal{
+    background:#fff;
+    border-radius:14px;
+    border:0.5px solid var(--rule);
+    width:540px;max-width:calc(100vw - 48px);
+    box-shadow:0 16px 48px rgba(23,23,26,.18);
+    overflow:hidden;
+  }
+  .intro-modal-head{
+    padding:22px 26px 18px;
+    border-bottom:0.5px solid var(--rule);
+    display:flex;flex-direction:column;gap:0;
+  }
+  .intro-modal-logo{
+    line-height:1.15;
+    margin-bottom:22px;
+  }
+  .intro-modal-logo-name{
+    font-family:'Fraunces',serif;font-weight:700;font-size:15px;
+    color:var(--hotpink);letter-spacing:-.01em;
+  }
+  .intro-modal-logo-tag{
+    font-family:'Inter',sans-serif;font-weight:600;font-size:9.5px;
+    letter-spacing:.04em;color:#C9C8D1;margin-top:3px;
+    font-style:italic;
+  }
+  .intro-modal-titles{}
+  .intro-modal-kicker{
+    font-family:'Inter',sans-serif;font-weight:700;font-size:10px;
+    letter-spacing:.1em;text-transform:uppercase;
+    color:var(--ink-faint);margin-bottom:6px;
+  }
+  .intro-modal-title{
+    font-family:'Fraunces',serif;font-weight:700;font-size:22px;
+    color:var(--ink);line-height:1.1;
+  }
+  .intro-modal-body{padding:16px 24px 20px;}
+  .intro-modal-body p{
+    font-size:14px;color:var(--ink-soft);line-height:1.65;margin:0 0 20px;
+  }
+  .intro-modal-actions{display:flex;gap:10px;justify-content:flex-end;}
+  .intro-btn-dismiss{
+    font-family:'Inter',sans-serif;font-size:13px;font-weight:600;
+    padding:8px 16px;border-radius:8px;
+    border:1px solid var(--rule);background:transparent;
+    color:var(--ink-soft);cursor:pointer;
+    transition:border-color .12s;
+  }
+  .intro-btn-dismiss:hover{border-color:var(--ink-soft);}
+  .intro-btn-pin{
+    font-family:'Inter',sans-serif;font-size:13px;font-weight:600;
+    padding:8px 16px;border-radius:8px;
+    border:1px solid var(--hotpink);background:transparent;
+    color:var(--hotpink);cursor:pointer;
+    transition:background .12s;
+  }
+  .intro-btn-pin:hover{background:var(--pink1-soft);}
+
+  /* ---- Pinned intro banner ---- */
+  .intro-banner{
+    border-radius:10px;
+    border:0.5px solid var(--rule);
+    background:var(--paper-alt);
+    overflow:hidden;
+    margin-bottom:22px;
+  }
+  .intro-banner-head{
+    padding:12px 18px;
+    border-bottom:0.5px solid var(--rule);
+    display:flex;align-items:center;justify-content:space-between;
+    background:#FAFAFA;
+  }
+  .intro-banner-kicker{
+    font-family:'Inter',sans-serif;font-weight:700;font-size:10px;
+    letter-spacing:.1em;text-transform:uppercase;
+    color:var(--ink-faint);margin-bottom:3px;
+  }
+  .intro-banner-title{
+    font-family:'Fraunces',serif;font-weight:700;font-size:16px;color:var(--ink);
+  }
+  .intro-banner-x{
+    background:none;border:none;cursor:pointer;
+    font-size:16px;color:var(--ink-faint);padding:4px;line-height:1;
+    transition:color .12s;
+  }
+  .intro-banner-x:hover{color:var(--ink);}
+  .intro-banner-body{
+    padding:13px 18px;
+    font-size:13.5px;color:var(--ink-soft);line-height:1.6;
+  }
+
   h2.step-kicker{
     font-family:'Inter',sans-serif;
     font-weight:700;
@@ -1220,7 +1318,7 @@
           <text x="242" y="198"><tspan x="242" dy="0">Targeting</tspan><tspan x="242" dy="14">Strategy</tspan></text>
           <text x="414" y="28"><tspan x="414" dy="0">Competitive</tspan><tspan x="414" dy="14">Intelligence</tspan></text>
           <text x="586" y="198"><tspan x="586" dy="0">Market</tspan><tspan x="586" dy="14">Value</tspan></text>
-          <text x="758" y="28"><tspan x="758" dy="0">Positioning</tspan><tspan x="758" dy="14">&amp; Insight</tspan></text>
+          <text x="758" y="28"><tspan x="758" dy="0">KVPs &amp;</tspan><tspan x="758" dy="14">Positioning</tspan></text>
           <text x="930" y="198"><tspan x="930" dy="0">Campaign</tspan><tspan x="930" dy="14">Execution</tspan></text>
         </g>
       </svg>
@@ -1311,7 +1409,7 @@ const layerColors = {
   'Targeting Strategy':         {c:'#3E7CB1', soft:'#E7F2FB'},
   'Market Value':               {c:'#9C5FA8', soft:'#F6EAF7'},
   'Competitive Intelligence':   {c:'#C42D6E', soft:'#FCE4EE'},
-  'Positioning &amp; Insight':  {c:'#5B9BD5', soft:'#EAF4FC'},
+  'KVPs &amp; Positioning':    {c:'#5B9BD5', soft:'#EAF4FC'},
   'Campaign Execution':         {c:'#E0568B', soft:'#FDEAF1'},
   'Campaign Initialization':    {c:'#C9C8D1', soft:'#F4F4F6'},
   'Workbooks':                  {c:'#E4127D', soft:'#FCE1EC'},
@@ -1324,7 +1422,7 @@ const END_USER_ROLES = ['Day-to-Day User','Power User','Admin or IT Owner','Fron
 const PROBLEM_CATEGORIES = ['Rising Costs or Declining Margins','Workforce or Capacity Constraints','Regulatory or Compliance Changes','Technology Limitations or System Failures','Competitive or Market Pressure','Revenue Cycle Management','Licensing','Compliance Risk','Operational Inefficiency','Data Security','Customer Retention','Scalability'];
 const INDUSTRIES = ['Healthcare','Life Sciences','Education','Legal Services','Financial Services and Fintech','Construction','Restaurants and Hospitality','Insurance','Retail','Manufacturing','HR'];
 
-const ALL_STEP_NAMES = ['Strategic Research Accelerator','Market & Industry Research','Stakeholder & Persona Analysis','Trigger & Economic Value','Market Value Architecture','Competitive Research','Strategic Synthesis','Campaign Intelligence & Insight Generator','Strategic Positioning','Foundational Messaging','Campaign Theme Development','Campaign Architecture','Measurement Planning','Campaign Messaging Brief','Content Development'];
+const ALL_STEP_NAMES = ['Strategic Research Accelerator','Market & Industry Research','Stakeholder & Persona Analysis','Trigger & Economic Value','Market Value Architecture','Competitive Research','Strategic Synthesis','KVPs & Positioning','Foundational Messaging','Campaign Theme Development','Campaign Architecture','Measurement Planning','Campaign Messaging Brief','Content Development'];
 
 const CHIP_BANK = {
   'campaign type': {multi:false, options:['Webinar','Event Promotion','Thought Leadership','Theme Refresh','Social Media Campaign','Email Campaign','Mailer Campaign','Feature Launch','Case Study','Retention Campaign','White Paper']},
@@ -1347,6 +1445,8 @@ const CHIP_BANK = {
   "steps you're incorporating": ALL_STEP_NAMES,
   'task': ['Positioning','Competitive Research','Messaging','Campaign Planning','Content Creation','Persona Analysis','Market Research','Measurement Planning'],
   'narrative anchor': ['Value-Based','Product-Based','Competitive-Based','Discoverability-Based'],
+  'product outcome': ['Reduce manual work and administrative burden','Accelerate time to revenue','Improve cash flow predictability','Eliminate process bottlenecks','Increase operational visibility','Reduce compliance and regulatory risk','Streamline cross-team collaboration','Enable faster decision-making','Cut costs without cutting capacity','Improve customer or patient outcomes','Scale without proportional headcount growth','Shorten sales cycles'],
+  'product outcome keyword': ['Reducing manual work and administrative burden','Accelerating time to revenue','Improving cash flow predictability','Eliminating process bottlenecks','Increasing operational visibility','Reducing compliance and regulatory risk','Streamlining cross-team collaboration','Enabling faster decision-making','Cutting costs without cutting capacity','Improving customer or patient outcomes','Scaling without proportional headcount growth','Shortening sales cycles'],
   'blog format': {multi:false, options:['Single Blog Post','Part of a Blog Series']},
   'competitors or vendors': {multi:false, options:['Competitors','Vendors']},
   "list what you're including": ['Research','Personas','Positioning','Messaging','Customer Feedback','Customer Interviews','Sales Call Notes','Win/Loss Data','Product Usage Data','Product Roadmap'],
@@ -1475,16 +1575,12 @@ const PX_PRODUCE_WEBINAR_DESCRIPTION = `Using everything established in this con
 const PX_PRODUCE_WEBINAR_AGENDA = `Using everything established in this conversation, particularly the strategic synthesis and product value work above, build the agenda and content flow for this webinar. Break it into clear timed segments, including where in the flow to introduce the problem, build the case for change, present the product, and handle audience questions. Write this for the presenter's own use, structured and organized, not audience-facing promotional copy.`;
 
 // ==== Market Value: establishing baseline company and product context ====
-const PX_ESTABLISH_COMPANY_CONTEXT = `Establish the baseline context for [company name], so this conversation has a consistent frame of reference throughout.
+const PX_ESTABLISH_COMPANY_CONTEXT = `[Company name] is a [industry] organization that operates in the [solution category] space. We help [market] businesses in the [segment] segment(s) address [core issues] that impact their [business process or function]. We demonstrate our value to [typical buying committee or end user] by providing [one-line product description].
 
-[Company name] operates in the [solution category] category, offering [one-line product description]. Its core value proposition centers on [core value proposition], and its target customers are primarily [market] organizations in the [segment] segment, with [target buyer roles] as the typical buyers.
+Use the context above as your standing frame of reference for this conversation. Before we move on, ask me two to three targeted follow-up questions about anything that would help you better understand our market position or how we're perceived by targeted personas — areas where more depth would improve the quality of your outputs throughout this conversation.`;
+const PX_ESTABLISH_PRODUCT_CONTEXT = `[Product name] helps [market] organizations in the [segment] segment(s) meet their business goals by [product outcome keyword] for [list buyer personas] and [list end user personas].
 
-Retain this as the standing frame of reference for the rest of this conversation.`;
-const PX_ESTABLISH_PRODUCT_CONTEXT = `Establish the baseline context for [product name], so this conversation has a consistent frame of reference for what it actually does.
-
-[Product name] is built to [core capability or function], enabling [target buyer roles] and the [persona] who use it day-to-day to [primary outcome or job it helps them do].
-
-Retain this as the standing frame of reference for the rest of this conversation.`;
+Use the context above as your standing frame of reference for this conversation. Before we move on, ask me two to three targeted follow-up questions about anything that would help you better understand what this product actually does or how it serves its users — areas where more depth would improve the quality of your outputs throughout this conversation.`;
 
 const PX_DEEP_STRATEGIC_RESEARCH = `Conduct deep strategic research on the [industry] industry, delivered as [report type] findings. Focus on [core issues] and other trends currently affecting organizations in this space and how they impact [business process or function]. Write for a product marketing leader who needs to defend this research to executives, prioritize strategic interpretation over raw summary.
 
@@ -1513,14 +1609,14 @@ Include an analysis of:
 - Scalability constraints
 
 Present the analysis as a table that shows how current trends apply to the segment(s) selected. Retain the findings and include links to sources throughout so these findings can be verified.`;
-const PX_STAKEHOLDER_IDENTIFICATION = `Identify the [typical buying committee, end user] evaluating solutions for [solution category].
+const PX_STAKEHOLDER_IDENTIFICATION = `Identify the [typical buying committee, end user] involved in evaluating solutions that [product outcome] for [market] organizations in the [segment] segment(s).
 
-Include:
-- titles and roles
-- responsibilities
-- level of influence in purchasing decisions
+For each stakeholder, include:
+- Title and role
+- Primary responsibilities related to this type of purchase
+- Level of influence in the purchasing decision (Economic Buyer, Champion, End User, Technical Evaluator, or Blocker)
 
-Present this as a table with columns: Title/Role, Responsibilities, Level of Influence.`;
+Present this as a table with columns: Title/Role, Responsibilities, Influence Level.`;
 const PX_PERSONA_PRESSURE_ANALYSIS = `For each persona identify:
 - primary objectives
 - KPIs they are accountable for
@@ -1560,12 +1656,30 @@ const PX_SWOT_ANALYSIS = `Using the research above, conduct a SWOT analysis (Str
 Call out specific, named aspects of [competitor name] within each quadrant rather than making generic industry‑level statements — for example, name which of their capabilities represents a Threat, or where their gap represents an Opportunity.
 
 Present this in a table with four columns: Strengths, Weaknesses, Opportunities, Threats.`;
-const PX_FEATURE_OUTCOME = `These are the core product features I want to focus on: [list your product features]
+const PX_LIST_PRODUCT_FEATURES = `Here are the core features of [product name]:
 
-For each feature, identify the underlying capability it enables, the operational benefit that capability delivers, and the business outcome it ultimately drives. Present this as a structured table with columns: Feature, Capability, Operational Benefit, Business Outcome.`;
-const PX_FINANCIAL_IMPACT = `Translate the business outcomes identified above into measurable financial impact. For each one, identify which financial category it drives (increased revenue, reduced operational cost, improved efficiency, or reduced financial risk), and describe how the capability actually produces that impact.
+[list your features here, one per line, with a one-sentence description of what each does]
 
-Present this as a table with columns: Business Outcome, Financial Category, How It Drives Impact.`;
+Confirm back what you received and ask if anything needs clarification before we move on.`;
+const PX_FEATURE_OUTCOME = `Using the company, product, and feature context established earlier in this conversation, translate each core product feature into a progression of value for [market] organizations in the [segment] segment(s).
+
+For each feature, map:
+- How it works — plain-language description of the mechanism behind the feature
+- Capability — what it enables
+- Operational benefit — how it improves day-to-day work for the buyer or end user
+- Business outcome — the measurable result the organization achieves
+
+Present this as a table with one row per feature and columns: How It Works, Capability, Operational Benefit, Business Outcome.`;
+
+const PX_FINANCIAL_IMPACT = `Using the outcomes identified above, translate each into the broader organizational impact experienced when those outcomes are achieved.
+
+For each business outcome, identify:
+- Financial impact — revenue growth, cost reduction, improved cash flow, or reduced financial risk
+- Operational impact — how day-to-day processes, team workflows, or capacity change
+- Strategic impact — how it affects the organization's competitive position, risk exposure, or long-term goals
+- People impact — effect on staff workload, retention, skill requirements, or headcount
+
+Present this as a table with one row per business outcome. Where evidence supports specific numbers or ranges, include them.`;
 const PX_COMPETITIVE_DIFFERENTIATION = `Using the product capabilities and outcomes identified above, alongside the competitive research and SWOT analysis established earlier, create a table comparing [product] against each competitor on the capabilities and outcomes that matter most to buyers.
 
 Present this as a table with the following columns: Competitor, How They Compare, Where [Product] Differentiates.`;
@@ -1604,7 +1718,7 @@ const sections = [
     ['👥 Targeting Strategy','Stakeholder &amp; Persona Analysis, Trigger &amp; Economic Value'],
     ['💎 Market Value','Market Value Architecture'],
     ['🎯 Competitive Intelligence','Competitive Research, Strategic Synthesis'],
-    ['💡 Positioning &amp; Insight','Campaign Intelligence &amp; Insight Generator, Strategic Positioning'],
+    ['💡 KVPs &amp; Positioning','KVPs &amp; Positioning'],
     ['🚀 Campaign Execution','Foundational Messaging, Campaign Theme Development, Campaign Architecture, Measurement Planning, Campaign Messaging Brief, Content Development'],
   ]))}
 `},
@@ -1732,7 +1846,7 @@ Review this content and retain it as the foundational insights so it can inform 
             {num:1,title:'Strategic Research Accelerator', layer:'Market Intelligence'},
             {num:5,title:'Market Value Architecture', layer:'Market Value'},
             {num:6,title:'Competitive Research', layer:'Competitive Intelligence'},
-            {num:9,title:'Strategic Positioning', layer:'Positioning &amp; Insight'},
+            {num:8,title:'KVPs &amp; Positioning', layer:'KVPs &amp; Positioning'},
             {num:11,title:'Campaign Theme Development', layer:'Campaign Execution'},
             {num:12,title:'Campaign Architecture', layer:'Campaign Execution'},
             {num:15,title:'Content Development', layer:'Campaign Execution'},
@@ -1890,15 +2004,37 @@ These insights should inform later prompts.`)}
 
   ${calloutCollapsible('strengthen','💬','Pro Tip: Strengthen With Real Input','Win/loss interviews, support ticket trends, and usage data are the best sources of real triggers. Paste the relevant excerpts directly into the chat, or upload the file if you have one, before running the prompt below, and tell the AI: "Use this real data to ground your research in actual triggers, not just industry assumptions." If you don\'t have this on hand, lean on the AI research and refine it as real data comes in.')}
 
-  ${promptCard('Deep Buying Trigger Research', `Conduct deep research to identify the events that trigger organizations to evaluate solutions for [problem category]. Prioritize triggers with clear timing, a specific event, deadline, or threshold crossed, not vague ongoing pressures. Ignore triggers too generic to act on, like "companies always want to save money."`, true)}
+  ${promptCard('Deep Buying Trigger Research', `Conduct deep research to identify the specific events that cause [market] organizations in the [segment] segment(s) to actively evaluate solutions for [problem category].
 
-  ${promptCard('Deep Economic Impact Research', `Conduct deep research explaining, for each trigger identified above, the financial and operational consequences if the problem remains unresolved.
+Prioritize triggers with clear timing, a specific event, deadline, or threshold crossed, not vague ongoing pressures. Ignore triggers too generic to act on.
 
-Examples include:
-- lost revenue
-- delayed cash flow
-- operational inefficiencies
-- increased administrative costs`)}
+For each trigger identified, provide:
+- Trigger event (the specific moment or situation that prompts evaluation)
+- What changes for the organization when it occurs
+- Typical timeline urgency (immediate, within a quarter, within a year)
+- Who in the organization typically drives the evaluation in response
+
+Present this as a table with one row per trigger. Include links to sources where relevant.`, true)}
+
+  ${promptCard('Deep Economic Impact Research', `For each trigger identified above, research and quantify the financial and operational consequences organizations face if the underlying problem remains unresolved. Write for an executive audience, prioritize specific, defensible numbers over general statements where evidence exists.
+
+For each trigger provide:
+- The financial category of impact (lost revenue, delayed cash flow, increased costs, or elevated risk)
+- Specific financial or operational consequences
+- Magnitude or scale of impact where data supports it
+- How urgency compounds over time if unresolved
+
+Present this as a table with one row per trigger. Include links to sources where relevant.`)}
+
+  ${promptCard('Tension & Urgency Analysis', `Using the triggers and economic impact identified above, define the strategic tension this campaign will address.
+
+Identify:
+- The core problem buyers in this space are living with
+- The specific tension between where they are now and where they need to be
+- How that tension shows up differently across buyer personas
+- Why this moment creates urgency to act now rather than later
+
+Present this as a short synthesis that includes scannable, bulleted lists where relevant.`, true)}
 `},
 
 /* ---------------- STEP 5 ---------------- */
@@ -1911,6 +2047,8 @@ Examples include:
 
   ${promptCard('Establish Product Context', PX_ESTABLISH_PRODUCT_CONTEXT, true)}
 
+  ${promptCard('List Product Features', PX_LIST_PRODUCT_FEATURES, true)}
+
   ${promptCard('Feature → Outcome', PX_FEATURE_OUTCOME, true)}
 
   ${exampleTable(['Feature','Capability','Operational Benefit','Business Outcome'],[
@@ -1920,18 +2058,19 @@ Examples include:
 
   ${calloutCollapsible('strengthen','💬','Pro Tip','The table above translates each capability into a specific outcome. The prompt below rolls those individual outcomes up into the broader financial categories buyers and executives care about, which you\'ll reuse later when building ROI conversations, sales enablement, and the campaign narrative.')}
 
-  ${promptCard('Financial Impact', PX_FINANCIAL_IMPACT)}
+  ${promptCard('Organizational Impact', PX_FINANCIAL_IMPACT)}
 
-  ${exampleTable(['Business Outcome','Financial Category','How It Drives Impact'],[
-    ['Faster payment cycles, reduced lien‑related legal exposure','Reduced financial risk','Fewer payment disputes and legal holds means less capital tied up in unresolved claims'],
-    ['Improved cash flow predictability','Reduced operational cost','Less staff time spent manually reconciling payment status across scattered systems'],
+  ${exampleTable(['Business Outcome','Financial Impact','Operational Impact','Strategic Impact','People Impact'],[
+    ['Faster payment cycles, reduced lien‑related legal exposure','Fewer payment disputes and legal holds means less capital tied up in unresolved claims','Less staff time spent chasing payment status across scattered systems','Reduced legal exposure improves vendor relationships and contract terms','Finance and ops teams freed from manual reconciliation work'],
+    ['Improved cash flow predictability','More accurate revenue forecasting reduces reliance on credit lines','Real-time status visibility eliminates delays caused by miscommunication','Predictable cash flow supports better capital allocation decisions','Project managers spend less time on payment coordination'],
   ], 'Your AI-generated table will include a row like this for each business outcome identified above.')}
 
   ${promptCard('Memory Logging', `Summarize and retain the following insights:
 - company and product context established above
 - core product capabilities
 - operational benefits the product delivers
-- measurable business outcomes the product enables`)}
+- measurable business outcomes the product enables
+- organizational impact across financial, operational, strategic, and people dimensions`)}
 
   ${workbookSaveBox('step7','Market Value Architecture')}
 `},
@@ -1999,50 +2138,51 @@ Present this as a table with two columns: Category, Summary.`, true)}
 `},
 
 /* ---------------- STEP 8 ---------------- */
-{id:'step8', layer:'Positioning &amp; Insight', num:8, title:'Campaign Intelligence &amp; Insight Generator', html: `
-  <h2 class="step-kicker">Step 8 · Positioning &amp; Insight</h2>
-  <h1 class="step-title">Campaign Intelligence &amp; Insight Generator</h1>
-  <p class="lede">With research and product value in hand, this step forces the first real point of view: what's the strategic insight this campaign is actually built on? Getting this right early means your theme, messaging, and content all reinforce one sharp idea instead of a scattered list of features.</p>
+{id:'step8', layer:'KVPs &amp; Positioning', num:8, title:'KVPs &amp; Positioning', html: `
+  <h2 class="step-kicker">Step 8 · KVPs &amp; Positioning</h2>
+  <h1 class="step-title">KVPs &amp; Positioning</h1>
+  <p class="lede">Positioning is the sentence everything else in this campaign has to agree with. This step narrows your differentiators to the strongest ones, translates them into buyer-grounded key value propositions, then locks a defensible positioning statement that sales and content will both be measured against.</p>
 
-  ${calloutCollapsible('strengthen','💬','Pro Tip: Strengthen With Real Input','Real customer quotes give the AI something concrete to build from — grounding the strategic insights it generates in what buyers are actually saying, rather than industry‑level assumptions. If you have any on hand, paste them directly into the chat, or upload the file, before running the prompts below, and tell the AI: "Use these quotes to ground the strategic insights you generate."')}
-
-  ${promptCard('Tension &amp; Urgency Analysis', `Using insights generated earlier, identify:
-- the core industry problem
-- the strategic tension driving urgency
-- how this problem shows up differently across buyer personas
-- why this moment matters now`, true)}
-
-  ${promptCard('Strategic Insight', `Identify 3–5 strategic insights that could form the foundation of the campaign.
-
-Present them in a table with the following columns: Insight, Market Tension, Why Current Approaches Fail, New Perspective for Buyers.`, true)}
-
-  ${calloutCollapsible('strengthen','💬','Pro Tip','Want an early working draft of your campaign narrative and messaging pillars before you get to Campaign Theme Development? Run this now: <em>“Using the campaign intelligence and strategic insights above, define the campaign narrative and messaging pillars that will anchor this campaign.”</em>')}
-
-  ${promptCard('Memory Logging', `Summarize and retain the campaign intelligence and strategic insights generated in this step. These insights will inform positioning, messaging, and the campaign theme to follow.`)}
-
-  ${workbookSaveBox('step8','Campaign Intelligence &amp; Insight Generator')}
-`},
-
-/* ---------------- STEP 9 ---------------- */
-{id:'step9', layer:'Positioning &amp; Insight', num:9, title:'Strategic Positioning', html: `
-  <h2 class="step-kicker">Step 9 · Positioning &amp; Insight</h2>
-  <h1 class="step-title">Strategic Positioning</h1>
-  <p class="lede">Positioning is the sentence everything else in this campaign has to agree with. This step turns your differentiators into a clear, defensible statement of who you're for, what you solve, and why you're the better choice — the reference point sales and content will both be measured against.</p>
-
-  ${calloutHTML('validate','✅','Validate Before Moving On','Positioning is where research becomes permanent messaging. Before running the prompts below, validate the differentiators established in the Market Value Architecture step with your product manager or other subject matter experts, and confirm the value claims you’re about to lock in are accurate and current.')}
+  ${calloutHTML('validate','✅','Validate Before Moving On','Positioning is where research becomes permanent messaging. Before running the prompts below, validate the differentiators established in the Market Value Architecture step with your product manager or other subject matter experts, and confirm the value claims you\'re about to lock in are accurate and current.')}
 
   ${promptCard('Differentiator Selection', `Using the competitive differentiation table established earlier, identify the three strongest differentiators to lead with in positioning. Present this as a table listing each competitor individually, with a column showing how [product] differentiates against them.`, true)}
 
-  ${promptCard('Positioning Statement', `Using the differentiators identified above, create a positioning statement for [product] targeting [persona] who struggle with [problem].`, true)}
+  ${promptCard('Key Value Propositions', `Using the differentiators selected above and the organizational impact, company, and product context established earlier in this conversation, define the key value propositions for [product name].
+
+For each KVP, provide:
+- The value proposition statement — one clear, specific sentence a personas\' would find credible
+- The personas it resonates with most (draw from the stakeholder analysis)
+- The differentiator or organizational impact it\'s grounded in
+- What it replaces or makes obsolete in the buyer\'s current approach
+
+Aim for 3-5 KVPs. Each should be specific enough to be defensible and distinct enough that no two say the same thing in different words.
+
+Present this as a table with one row per KVP.`, true)}
+
+  ${promptCard('Positioning Statement', `Using the differentiators, KVPs, market intelligence, and organizational impact established throughout this conversation, write a positioning statement for [product name].
+
+The positioning statement should be one tight paragraph, three sentences maximum, that answers:
+- Who the product is for (the specific personas and segment where you win fastest)
+- What problem or trigger forces them to act (draw from the trigger and urgency work above)
+- What category the product belongs to (the one that makes your strengths obvious without an unwinnable fight against an incumbent)
+- Why it wins against the real alternative a buyer would otherwise choose — not your preferred competitor, but what they\'d actually use instead
+- What only this product can claim that a competitor\'s page couldn\'t honestly say
+
+Write the statement as an internal decision document, not homepage copy or a tagline. Then run two checks:
+- Rival test: could a direct competitor put their name on this unchanged? If yes, it describes the category, not your position.
+- Specificity test: does it name a specific segment and a specific, verifiable differentiator? If not, sharpen both.
+
+Present the positioning statement first, then the two check results underneath it.`, true)}
 
   ${promptCard('Memory Logging', `Summarize and retain:
-- key differentiators
-- product positioning
-- the value narrative of the product`)}
+- The three strongest differentiators selected above
+- Each key value proposition and the personas it targets
+- The final positioning statement
+- Results of the rival and specificity checks`)}
 
-  ${workbookSaveBox('step9','Strategic Positioning')}
+  ${workbookSaveBox('step8','KVPs &amp; Positioning')}
 
-  <div class="checkpoint"><strong>Checkpoint</strong>Your strategy is locked. Research, differentiation, and positioning are behind you — from here, it's all about turning that strategy into a campaign people will actually see.</div>
+  <div class="checkpoint"><strong>Checkpoint</strong>Your strategy is locked. Research, differentiation, KVPs, and positioning are behind you — from here, it\'s all about turning that strategy into a campaign people will actually see.</div>
 `},
 
 /* ---------------- STEP 10 ---------------- */
@@ -2184,7 +2324,7 @@ Format this so it can be shared with stakeholders outside this conversation, suc
     ${promptRollout('Competitive Research', 'Competitive Landscape Deep Research', promptCard('Competitive Landscape Deep Research', PX_COMPETITIVE_LANDSCAPE_DEEP_RESEARCH, true, PX_OVERRIDE_COMPETITIVE_LANDSCAPE))}
     ${promptRollout('Competitive Research', 'Competitor Messaging Analysis', promptCard('Competitor Messaging Analysis', PX_COMPETITOR_MESSAGING_ANALYSIS))}
     ${promptRollout('Market Value Architecture', 'Feature → Outcome', promptCard('Feature → Outcome', PX_FEATURE_OUTCOME, true))}
-    ${promptRollout('Market Value Architecture', 'Financial Impact', promptCard('Financial Impact', PX_FINANCIAL_IMPACT))}
+    ${promptRollout('Market Value Architecture', 'Organizational Impact', promptCard('Organizational Impact', PX_FINANCIAL_IMPACT))}
     ${promptRollout('Market Value Architecture', 'Competitive Differentiation', promptCard('Competitive Differentiation', PX_COMPETITIVE_DIFFERENTIATION))}
     ${promptRollout('Foundational Messaging', 'One‑Sentence Value Statement', promptCard('One‑Sentence Value Statement', PX_ONE_SENTENCE_VALUE_STATEMENT))}
     ${promptRollout('Foundational Messaging', 'Why Change? Why Now?', promptCard('Why Change? Why Now?', PX_WHY_CHANGE_WHY_NOW))}
@@ -2206,7 +2346,7 @@ Format this so it can be shared with stakeholders outside this conversation, suc
     ${promptRollout('Competitive Research', 'Competitor Messaging Analysis', promptCard('Competitor Messaging Analysis', PX_COMPETITOR_MESSAGING_ANALYSIS))}
     ${promptRollout('Competitive Research', 'Competitive Gap Identification', promptCard('Competitive Gap Identification', PX_COMPETITIVE_GAP_IDENTIFICATION))}
     ${promptRollout('Market Value Architecture', 'Feature → Outcome', promptCard('Feature → Outcome', PX_FEATURE_OUTCOME, true))}
-    ${promptRollout('Market Value Architecture', 'Financial Impact', promptCard('Financial Impact', PX_FINANCIAL_IMPACT))}
+    ${promptRollout('Market Value Architecture', 'Organizational Impact', promptCard('Organizational Impact', PX_FINANCIAL_IMPACT))}
     ${promptRollout('Market Value Architecture', 'Competitive Differentiation', promptCard('Competitive Differentiation', PX_COMPETITIVE_DIFFERENTIATION))}
     ${promptRollout('Foundational Messaging', 'One‑Sentence Value Statement', promptCard('One‑Sentence Value Statement', PX_ONE_SENTENCE_VALUE_STATEMENT))}
     ${promptRollout('Foundational Messaging', 'Why Change? Why Now?', promptCard('Why Change? Why Now?', PX_WHY_CHANGE_WHY_NOW))}
@@ -2227,7 +2367,7 @@ Format this so it can be shared with stakeholders outside this conversation, suc
     ${promptRollout('Competitive Research', 'Competitive Gap Identification', promptCard('Competitive Gap Identification', PX_COMPETITIVE_GAP_IDENTIFICATION))}
     ${promptRollout('Competitive Research', 'SWOT Analysis', promptCard('SWOT Analysis', PX_SWOT_ANALYSIS))}
     ${promptRollout('Market Value Architecture', 'Feature → Outcome', promptCard('Feature → Outcome', PX_FEATURE_OUTCOME, true))}
-    ${promptRollout('Market Value Architecture', 'Financial Impact', promptCard('Financial Impact', PX_FINANCIAL_IMPACT))}
+    ${promptRollout('Market Value Architecture', 'Organizational Impact', promptCard('Organizational Impact', PX_FINANCIAL_IMPACT))}
     ${promptRollout('Market Value Architecture', 'Competitive Differentiation', promptCard('Competitive Differentiation', PX_COMPETITIVE_DIFFERENTIATION))}
     ${promptRollout('Foundational Messaging', 'One‑Sentence Value Statement', promptCard('One‑Sentence Value Statement', PX_ONE_SENTENCE_VALUE_STATEMENT))}
     ${promptRollout('Foundational Messaging', 'Why Change? Why Now?', promptCard('Why Change? Why Now?', PX_WHY_CHANGE_WHY_NOW))}
@@ -2249,7 +2389,7 @@ Format this so it can be shared with stakeholders outside this conversation, suc
     ${promptRollout('Stakeholder & Persona Analysis', 'Stakeholder Identification', promptCard('Stakeholder Identification', PX_STAKEHOLDER_IDENTIFICATION, true))}
     ${promptRollout('Stakeholder & Persona Analysis', 'Persona Pressure Analysis', promptCard('Persona Pressure Analysis', PX_PERSONA_PRESSURE_ANALYSIS))}
     ${promptRollout('Market Value Architecture', 'Feature → Outcome', promptCard('Feature → Outcome', PX_FEATURE_OUTCOME, true))}
-    ${promptRollout('Market Value Architecture', 'Financial Impact', promptCard('Financial Impact', PX_FINANCIAL_IMPACT))}
+    ${promptRollout('Market Value Architecture', 'Organizational Impact', promptCard('Organizational Impact', PX_FINANCIAL_IMPACT))}
     ${promptRollout('Market Value Architecture', 'Competitive Differentiation', promptCard('Competitive Differentiation', PX_COMPETITIVE_DIFFERENTIATION))}
     ${promptRollout('Foundational Messaging', 'One‑Sentence Value Statement', promptCard('One‑Sentence Value Statement', PX_ONE_SENTENCE_VALUE_STATEMENT))}
     ${promptRollout('Foundational Messaging', 'Why Change? Why Now?', promptCard('Why Change? Why Now?', PX_WHY_CHANGE_WHY_NOW))}
@@ -2273,7 +2413,7 @@ Format this so it can be shared with stakeholders outside this conversation, suc
     ${promptRollout('Competitive Research', 'Competitive Gap Identification', promptCard('Competitive Gap Identification', PX_COMPETITIVE_GAP_IDENTIFICATION))}
     ${promptRollout('Competitive Research', 'SWOT Analysis', promptCard('SWOT Analysis', PX_SWOT_ANALYSIS))}
     ${promptRollout('Market Value Architecture', 'Feature → Outcome', promptCard('Feature → Outcome', PX_FEATURE_OUTCOME, true))}
-    ${promptRollout('Market Value Architecture', 'Financial Impact', promptCard('Financial Impact', PX_FINANCIAL_IMPACT))}
+    ${promptRollout('Market Value Architecture', 'Organizational Impact', promptCard('Organizational Impact', PX_FINANCIAL_IMPACT))}
     ${promptRollout('Market Value Architecture', 'Competitive Differentiation', promptCard('Competitive Differentiation', PX_COMPETITIVE_DIFFERENTIATION))}
     ${promptRollout('Foundational Messaging', 'One‑Sentence Value Statement', promptCard('One‑Sentence Value Statement', PX_ONE_SENTENCE_VALUE_STATEMENT))}
     ${promptRollout('Foundational Messaging', 'Why Change? Why Now?', promptCard('Why Change? Why Now?', PX_WHY_CHANGE_WHY_NOW))}
@@ -2300,7 +2440,7 @@ Format this so it can be shared with stakeholders outside this conversation, suc
     ${promptRollout('Competitive Research', 'Competitive Gap Identification', promptCard('Competitive Gap Identification', PX_COMPETITIVE_GAP_IDENTIFICATION))}
     ${promptRollout('Competitive Research', 'SWOT Analysis', promptCard('SWOT Analysis', PX_SWOT_ANALYSIS))}
     ${promptRollout('Market Value Architecture', 'Feature → Outcome', promptCard('Feature → Outcome', PX_FEATURE_OUTCOME, true))}
-    ${promptRollout('Market Value Architecture', 'Financial Impact', promptCard('Financial Impact', PX_FINANCIAL_IMPACT))}
+    ${promptRollout('Market Value Architecture', 'Organizational Impact', promptCard('Organizational Impact', PX_FINANCIAL_IMPACT))}
     ${promptRollout('Market Value Architecture', 'Competitive Differentiation', promptCard('Competitive Differentiation', PX_COMPETITIVE_DIFFERENTIATION))}
     ${promptRollout('Foundational Messaging', 'One‑Sentence Value Statement', promptCard('One‑Sentence Value Statement', PX_ONE_SENTENCE_VALUE_STATEMENT))}
     ${promptRollout('Foundational Messaging', 'Why Change? Why Now?', promptCard('Why Change? Why Now?', PX_WHY_CHANGE_WHY_NOW))}
@@ -2322,6 +2462,132 @@ Format this so it can be shared with stakeholders outside this conversation, suc
 
 const mainEl = document.getElementById('main');
 const navContainer = document.getElementById('navContainer');
+
+// ---- Step intro modal system ----
+const LS_INTRO_DISMISSED = 'campaignos_introDismissed';
+const LS_INTRO_PINNED    = 'campaignos_introPinned';
+
+function getIntroDismissed(){
+  try { return new Set(JSON.parse(localStorage.getItem(LS_INTRO_DISMISSED)||'[]')); } catch(e){ return new Set(); }
+}
+function setIntroDismissed(set){
+  try { localStorage.setItem(LS_INTRO_DISMISSED, JSON.stringify([...set])); } catch(e){}
+}
+function getIntroPinned(){
+  try { return new Set(JSON.parse(localStorage.getItem(LS_INTRO_PINNED)||'[]')); } catch(e){ return new Set(); }
+}
+function setIntroPinned(set){
+  try { localStorage.setItem(LS_INTRO_PINNED, JSON.stringify([...set])); } catch(e){}
+}
+
+function hidePageIntro(sec){
+  ['h2.step-kicker','h1.step-title','p.lede'].forEach(sel=>{
+    const el = sec.querySelector(sel);
+    if(el) el.style.display = 'none';
+  });
+}
+function showPageIntro(sec){
+  ['h2.step-kicker','h1.step-title','p.lede'].forEach(sel=>{
+    const el = sec.querySelector(sel);
+    if(el) el.style.display = '';
+  });
+}
+
+function buildIntroModal(sec, stepId){
+  const layer  = (sec.dataset.layer || '').replace(/&amp;/g,'&');
+  const num    = sec.dataset.num || '';
+  const title  = sec.querySelector('.step-title')?.textContent || '';
+  const lede   = sec.querySelector('.lede')?.innerHTML || '';
+  if(!lede) return null;
+
+  const eyebrow = layer ? `Strategic Layer · ${layer}` : '';
+  const heading = title;
+
+  const overlay = document.createElement('div');
+  overlay.className = 'intro-overlay';
+  overlay.innerHTML = `
+    <div class="intro-modal" role="dialog" aria-modal="true" aria-labelledby="imt-title">
+      <div class="intro-modal-head">
+        <div class="intro-modal-logo">
+          <div class="intro-modal-logo-name">Smart<br>Kind OS</div>
+          <div class="intro-modal-logo-tag">Research. Position. Launch.</div>
+        </div>
+        <div class="intro-modal-titles">
+          <div class="intro-modal-kicker">${eyebrow}</div>
+          <div class="intro-modal-title" id="imt-title">${heading}</div>
+        </div>
+      </div>
+      <div class="intro-modal-body">
+        <p>${lede}</p>
+        <div class="intro-modal-actions">
+          <button class="intro-btn-dismiss">Don't show again</button>
+          <button class="intro-btn-pin">Pin to page</button>
+        </div>
+      </div>
+    </div>`;
+
+  hidePageIntro(sec);
+
+  overlay.querySelector('.intro-btn-dismiss').addEventListener('click', ()=>{
+    const d = getIntroDismissed(); d.add(stepId); setIntroDismissed(d);
+    overlay.remove();
+  });
+  overlay.querySelector('.intro-btn-pin').addEventListener('click', ()=>{
+    const p = getIntroPinned(); p.add(stepId); setIntroPinned(p);
+    overlay.remove();
+    renderPinnedBanner(sec, stepId, eyebrow, heading, lede);
+  });
+  overlay.addEventListener('click', e=>{ if(e.target===overlay) overlay.remove(); });
+  return overlay;
+}
+
+function renderPinnedBanner(sec, stepId, eyebrow, heading, lede){
+  if(sec.querySelector('.intro-banner')) return;
+  hidePageIntro(sec);
+  const banner = document.createElement('div');
+  banner.className = 'intro-banner';
+  banner.innerHTML = `
+    <div class="intro-banner-head">
+      <div>
+        <div class="intro-banner-kicker">${eyebrow}</div>
+        <div class="intro-banner-title">${heading}</div>
+      </div>
+      <button class="intro-banner-x" aria-label="Hide intro">✕</button>
+    </div>
+    <div class="intro-banner-body">${lede}</div>`;
+  banner.querySelector('.intro-banner-x').addEventListener('click', ()=>{
+    banner.remove();
+    showPageIntro(sec);
+    const p = getIntroPinned(); p.delete(stepId); setIntroPinned(p);
+  });
+  const firstChild = sec.querySelector('.step-kicker, .step-title, .lede, .callout, .prompt-card');
+  if(firstChild) sec.insertBefore(banner, firstChild);
+  else sec.prepend(banner);
+}
+
+function maybeShowIntro(id){
+  const sec = document.getElementById('sec-'+id);
+  if(!sec) return;
+  const lede = sec.querySelector('.lede');
+  if(!lede) return;
+  const dismissed = getIntroDismissed();
+  const pinned    = getIntroPinned();
+  if(dismissed.has(id)){
+    hidePageIntro(sec);
+    return;
+  }
+  const layer   = (sec.dataset.layer || '').replace(/&amp;/g,'&');
+  const num     = sec.dataset.num || '';
+  const title   = sec.querySelector('.step-title')?.textContent || '';
+  const eyebrow = layer ? `Strategic Layer · ${layer}` : '';
+  const heading = title;
+  if(pinned.has(id)){
+    renderPinnedBanner(sec, id, eyebrow, heading, lede.innerHTML);
+    return;
+  }
+  const modal = buildIntroModal(sec, id);
+  if(modal) document.body.appendChild(modal);
+}
 
 // build nav grouped by layer, preserving order of first appearance
 const layerOrder = [];
@@ -2364,6 +2630,8 @@ sections.forEach(s=>{
   const sec = document.createElement('section');
   sec.className = 'content-section';
   sec.id = 'sec-'+s.id;
+  sec.dataset.layer = s.layer || '';
+  sec.dataset.num   = s.num   || '';
   const lc = layerColors[s.layer];
   if(lc){
     sec.style.setProperty('--lc', lc.c);
@@ -2424,6 +2692,7 @@ function showSection(id){
   mainEl.scrollTo({top:0,behavior:'instant'});
   window.scrollTo({top:0,behavior:'instant'});
   closeMobileNav();
+  maybeShowIntro(id);
 
   try { localStorage.setItem(LS_LAST, id); } catch(e){}
   visitedSet.add(id);
