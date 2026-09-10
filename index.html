@@ -100,11 +100,12 @@
   }
   .brand-tagline{
     font-family:'Inter',sans-serif;
-    font-weight:700;
+    font-weight:600;
     font-size:11px;
     letter-spacing:.03em;
     color:var(--hotpink);
     margin-top:8px;
+    font-style:italic;
   }
 
   .progress-line{
@@ -1405,14 +1406,15 @@
 const AUTH_REQUIRED = false;
 
 const layerColors = {
-  'Market Intelligence':        {c:'#7C5CB8', soft:'#F1EAFB'},
-  'Targeting Strategy':         {c:'#3E7CB1', soft:'#E7F2FB'},
-  'Market Value':               {c:'#9C5FA8', soft:'#F6EAF7'},
-  'Competitive Intelligence':   {c:'#C42D6E', soft:'#FCE4EE'},
-  'KVPs &amp; Positioning':    {c:'#5B9BD5', soft:'#EAF4FC'},
-  'Campaign Execution':         {c:'#E0568B', soft:'#FDEAF1'},
-  'Campaign Initialization':    {c:'#C9C8D1', soft:'#F4F4F6'},
-  'Workbooks':                  {c:'#E4127D', soft:'#FCE1EC'},
+  'Start Here':               {c:'#C9C8D1', soft:'#F4F4F6'},
+  'Workbooks':                {c:'#E4127D', soft:'#FCE1EC'},
+  'Campaign Initialization':  {c:'#7C5CB8', soft:'#F1EAFB'},
+  'Market Intelligence':      {c:'#C9C8D1', soft:'#F4F4F6'},
+  'Targeting Strategy':       {c:'#E4127D', soft:'#FCE1EC'},
+  'Market Value':             {c:'#7C5CB8', soft:'#F6EAF7'},
+  'Competitive Intelligence': {c:'#C9C8D1', soft:'#F4F4F6'},
+  'KVPs &amp; Positioning':   {c:'#E4127D', soft:'#FDEAF1'},
+  'Campaign Execution':       {c:'#7C5CB8', soft:'#F1EAFB'},
 };
 
 const PH = (s) => s.replace(/\[([^\]]+)\]/g, '<span class="ph">[$1]</span>');
@@ -1422,7 +1424,7 @@ const END_USER_ROLES = ['Day-to-Day User','Power User','Admin or IT Owner','Fron
 const PROBLEM_CATEGORIES = ['Rising Costs or Declining Margins','Workforce or Capacity Constraints','Regulatory or Compliance Changes','Technology Limitations or System Failures','Competitive or Market Pressure','Revenue Cycle Management','Licensing','Compliance Risk','Operational Inefficiency','Data Security','Customer Retention','Scalability'];
 const INDUSTRIES = ['Healthcare','Life Sciences','Education','Legal Services','Financial Services and Fintech','Construction','Restaurants and Hospitality','Insurance','Retail','Manufacturing','HR'];
 
-const ALL_STEP_NAMES = ['Strategic Research Accelerator','Market & Industry Research','Stakeholder & Persona Analysis','Trigger & Economic Value','Market Value Architecture','Competitive Research','Strategic Synthesis','KVPs & Positioning','Foundational Messaging','Campaign Theme Development','Campaign Architecture','Measurement Planning','Campaign Messaging Brief','Content Development'];
+const ALL_STEP_NAMES = ['Strategic Research Accelerator','Market & Industry Research','Stakeholder & Persona Analysis','Trigger & Economic Value','Market Value Architecture','Competitive Profile','Product Comparison','Strategic Synthesis','KVPs & Positioning','Foundational Messaging','Campaign Theme Development','Campaign Architecture','Measurement Planning','Campaign Messaging Brief','Content Development'];
 
 const CHIP_BANK = {
   'campaign type': {multi:false, options:['Webinar','Event Promotion','Thought Leadership','Theme Refresh','Social Media Campaign','Email Campaign','Mailer Campaign','Feature Launch','Case Study','Retention Campaign','White Paper']},
@@ -1443,7 +1445,7 @@ const CHIP_BANK = {
     {group:'End-user / persona roles', options: END_USER_ROLES},
   ],
   "steps you're incorporating": ALL_STEP_NAMES,
-  'task': ['Positioning','Competitive Research','Messaging','Campaign Planning','Content Creation','Persona Analysis','Market Research','Measurement Planning'],
+  'task': ['Positioning','Competitive Profile','Messaging','Campaign Planning','Content Creation','Persona Analysis','Market Research','Measurement Planning'],
   'narrative anchor': ['Value-Based','Product-Based','Competitive-Based','Discoverability-Based'],
   'product outcome': ['Reduce manual work and administrative burden','Accelerate time to revenue','Improve cash flow predictability','Eliminate process bottlenecks','Increase operational visibility','Reduce compliance and regulatory risk','Streamline cross-team collaboration','Enable faster decision-making','Cut costs without cutting capacity','Improve customer or patient outcomes','Scale without proportional headcount growth','Shorten sales cycles'],
   'product outcome keyword': ['Reducing manual work and administrative burden','Accelerating time to revenue','Improving cash flow predictability','Eliminating process bottlenecks','Increasing operational visibility','Reducing compliance and regulatory risk','Streamlining cross-team collaboration','Enabling faster decision-making','Cutting costs without cutting capacity','Improving customer or patient outcomes','Scaling without proportional headcount growth','Shortening sales cycles'],
@@ -1624,38 +1626,116 @@ const PX_PERSONA_PRESSURE_ANALYSIS = `For each persona identify:
 - financial pressures
 
 Present this as a table with one row per persona and columns for Persona, Objectives, KPIs, Operational Pressures, and Financial Pressures.`;
-const PX_COMPETITIVE_LANDSCAPE_DEEP_RESEARCH = `Conduct deep competitive research on [competitors or vendors] offering solutions related to [problem category]. Write for a product marketing leader making strategic decisions, not a general industry summary.
+const PX_COMPETITIVE_LANDSCAPE_DEEP_RESEARCH = `Search the web for current information before responding. Prioritize sources from the past 12 months, including the competitor's website, press releases, earnings calls or investor filings, analyst coverage, LinkedIn, and job postings. Weight recent signals appropriately — job postings indicate intent before anything ships; press releases confirm what's already done.
+
+Conduct deep competitive research on [competitors or vendors] at the company level. Write for a product marketing leader making strategic decisions, not a general industry summary.
+
+Document:
+- Company overview — size, funding, ownership, headquarters, leadership, and target market
+- Market position — how they define their category and where they sit within it
+- Go-to-market motion — sales model, key channels, partnerships, and customer segments
+- Momentum signals — funding rounds, hiring patterns, leadership changes, acquisitions, and product launches in the past 12 months
+- Recent moves — the three most strategically significant changes in their market activity in the past 90 days, and what each signals about their direction
+- What to watch — two to three signals that would indicate their position is shifting
+
+Present as a structured report with one section per dimension above. Include links to sources throughout.`;
+
+const PX_COMPETITOR_MESSAGING_ANALYSIS = `Search the web for current information before responding. Prioritize findings from the past 12 months and deprioritize positioning that no longer appears active on their primary channels.
+
+Analyze how [competitors or vendors] position themselves right now across their website, active campaigns, and primary social channels. Write for a product marketing leader assessing competitive messaging strategy.
 
 Identify:
-- Established market leaders
-- Emerging vendors
-- Adjacent technology providers
+- Dominant messaging themes
+- Core value propositions in use
+- Language patterns and category language they own or are actively claiming
+- Outcomes and proof points they lead with
+- What they are actively de-emphasizing compared to prior positioning
 
-Prioritize recent positioning shifts, product or pricing changes, and campaign-driven activity. Ignore routine content, unchanged messaging, and minor copy edits without strategic implications.
+Present as a table with one row per finding. Include links to sources.`;
 
-For each competitor document:
-- Company name
-- Product offering
-- Target market
-- Positioning message
-- Key differentiators
-- AI/agent discoverability signals (review platform presence, structured data maturity, category ownership)
+const PX_SWOT_ANALYSIS = `Using the competitive research and messaging analysis established in this conversation, conduct a traditional SWOT analysis for [your company] relative to [competitor name] at the company level. Write this as an internal strategic document a PMM would use to brief leadership — not as a sales tool.
 
-Present this as a table with one row per competitor.`;
-const PX_COMPETITIVE_GAP_IDENTIFICATION = `Using the research above, identify opportunities for differentiation.
+Focus on company-level dynamics: market position, go-to-market motion, customer base, financial backing, partnership ecosystem, momentum signals, and organizational trajectory. Do not analyze individual products here — that belongs in a separate product-level analysis.
 
-Focus on:
-- capabilities competitors lack
-- operational problems competitors fail to address
-- messaging narratives that appear overused
-- AI/agent discoverability gaps competitors haven't closed (thin review presence, inconsistent structured data, unclear category ownership)
+Be specific in every cell: name the actual market condition, organizational characteristic, or competitive dynamic that creates each strength, weakness, opportunity, or threat. Generic statements that either company could claim do not belong here.
 
-Present this as a table with one row per competitor.`;
-const PX_SWOT_ANALYSIS = `Using the research above, conduct a SWOT analysis (Strengths, Weaknesses, Opportunities, Threats) for [your product/company] relative to [competitor name].
+Present as a four-quadrant table with columns: Strengths, Weaknesses, Opportunities, Threats.`;
 
-Call out specific, named aspects of [competitor name] within each quadrant rather than making generic industry‑level statements — for example, name which of their capabilities represents a Threat, or where their gap represents an Opportunity.
+const PX_COMPETITIVE_GAP_IDENTIFICATION = `Using the competitive research, messaging analysis, and SWOT established in this conversation, identify and prioritize the five strongest company-level opportunities for differentiation against [competitor].
 
-Present this in a table with four columns: Strengths, Weaknesses, Opportunities, Threats.`;
+Focus on positioning, go-to-market, messaging, and organizational advantages — not individual product capabilities.
+
+For each opportunity, name the specific competitor weakness, messaging gap, or market condition that creates the opening, and recommend the one sentence a PMM should use to establish that differentiation in a buyer conversation.
+
+Present as a table with columns: Opportunity, What Creates the Opening, Recommended Positioning Statement.`;
+
+// ==== Product Comparison sequence constants ====
+const PX_PRODUCT_LANDSCAPE_OVERVIEW = `Search the web for current information before responding. Prioritize sources from the past 12 months and deprioritize product information that no longer appears active on their primary channels.
+
+Identify the specific products from [competitor] that directly compete with [product name] in the [solution category] space.
+
+For each product, provide:
+- Product name
+- One-sentence description of what it does
+- Primary target buyer
+- The core job it claims to do for that buyer
+
+Include links to sources. Present as a table. This is product-level scoping only — company-level context is established separately.`;
+
+const PX_FEATURE_CAPABILITY_COMPARISON = `Search the web for current information before responding. Prioritize sources from the past 12 months.
+
+Using the competitive differentiation and product context established earlier in this conversation, build a current side-by-side capability comparison between [product name] and [competitor product]. Focus only on the 8-12 capabilities that most frequently determine purchase decisions in this category — not a full feature checklist.
+
+For each capability, note whether [product name] leads, matches, or lags, and briefly explain what creates the difference. Include links to sources.
+
+Present as a table with columns: Capability, [product name], [competitor product], Assessment.`;
+
+const PX_PRICING_PACKAGING_INTELLIGENCE = `Search the web for current information before responding. Prioritize sources from the past 12 months. Search across the competitor's website, press releases, customer reviews, analyst coverage, and job postings.
+
+Document the pricing model, packaging structure, and commercial approach for [competitor product]. Separate what is publicly known, what can be reasonably inferred from available signals, and what remains unknown. Where pricing is not public, document the model type — quote-based, subscription, usage-based, module-based — and any publicly visible packaging decisions such as features positioned as optional add-ons. Do not fabricate figures that are not evidenced. Include links to sources.
+
+Present as a table with columns: Dimension, What's Known, Source or Signal, Strategic Implication.`;
+
+const PX_WHY_WIN_LOSE = `Based on the product comparison, competitive differentiation, and organizational impact established in this conversation, identify the three strongest reasons [product name] wins in a direct evaluation against [competitor product], and the three most likely reasons it loses.
+
+Be specific — each reason should name the actual product characteristic, proof point, or market condition that determines the outcome. Avoid generic claims either product could make.
+
+Present as two clearly labeled lists: Why We Win and Why We Lose.`;
+
+const PX_PRODUCT_SWOT = `Using the product comparison and organizational impact established in this conversation, conduct a traditional SWOT analysis for [product name] relative to [competitor product]. Write this as an internal strategic document a PMM would use to brief leadership — not as a sales tool.
+
+Focus at the product level: capabilities, packaging, proof points, workflow fit, buyer perception, and competitive positioning. Do not analyze company-level dynamics here — that belongs in a separate company-level analysis.
+
+Be specific in every cell: name the actual product capability, proof point, buyer behavior, or market condition that creates each strength, weakness, opportunity, or threat. Generic statements that either product could claim do not belong here.
+
+Present as a four-quadrant table with columns: Strengths, Weaknesses, Opportunities, Threats.`;
+
+const PX_TRAP_SETTING_QUESTIONS = `Generate five discovery questions a sales rep can use in a live buyer conversation when [competitor product] is also being evaluated. Each question should be designed to surface a specific gap or limitation in [competitor product] without making a direct negative claim — the question should lead the buyer to raise the concern themselves.
+
+For each question, name the specific competitor gap it is designed to reveal.
+
+Present as a table with columns: Discovery Question, Competitor Gap It Surfaces.`;
+
+const PX_VALUE_DRIVEN_STATEMENTS = `Using the product comparison, differentiators, and organizational impact established in this conversation, develop value-driven statements for [product name] relative to [competitor product].
+
+First, identify one overarching competitive theme — a short phrase that captures what [product name] wins on in this specific matchup, written to frame the conversation before a buyer reads any individual claim.
+
+Then write 3-5 numbered value statements. Each should include:
+- A headline claim — one sentence naming the specific [product name] capability and the differentiation it creates
+- A supporting sentence — one to two sentences describing how the capability works and what it produces for the buyer
+- Why this matters — one sentence naming the buyer problem this solves, written from the buyer's perspective, not the seller's
+
+Ground every statement in the specific capabilities and outcomes established in this conversation. Avoid any claim that [competitor product] could make with equal accuracy.`;
+
+const PX_OBJECTION_SCENARIOS = `Identify the three most credible objections a well-informed buyer would raise that favor [competitor product] over [product name]. These should reflect what the competitor actually claims or what buyers genuinely value about it — not invented weaknesses.
+
+For each objection:
+- State the objection as a direct prospect quote
+- Write a response that acknowledges the buyer's concern, reframes the evaluation around [product name]'s actual strengths, and redirects toward a question or proof point that shifts the advantage
+
+Keep each response to three to five sentences — short enough to use in a live conversation.
+
+Present as a table with columns: If the Prospect Says, Response.`;
 const PX_LIST_PRODUCT_FEATURES = `Here are the core features of [product name]:
 
 [list your features here, one per line, with a one-sentence description of what each does]
@@ -1691,15 +1771,6 @@ const PX_VALUE_EXPLANATION = `Explain the product's value in clear, buyer‑focu
 Present this as a table with columns: Persona, Value Explanation.`;
 const PX_OBJECTION_HANDLING = `Identify common objections and provide responses sales teams can use. Frame responses around the value and outcome the buyer will realize, not just a rebuttal of the objection. Where relevant, lean into the strengths and opportunities identified in the competitive differentiation and SWOT work established earlier to position [product] favorably against alternatives buyers might be considering.`;
 const PX_DISCOVERY_QUESTIONS = `Generate discovery questions sales teams can use to uncover the problems the product solves.`;
-const PX_COMPETITOR_MESSAGING_ANALYSIS = `Analyze how competitors position their solutions right now, based on their most current public messaging. Deprioritize positioning that appears outdated or no longer active on their primary channels.
-
-Identify:
-- dominant messaging themes
-- value propositions used
-- language patterns used in positioning
-- outcomes frequently promised
-
-Present this as a table with one row per competitor.`;
 
 const sections = [
 
@@ -1717,7 +1788,7 @@ const sections = [
     ['🔍 Market Intelligence','Strategic Research Accelerator, Market &amp; Industry Research'],
     ['👥 Targeting Strategy','Stakeholder &amp; Persona Analysis, Trigger &amp; Economic Value'],
     ['💎 Market Value','Market Value Architecture'],
-    ['🎯 Competitive Intelligence','Competitive Research, Strategic Synthesis'],
+    ['🎯 Competitive Intelligence','Competitive Profile, Product Comparison, Strategic Synthesis'],
     ['💡 KVPs &amp; Positioning','KVPs &amp; Positioning'],
     ['🚀 Campaign Execution','Foundational Messaging, Campaign Theme Development, Campaign Architecture, Measurement Planning, Campaign Messaging Brief, Content Development'],
   ]))}
@@ -1806,7 +1877,7 @@ const sections = [
     <summary><span class="qsection-title">Solo Prompts</span></summary>
     <div class="qsection-body">
       <p>Each of the following works as a standalone entry point, with no earlier output required:</p>
-      ${ul([['🔍','Strategic Research Accelerator'],['👥','Stakeholder &amp; Persona Analysis'],['🎯','Competitive Research'],['💎','Market Value Architecture']])}
+      ${ul([['🔍','Strategic Research Accelerator'],['👥','Stakeholder &amp; Persona Analysis'],['🎯','Competitive Profile'],['💎','Market Value Architecture']])}
       <p>None of these four depend on any other step's output, which is exactly why they work alone. Run one, and you'll have something finished, not something half-built.</p>
 
       ${calloutCollapsible('example','📋','Example','You just need a fast competitive read before a leadership meeting. Open a new chat and run the Competitive Research prompt on its own, nothing else required. You\'ll walk away with a real, usable competitive table, not a partial answer waiting on other steps.')}
@@ -1845,11 +1916,11 @@ Review this content and retain it as the foundational insights so it can inform 
           const flow=[
             {num:1,title:'Strategic Research Accelerator', layer:'Market Intelligence'},
             {num:5,title:'Market Value Architecture', layer:'Market Value'},
-            {num:6,title:'Competitive Research', layer:'Competitive Intelligence'},
-            {num:8,title:'KVPs &amp; Positioning', layer:'KVPs &amp; Positioning'},
-            {num:11,title:'Campaign Theme Development', layer:'Campaign Execution'},
-            {num:12,title:'Campaign Architecture', layer:'Campaign Execution'},
-            {num:15,title:'Content Development', layer:'Campaign Execution'},
+            {num:6,title:'Competitive Profile', layer:'Competitive Intelligence'},
+            {num:9,title:'KVPs &amp; Positioning', layer:'KVPs &amp; Positioning'},
+            {num:10,title:'Campaign Theme Development', layer:'Campaign Execution'},
+            {num:11,title:'Campaign Architecture', layer:'Campaign Execution'},
+            {num:14,title:'Content Development', layer:'Campaign Execution'},
           ];
           const chips = flow.map((s,i)=>{
             const chip = `<div class="qchip"><span class="qnum">${s.num}</span><span class="qtitle">${s.title}</span></div>`;
@@ -2076,48 +2147,77 @@ Present this as a short synthesis that includes scannable, bulleted lists where 
 `},
 
 /* ---------------- STEP 6 ---------------- */
-{id:'step5', layer:'Competitive Intelligence', num:6, title:'Competitive Research', html: `
+{id:'step5', layer:'Competitive Intelligence', num:6, title:'Competitive Profile', html: `
   <h2 class="step-kicker">Step 6 · Competitive Intelligence</h2>
-  <h1 class="step-title">Competitive Research</h1>
-  <p class="lede">You can't differentiate against a competitive landscape you haven't mapped. This step builds a clear picture of who else your buyers are considering, how those vendors position themselves, and where the real openings are — the foundation everything from positioning to sales objection-handling will draw from.</p>
+  <h1 class="step-title">Competitive Profile</h1>
+  <p class="lede">You can't differentiate against a competitive landscape you haven't mapped. This step builds a company-level picture of who else your buyers are considering — how those organizations are positioned, where their messaging is moving, and where the real strategic openings are.</p>
 
   ${promptCard('Competitive Landscape Deep Research', PX_COMPETITIVE_LANDSCAPE_DEEP_RESEARCH, true, PX_OVERRIDE_COMPETITIVE_LANDSCAPE)}
 
   ${promptCard('Competitor Messaging Analysis', PX_COMPETITOR_MESSAGING_ANALYSIS)}
+
+  ${promptCard('Company-Level SWOT Analysis', PX_SWOT_ANALYSIS)}
 
   ${promptCard('Competitive Gap Identification', PX_COMPETITIVE_GAP_IDENTIFICATION)}
 
   ${promptCard('Competitive Differentiation', PX_COMPETITIVE_DIFFERENTIATION)}
 
   ${exampleTable(['Competitor','How They Compare','Where [Product] Differentiates'],[
-    ['Competitor A','Strong national footprint, limited real‑time analytics','Automated lien waiver tracking cuts manual compliance review time roughly in half'],
-    ['Competitor B','Broad subcontractor network integrations, dated interface','Modern, field‑friendly interface shortens new‑hire ramp time'],
+    ['Competitor A','Strong national footprint, limited real-time analytics','Automated lien waiver tracking cuts manual compliance review time roughly in half'],
+    ['Competitor B','Broad subcontractor network integrations, dated interface','Modern, field-friendly interface shortens new-hire ramp time'],
   ], 'Your AI-generated table will include a row like this for each competitor established in your research.')}
 
   ${calloutHTML('validate','✅','Validate Before Moving On','Confirm competitor positioning, claims, and capabilities are current — vendor messaging changes often, and outdated competitive intel leads to weak differentiation later.')}
 
   ${promptCard('Memory Logging', `Summarize and retain the following insights:
-- key competitors in the market
-- dominant positioning narratives
-- capability gaps across vendors
-- competitive differentiators identified above
+- Key competitors in the market
+- Dominant positioning narratives
+- Capability gaps across vendors
+- Competitive differentiators identified above
 
 These insights will inform positioning and campaign messaging.`)}
 
-  ${workbookSaveBox('step5','Competitive Research')}
+  ${workbookSaveBox('step5','Competitive Profile')}
 
-  ${calloutCollapsible('strengthen','💬','Pro Tip','Run the SWOT prompt below separately for each individual competitor rather than all at once — this keeps the comparison focused and avoids blending multiple companies\' strengths and weaknesses together. Repeat the prompt for each competitor, swapping in the competitor name each time.')}
+  ${calloutCollapsible('strengthen','💬','Pro Tip','Run the SWOT prompt separately for each individual competitor rather than all at once — this keeps the comparison focused and avoids blending multiple companies\' strengths and weaknesses together. Repeat for each competitor, swapping in the competitor name each time.')}
+`},
 
-  ${promptCard('SWOT Analysis', PX_SWOT_ANALYSIS)}
+/* ---------------- STEP 7 (Product Comparison) ---------------- */
+{id:'stepPC', layer:'Competitive Intelligence', num:7, title:'Product Comparison', html: `
+  <h2 class="step-kicker">Step 7 · Competitive Intelligence</h2>
+  <h1 class="step-title">Product Comparison</h1>
+  <p class="lede">A product-level comparison sequence that goes deeper than company-level research. Use this when you need battle card–ready outputs — a specific product matchup, pricing intelligence, discovery questions, value-driven statements, and objection response scripts ready to hand to sales.</p>
 
-  ${promptCard('Memory Logging', `Summarize and retain the SWOT findings from this step, including any named competitor callouts. These insights will inform positioning and campaign messaging alongside the competitive research above.`)}
+  ${promptCard('Product Landscape Overview', PX_PRODUCT_LANDSCAPE_OVERVIEW, true)}
 
-  ${workbookSaveBox('step5','Competitive Research')}
+  ${promptCard('Feature and Capability Comparison', PX_FEATURE_CAPABILITY_COMPARISON, true)}
+
+  ${promptCard('Pricing and Packaging Intelligence', PX_PRICING_PACKAGING_INTELLIGENCE)}
+
+  ${promptCard('Why We Win / Why We Lose', PX_WHY_WIN_LOSE, true)}
+
+  ${promptCard('Product-Level SWOT Analysis', PX_PRODUCT_SWOT)}
+
+  ${promptCard('Trap-Setting and Discovery Questions', PX_TRAP_SETTING_QUESTIONS)}
+
+  ${promptCard('Value-Driven Statements', PX_VALUE_DRIVEN_STATEMENTS, true)}
+
+  ${promptCard('Objection Scenarios and Response Scripts', PX_OBJECTION_SCENARIOS, true)}
+
+  ${promptCard('Memory Logging', `Summarize and retain the following product comparison insights:
+- Specific product being compared and key capability differences
+- Why we win and why we lose in this matchup
+- Top value-driven statements
+- Key objections and approved response scripts
+
+These insights will inform positioning, sales enablement, and campaign messaging.`)}
+
+  ${workbookSaveBox('stepPC','Product Comparison')}
 `},
 
 /* ---------------- STEP 7 ---------------- */
-{id:'step6', layer:'Competitive Intelligence', num:7, title:'Strategic Synthesis', html: `
-  <h2 class="step-kicker">Step 7 · Competitive Intelligence</h2>
+{id:'step6', layer:'Competitive Intelligence', num:8, title:'Strategic Synthesis', html: `
+  <h2 class="step-kicker">Step 8 · Competitive Intelligence</h2>
   <h1 class="step-title">Strategic Synthesis</h1>
   <p class="lede">Before moving from research into product value and positioning, pause and force a synthesis. Everything so far has been gathering information — this step turns it into a point of view. What you produce here becomes the north star that product value, positioning, messaging, and the campaign theme should all trace back to.</p>
 
@@ -2138,8 +2238,8 @@ Present this as a table with two columns: Category, Summary.`, true)}
 `},
 
 /* ---------------- STEP 8 ---------------- */
-{id:'step8', layer:'KVPs &amp; Positioning', num:8, title:'KVPs &amp; Positioning', html: `
-  <h2 class="step-kicker">Step 8 · KVPs &amp; Positioning</h2>
+{id:'step8', layer:'KVPs &amp; Positioning', num:9, title:'KVPs &amp; Positioning', html: `
+  <h2 class="step-kicker">Step 9 · KVPs &amp; Positioning</h2>
   <h1 class="step-title">KVPs &amp; Positioning</h1>
   <p class="lede">Positioning is the sentence everything else in this campaign has to agree with. This step narrows your differentiators to the strongest ones, translates them into buyer-grounded key value propositions, then locks a defensible positioning statement that sales and content will both be measured against.</p>
 
@@ -2321,8 +2421,8 @@ Format this so it can be shared with stakeholders outside this conversation, suc
     ${promptRollout('Strategic Research Accelerator', 'Deep Strategic Research', promptCard('Deep Strategic Research', PX_DEEP_STRATEGIC_RESEARCH, true))}
     ${promptRollout('Market Value Architecture', 'Establish Company Context', promptCard('Establish Company Context', PX_ESTABLISH_COMPANY_CONTEXT, true))}
     ${promptRollout('Market Value Architecture', 'Establish Product Context', promptCard('Establish Product Context', PX_ESTABLISH_PRODUCT_CONTEXT, true))}
-    ${promptRollout('Competitive Research', 'Competitive Landscape Deep Research', promptCard('Competitive Landscape Deep Research', PX_COMPETITIVE_LANDSCAPE_DEEP_RESEARCH, true, PX_OVERRIDE_COMPETITIVE_LANDSCAPE))}
-    ${promptRollout('Competitive Research', 'Competitor Messaging Analysis', promptCard('Competitor Messaging Analysis', PX_COMPETITOR_MESSAGING_ANALYSIS))}
+    ${promptRollout('Competitive Profile', 'Competitive Landscape Deep Research', promptCard('Competitive Landscape Deep Research', PX_COMPETITIVE_LANDSCAPE_DEEP_RESEARCH, true, PX_OVERRIDE_COMPETITIVE_LANDSCAPE))}
+    ${promptRollout('Competitive Profile', 'Competitor Messaging Analysis', promptCard('Competitor Messaging Analysis', PX_COMPETITOR_MESSAGING_ANALYSIS))}
     ${promptRollout('Market Value Architecture', 'Feature → Outcome', promptCard('Feature → Outcome', PX_FEATURE_OUTCOME, true))}
     ${promptRollout('Market Value Architecture', 'Organizational Impact', promptCard('Organizational Impact', PX_FINANCIAL_IMPACT))}
     ${promptRollout('Market Value Architecture', 'Competitive Differentiation', promptCard('Competitive Differentiation', PX_COMPETITIVE_DIFFERENTIATION))}
@@ -2342,9 +2442,9 @@ Format this so it can be shared with stakeholders outside this conversation, suc
     ${promptRollout('Market & Industry Research', 'Deep Industry Research', promptCard('Deep Industry Research', PX_DEEP_INDUSTRY_RESEARCH))}
     ${promptRollout('Market Value Architecture', 'Establish Company Context', promptCard('Establish Company Context', PX_ESTABLISH_COMPANY_CONTEXT, true))}
     ${promptRollout('Market Value Architecture', 'Establish Product Context', promptCard('Establish Product Context', PX_ESTABLISH_PRODUCT_CONTEXT, true))}
-    ${promptRollout('Competitive Research', 'Competitive Landscape Deep Research', promptCard('Competitive Landscape Deep Research', PX_COMPETITIVE_LANDSCAPE_DEEP_RESEARCH, true, PX_OVERRIDE_COMPETITIVE_LANDSCAPE))}
-    ${promptRollout('Competitive Research', 'Competitor Messaging Analysis', promptCard('Competitor Messaging Analysis', PX_COMPETITOR_MESSAGING_ANALYSIS))}
-    ${promptRollout('Competitive Research', 'Competitive Gap Identification', promptCard('Competitive Gap Identification', PX_COMPETITIVE_GAP_IDENTIFICATION))}
+    ${promptRollout('Competitive Profile', 'Competitive Landscape Deep Research', promptCard('Competitive Landscape Deep Research', PX_COMPETITIVE_LANDSCAPE_DEEP_RESEARCH, true, PX_OVERRIDE_COMPETITIVE_LANDSCAPE))}
+    ${promptRollout('Competitive Profile', 'Competitor Messaging Analysis', promptCard('Competitor Messaging Analysis', PX_COMPETITOR_MESSAGING_ANALYSIS))}
+    ${promptRollout('Competitive Profile', 'Competitive Gap Identification', promptCard('Competitive Gap Identification', PX_COMPETITIVE_GAP_IDENTIFICATION))}
     ${promptRollout('Market Value Architecture', 'Feature → Outcome', promptCard('Feature → Outcome', PX_FEATURE_OUTCOME, true))}
     ${promptRollout('Market Value Architecture', 'Organizational Impact', promptCard('Organizational Impact', PX_FINANCIAL_IMPACT))}
     ${promptRollout('Market Value Architecture', 'Competitive Differentiation', promptCard('Competitive Differentiation', PX_COMPETITIVE_DIFFERENTIATION))}
@@ -2362,10 +2462,10 @@ Format this so it can be shared with stakeholders outside this conversation, suc
     <p class="content-type-intro">Built entirely around your existing competitive and product value work, no fresh market research needed for this one.</p>
     ${promptRollout('Market Value Architecture', 'Establish Company Context', promptCard('Establish Company Context', PX_ESTABLISH_COMPANY_CONTEXT, true))}
     ${promptRollout('Market Value Architecture', 'Establish Product Context', promptCard('Establish Product Context', PX_ESTABLISH_PRODUCT_CONTEXT, true))}
-    ${promptRollout('Competitive Research', 'Competitive Landscape Deep Research', promptCard('Competitive Landscape Deep Research', PX_COMPETITIVE_LANDSCAPE_DEEP_RESEARCH, true, PX_OVERRIDE_COMPETITIVE_LANDSCAPE))}
-    ${promptRollout('Competitive Research', 'Competitor Messaging Analysis', promptCard('Competitor Messaging Analysis', PX_COMPETITOR_MESSAGING_ANALYSIS))}
-    ${promptRollout('Competitive Research', 'Competitive Gap Identification', promptCard('Competitive Gap Identification', PX_COMPETITIVE_GAP_IDENTIFICATION))}
-    ${promptRollout('Competitive Research', 'SWOT Analysis', promptCard('SWOT Analysis', PX_SWOT_ANALYSIS))}
+    ${promptRollout('Competitive Profile', 'Competitive Landscape Deep Research', promptCard('Competitive Landscape Deep Research', PX_COMPETITIVE_LANDSCAPE_DEEP_RESEARCH, true, PX_OVERRIDE_COMPETITIVE_LANDSCAPE))}
+    ${promptRollout('Competitive Profile', 'Competitor Messaging Analysis', promptCard('Competitor Messaging Analysis', PX_COMPETITOR_MESSAGING_ANALYSIS))}
+    ${promptRollout('Competitive Profile', 'Competitive Gap Identification', promptCard('Competitive Gap Identification', PX_COMPETITIVE_GAP_IDENTIFICATION))}
+    ${promptRollout('Competitive Profile', 'SWOT Analysis', promptCard('SWOT Analysis', PX_SWOT_ANALYSIS))}
     ${promptRollout('Market Value Architecture', 'Feature → Outcome', promptCard('Feature → Outcome', PX_FEATURE_OUTCOME, true))}
     ${promptRollout('Market Value Architecture', 'Organizational Impact', promptCard('Organizational Impact', PX_FINANCIAL_IMPACT))}
     ${promptRollout('Market Value Architecture', 'Competitive Differentiation', promptCard('Competitive Differentiation', PX_COMPETITIVE_DIFFERENTIATION))}
@@ -2408,10 +2508,10 @@ Format this so it can be shared with stakeholders outside this conversation, suc
     <p class="content-type-intro">Internal, sales-facing, and built entirely on your competitive work, no narrative anchor needed here since a battle card is competitive framing by definition.</p>
     ${promptRollout('Market Value Architecture', 'Establish Company Context', promptCard('Establish Company Context', PX_ESTABLISH_COMPANY_CONTEXT, true))}
     ${promptRollout('Market Value Architecture', 'Establish Product Context', promptCard('Establish Product Context', PX_ESTABLISH_PRODUCT_CONTEXT, true))}
-    ${promptRollout('Competitive Research', 'Competitive Landscape Deep Research', promptCard('Competitive Landscape Deep Research', PX_COMPETITIVE_LANDSCAPE_DEEP_RESEARCH, true, PX_OVERRIDE_COMPETITIVE_LANDSCAPE))}
-    ${promptRollout('Competitive Research', 'Competitor Messaging Analysis', promptCard('Competitor Messaging Analysis', PX_COMPETITOR_MESSAGING_ANALYSIS))}
-    ${promptRollout('Competitive Research', 'Competitive Gap Identification', promptCard('Competitive Gap Identification', PX_COMPETITIVE_GAP_IDENTIFICATION))}
-    ${promptRollout('Competitive Research', 'SWOT Analysis', promptCard('SWOT Analysis', PX_SWOT_ANALYSIS))}
+    ${promptRollout('Competitive Profile', 'Competitive Landscape Deep Research', promptCard('Competitive Landscape Deep Research', PX_COMPETITIVE_LANDSCAPE_DEEP_RESEARCH, true, PX_OVERRIDE_COMPETITIVE_LANDSCAPE))}
+    ${promptRollout('Competitive Profile', 'Competitor Messaging Analysis', promptCard('Competitor Messaging Analysis', PX_COMPETITOR_MESSAGING_ANALYSIS))}
+    ${promptRollout('Competitive Profile', 'Competitive Gap Identification', promptCard('Competitive Gap Identification', PX_COMPETITIVE_GAP_IDENTIFICATION))}
+    ${promptRollout('Competitive Profile', 'SWOT Analysis', promptCard('SWOT Analysis', PX_SWOT_ANALYSIS))}
     ${promptRollout('Market Value Architecture', 'Feature → Outcome', promptCard('Feature → Outcome', PX_FEATURE_OUTCOME, true))}
     ${promptRollout('Market Value Architecture', 'Organizational Impact', promptCard('Organizational Impact', PX_FINANCIAL_IMPACT))}
     ${promptRollout('Market Value Architecture', 'Competitive Differentiation', promptCard('Competitive Differentiation', PX_COMPETITIVE_DIFFERENTIATION))}
@@ -2435,10 +2535,10 @@ Format this so it can be shared with stakeholders outside this conversation, suc
     ${promptRollout('Market Value Architecture', 'Establish Product Context', promptCard('Establish Product Context', PX_ESTABLISH_PRODUCT_CONTEXT, true))}
     ${promptRollout('Stakeholder & Persona Analysis', 'Stakeholder Identification', promptCard('Stakeholder Identification', PX_STAKEHOLDER_IDENTIFICATION, true))}
     ${promptRollout('Stakeholder & Persona Analysis', 'Persona Pressure Analysis', promptCard('Persona Pressure Analysis', PX_PERSONA_PRESSURE_ANALYSIS))}
-    ${promptRollout('Competitive Research', 'Competitive Landscape Deep Research', promptCard('Competitive Landscape Deep Research', PX_COMPETITIVE_LANDSCAPE_DEEP_RESEARCH, true, PX_OVERRIDE_COMPETITIVE_LANDSCAPE))}
-    ${promptRollout('Competitive Research', 'Competitor Messaging Analysis', promptCard('Competitor Messaging Analysis', PX_COMPETITOR_MESSAGING_ANALYSIS))}
-    ${promptRollout('Competitive Research', 'Competitive Gap Identification', promptCard('Competitive Gap Identification', PX_COMPETITIVE_GAP_IDENTIFICATION))}
-    ${promptRollout('Competitive Research', 'SWOT Analysis', promptCard('SWOT Analysis', PX_SWOT_ANALYSIS))}
+    ${promptRollout('Competitive Profile', 'Competitive Landscape Deep Research', promptCard('Competitive Landscape Deep Research', PX_COMPETITIVE_LANDSCAPE_DEEP_RESEARCH, true, PX_OVERRIDE_COMPETITIVE_LANDSCAPE))}
+    ${promptRollout('Competitive Profile', 'Competitor Messaging Analysis', promptCard('Competitor Messaging Analysis', PX_COMPETITOR_MESSAGING_ANALYSIS))}
+    ${promptRollout('Competitive Profile', 'Competitive Gap Identification', promptCard('Competitive Gap Identification', PX_COMPETITIVE_GAP_IDENTIFICATION))}
+    ${promptRollout('Competitive Profile', 'SWOT Analysis', promptCard('SWOT Analysis', PX_SWOT_ANALYSIS))}
     ${promptRollout('Market Value Architecture', 'Feature → Outcome', promptCard('Feature → Outcome', PX_FEATURE_OUTCOME, true))}
     ${promptRollout('Market Value Architecture', 'Organizational Impact', promptCard('Organizational Impact', PX_FINANCIAL_IMPACT))}
     ${promptRollout('Market Value Architecture', 'Competitive Differentiation', promptCard('Competitive Differentiation', PX_COMPETITIVE_DIFFERENTIATION))}
@@ -2601,12 +2701,24 @@ layerOrder.forEach(layer=>{
 
   const displayLayer = layer === 'Start Here' ? 'Get Started' : layer;
 
+  const SINGLE_CLICK_LAYERS = ['Workbooks', 'Campaign Initialization'];
+  const isSingleClick = SINGLE_CLICK_LAYERS.includes(layer);
+
   const label = document.createElement('div');
   label.className = 'layer-label';
-  label.innerHTML = `<span class="dot"></span><span>${displayLayer}</span><span class="layer-chevron">▼</span>`;
-  label.addEventListener('click', ()=>{
-    group.classList.toggle('expanded');
-  });
+  label.innerHTML = `<span class="dot"></span><span>${displayLayer}</span>${isSingleClick ? '' : '<span class="layer-chevron">▼</span>'}`;
+
+  if(isSingleClick){
+    const onlySection = sections.find(s=>s.layer===layer);
+    if(onlySection){
+      label.style.cursor = 'pointer';
+      label.addEventListener('click', ()=>showSection(onlySection.id));
+    }
+  } else {
+    label.addEventListener('click', ()=>{
+      group.classList.toggle('expanded');
+    });
+  }
   group.appendChild(label);
 
   const children = document.createElement('div');
@@ -2692,7 +2804,11 @@ function showSection(id){
   mainEl.scrollTo({top:0,behavior:'instant'});
   window.scrollTo({top:0,behavior:'instant'});
   closeMobileNav();
-  maybeShowIntro(id);
+  // only show intro modal if the user is past the cover
+  const cover = document.getElementById('cover');
+  if(!cover || cover.classList.contains('dismissed')){
+    maybeShowIntro(id);
+  }
 
   try { localStorage.setItem(LS_LAST, id); } catch(e){}
   visitedSet.add(id);
@@ -2859,6 +2975,9 @@ const cover = document.getElementById('cover');
 document.getElementById('coverEnter').addEventListener('click', ()=>{
   if(!AUTH_REQUIRED || currentUser){
     cover.classList.add('dismissed');
+    // now safe to show intro modal for whichever section is active
+    const activeBtn = document.querySelector('.nav-item.active');
+    if(activeBtn) maybeShowIntro(activeBtn.dataset.id);
   } else {
     openAuthModal();
   }
