@@ -520,6 +520,18 @@
     padding:13px 14px 13px 18px;
   }
   .intro-banner .intro-banner-body{padding:0;flex:1;}
+  .intro-banner-actions{display:flex;justify-content:flex-end;margin-top:10px;}
+  .intro-bar{display:flex;align-items:center;gap:8px;width:100%;margin:0 0 22px;padding:10px 16px;border-radius:10px;border:0.5px solid var(--rule);background:var(--paper-alt);font-family:'Inter',sans-serif;font-size:13px;font-weight:600;color:var(--ink-soft);cursor:pointer;text-align:left;transition:border-color .12s,color .12s;}
+  .intro-bar i{font-size:16px;color:var(--hotpink);}
+  .intro-bar-caret{margin-left:auto;}
+  .intro-bar:hover{border-color:var(--hotpink);color:var(--hotpink);}
+  .intro-choice{display:flex;flex-direction:column;gap:8px;}
+  .intro-choice button,.intro-setting button{display:block;width:100%;text-align:left;font-family:'Inter',sans-serif;font-size:13px;font-weight:600;padding:11px 14px;border-radius:9px;border:1px solid var(--rule);background:#fff;color:var(--ink);cursor:pointer;transition:border-color .12s,background .12s;}
+  .intro-choice button:hover,.intro-setting button:hover{border-color:var(--hotpink);}
+  .intro-choice small,.intro-setting small{display:block;font-weight:400;font-size:12px;color:var(--ink-faint);margin-top:2px;}
+  .intro-setting{display:flex;flex-direction:column;gap:8px;max-width:540px;margin:12px 0 8px;}
+  .intro-setting button.on{border-color:var(--hotpink);background:#FDF3F8;}
+  .intro-setting-note{font-size:13px;color:var(--ink-faint);}
   .intro-banner-head{
     padding:12px 18px;
     border-bottom:0.5px solid var(--rule);
@@ -2014,9 +2026,6 @@ Retain these details, along with everything generated at each step going forward
   <h1 class="step-title">Industry Research</h1>
   <p class="lede">This is where the campaign gets its spine. Before you say anything about your product, you need a sharp read on the market forces already pressuring your buyers — the trends, disruptions, and pressures that make your solution relevant right now. Skipping this step is how campaigns end up sounding generic; running it first is what makes everything downstream feel timely and specific.</p>
 
-  <h3 class="block-title">Why This Step Matters</h3>
-  ${ul([['🧭','Sets the market context every later step will build on'],['🔗','Grounds your differentiation claims in real industry dynamics, not assumptions'],['⏱️','Surfaces the "why now" urgency your positioning will lean on'],['🗣️','Gives you a credible, sourced answer when stakeholders ask what\'s driving this campaign']])}
-
   ${calloutCollapsible('example','📋','Example','Conduct deep research on the construction industry as a whole, delivered as concise findings. Focus on labor shortages and rising material costs and other trends currently affecting organizations in this space and how they impact project and field management. Close with the three to five industry shifts most likely to affect commercial general contractors organizations.')}
 
   ${promptCard('Deep Industry Research', PX_DEEP_STRATEGIC_RESEARCH, true)}
@@ -2584,16 +2593,12 @@ Format this so it can be shared with stakeholders outside this conversation, suc
   </details>
 `},
 
-{id:'overview', layer:'Help Center', title:'Overview', kicker:null, isHero:true, html: `
-  <div class="hero">
-    <div class="eyebrow">A Structured System for Building Research‑Driven Enterprise Campaigns</div>
-    <h1>Integrated Marketing Campaign Framework</h1>
-    <p class="sub">Smart Kind OS carries one conversation from first research question to finished content. Because your campaign deserves a <span class="brand-accent">Smart Kind</span> of strategy.</p>
-  </div>
+{id:'overview', layer:'Help Center', title:'Overview', kicker:'About Smart Kind', html: `
+  <h2 class="step-kicker">About Smart Kind</h2>
+  <h1 class="step-title">Overview</h1>
+  <p class="lede">Smart Kind OS is the strategic framework for AI-collaborative marketing. Its prompts are shaped by AI model guidance, and its six strategic layers are grounded in real marketing methodology. Pair it with the AI model of your choice, and you walk away knowing exactly what makes you different, and with a campaign already built to prove it.</p>
 
-  <p>Welcome! You're about to take a single AI conversation from a blank page to a fully structured go‑to‑market campaign. Each step builds on the one before it, so by the time you reach the final prompt, you won't just have content — you'll have a campaign grounded in real research and defensible positioning, ready to put in front of your team.</p>
-
-  <h3 class="block-title">Campaign Development Framework</h3>
+  <h3 class="block-title">The Six Strategic Layers</h3>
   ${tableWrap(table(['Strategic Layer','Key Steps'],[
     [layerTag('Market Intelligence','ti-search'),'Industry Research, Market &amp; Segment Research'],
     [layerTag('Targeting Strategy','ti-users'),'Stakeholder &amp; Persona Analysis, Trigger &amp; Economic Value'],
@@ -2607,7 +2612,7 @@ Format this so it can be shared with stakeholders outside this conversation, suc
 {id:'howto', layer:'Help Center', title:'How to Use Smart Kind', kicker:'Orientation', html: `
   <h2 class="step-kicker">Orientation</h2>
   <h1 class="step-title">How to Use Smart Kind</h1>
-  <p class="intro-italic">Everything here is designed to run within a single AI conversation, so insights generated earlier can inform later prompts. Each section contains prompts that should be copied and pasted into the AI chat as you progress.</p>
+  <p class="lede">Smart Kind runs inside one AI conversation, so what you learn early shapes everything that follows. Copy each prompt into your chat, review what comes back, and carry the strongest findings forward.</p>
 
   <h3 class="block-title">Who This Is Built For</h3>
   <p>Smart Kind OS sharpens judgment — it doesn't replace it. The AI can synthesize research and draft strong first passes quickly, but knowing whether a differentiator is real, a positioning statement is defensible, or a strategic insight actually holds up still takes marketing experience. This is built for practicing product marketers; if you're newer to the discipline, treat every output as a draft to pressure‑test with a mentor or teammate, not a finished deliverable.</p>
@@ -2632,8 +2637,6 @@ Format this so it can be shared with stakeholders outside this conversation, suc
   <h3 class="block-title">If a Conversation Runs Long</h3>
   <p>If a single conversation ever gets too long or hits a context limit, see <strong>Continuing in a New Chat</strong> in the sidebar for a prompt that summarizes your progress into a portable brief you can carry into a fresh chat.</p>
 
-  <h3 class="block-title">What This Framework Doesn't Cover</h3>
-  <p>Budget, timeline, and resourcing (RACI) live outside this framework. Once you\'ve worked through the steps ahead, use the outputs from this chat — your Campaign Messaging Brief and supporting research — to develop the materials that socialize your campaign with other teams, such as a stakeholder deck or campaign kickoff doc.</p>
 `},
 
 {id:'legend', layer:'Help Center', title:'Legend', kicker:'Reading This Framework', html: `
@@ -2651,8 +2654,20 @@ Format this so it can be shared with stakeholders outside this conversation, suc
   ${promptCard('Try It', `This step usually asks about [industry]. Click a chip below, then keep typing to add your own detail.`)}
 
   <h3 class="block-title">⚡ Core Prompt Badges ⚡</h3>
-  <p>Some prompts carry a <span class="core-badge">⚡ Core Prompt</span> badge — these are the roughly 17 prompts that make up a minimal path from research to content: one load‑bearing prompt per layer, enough to produce a complete campaign package without running every prompt in every step. If you're short on time, just getting started, or working a lower‑stakes campaign, you can follow just the Core Prompts end to end and still walk away with real research, positioning, a theme, an architecture, a measurement plan, and content. Come back and run the rest whenever you want more depth.</p>
-  <p>There's also a <strong>⚡ Core Prompts only</strong> toggle at the top of the sidebar. Switch it on and every Example, Pro Tip, and non‑core prompt hides itself across the whole framework, leaving just the essential prompts and Validate checkpoints visible on whatever step you're viewing. Switch it off anytime to bring everything back — nothing gets deleted, it's just out of view.</p>
+  <p>Some prompts carry a <span class="core-badge">⚡ Core Prompt</span> badge. Together they make up the fastest path through Smart Kind, from research to content. If you're short on time, just getting started, or working a lower-stakes campaign, you can follow just the Core Prompts end to end and still walk away with real research, positioning, a theme, an architecture, a measurement plan, and content. The prompts without a badge add depth and grounding, so expect thinner output when you skip them. Come back and run the rest whenever you want more depth.</p>
+  <p>There's also a <strong>Core Prompts</strong> checkbox at the top of the menu, with a matching tile on your dashboard. Check it and every Example, Pro Tip, and non-core prompt hides itself across the whole framework, leaving just the Core Prompts and Validate checkpoints on whatever step you're viewing. Uncheck it anytime to bring everything back. Nothing is deleted. It's just out of view.</p>
+
+  <h3 class="block-title">Memory Logging</h3>
+  <p>Many steps end with a Memory Logging prompt. It asks your AI model to recap the key findings from that step so they carry forward through the rest of your conversation. It works inside your current AI chat, and nothing is saved to Smart Kind. If your conversation gets too long, use Continuing in a New Chat to summarize your progress and pick up in a fresh chat.</p>
+
+  <h3 class="block-title">Step Intros</h3>
+  <p>The first time you open a step, a short intro explains what it does. Pin it to keep it at the top of the page, or click Got It to close it. Choose how intros appear:</p>
+  <div class="intro-setting" id="introSetting">
+    <button type="button" data-mode="popup">Popups<small>An intro pops up the first time you open each step.</small></button>
+    <button type="button" data-mode="banner">Banners<small>Intros wait in a slim bar at the top of each step. Click to read.</small></button>
+    <button type="button" data-mode="off">Hidden<small>No intros on steps you haven't opened yet.</small></button>
+  </div>
+  <p class="intro-setting-note">Changes apply to steps you haven't opened yet. Pinned intros always stay.</p>
 
   <h3 class="block-title">Callout Boxes</h3>
   <p>You'll run into three types of callout boxes as you work through Smart Kind OS:</p>
@@ -2835,7 +2850,7 @@ function buildWelcomeSlide(slideNum){
         <div style="background:#F7F7F8;border-radius:10px;padding:10px;border:0.5px solid #E5E4EA;"><i class="ti ti-square-check" style="font-size:17px;color:#E4127D;" aria-hidden="true"></i><p style="font-size:11.5px;font-weight:500;color:#17171A;margin:6px 0 2px;line-height:1.3;">Core Prompts</p><p style="font-size:10.5px;color:#555560;margin:0;line-height:1.4;">Hide examples and pro tips to see only the essentials.</p></div>
         <div style="background:#F7F7F8;border-radius:10px;padding:10px;border:0.5px solid #E5E4EA;"><i class="ti ti-player-play" style="font-size:17px;color:#7C5CB8;" aria-hidden="true"></i><p style="font-size:11.5px;font-weight:500;color:#17171A;margin:6px 0 2px;line-height:1.3;">Solo Prompts</p><p style="font-size:10.5px;color:#555560;margin:0;line-height:1.4;">Run one step on its own. No earlier steps required.</p></div>
         <div style="background:#F7F7F8;border-radius:10px;padding:10px;border:0.5px solid #E5E4EA;"><i class="ti ti-message-forward" style="font-size:17px;color:#A9A7B6;" aria-hidden="true"></i><p style="font-size:11.5px;font-weight:500;color:#17171A;margin:6px 0 2px;line-height:1.3;">Continuing in a New Chat</p><p style="font-size:10.5px;color:#555560;margin:0;line-height:1.4;">Carry your progress into a fresh AI conversation.</p></div>
-        <div style="background:#F7F7F8;border-radius:10px;padding:10px;border:0.5px solid #E5E4EA;"><i class="ti ti-bookmark" style="font-size:17px;color:#E4127D;" aria-hidden="true"></i><p style="font-size:11.5px;font-weight:500;color:#17171A;margin:6px 0 2px;line-height:1.3;">Workbooks</p><p style="font-size:10.5px;color:#555560;margin:0;line-height:1.4;">Save prompts and outputs as you go.</p></div>
+        <div style="background:#F7F7F8;border-radius:10px;padding:10px;border:0.5px solid #E5E4EA;"><i class="ti ti-bookmark" style="font-size:17px;color:#E4127D;" aria-hidden="true"></i><p style="font-size:11.5px;font-weight:500;color:#17171A;margin:6px 0 2px;line-height:1.3;">Workbooks</p><p style="font-size:10.5px;color:#555560;margin:0;line-height:1.4;">Save the prompts and outputs you want to keep.</p></div>
       </div>
     </div>
     <div style="padding:14px 28px;border-top:0.5px solid #E5E4EA;display:flex;align-items:center;justify-content:space-between;">
@@ -2970,20 +2985,71 @@ function setIntroPinned(set){
   try { localStorage.setItem(LS_INTRO_PINNED, JSON.stringify([...set])); } catch(e){}
 }
 
-// The step label and title always stay on the page. The intro paragraph lives only
-// in the first-visit popup, or in the small pinned banner if the user pins it.
+// The step label and title always stay on the page. The intro paragraph lives only in the
+// first-visit popup, in a pinned banner, or (banner mode) in a slim "About this step" bar.
 const NO_INTRO_POPUP = ['contactus'];
 const STRATEGIC_LAYERS = ['Market Intelligence','Targeting Strategy','Market Value','Competitive Intelligence','KVPs & Positioning','Campaign Execution'];
+const LS_INTRO_MODE  = 'campaignos_introMode';   // popup | banner | off
+const LS_INTRO_STATS = 'campaignos_introStats';  // closes in a row, total pins, question asked
+
+function getIntroMode(){ try { return localStorage.getItem(LS_INTRO_MODE) || 'popup'; } catch(e){ return 'popup'; } }
+function setIntroMode(m){ try { localStorage.setItem(LS_INTRO_MODE, m); } catch(e){} syncIntroSetting(); }
+function getIntroStats(){
+  try { return Object.assign({streak:0, pins:0, asked:false}, JSON.parse(localStorage.getItem(LS_INTRO_STATS) || '{}')); }
+  catch(e){ return {streak:0, pins:0, asked:false}; }
+}
+function setIntroStats(s){ try { localStorage.setItem(LS_INTRO_STATS, JSON.stringify(s)); } catch(e){} }
+// returns a trigger name when it's time to ask "Seeing a lot of these?"
+function recordIntroClose(){ const s = getIntroStats(); s.streak++; setIntroStats(s); return s.streak >= 2 ? 'closes' : null; }
+function recordIntroPin(){ const s = getIntroStats(); s.streak = 0; s.pins++; setIntroStats(s); return s.pins >= 3 ? 'pins' : null; }
+function shouldAskIntroQuestion(trigger){ return !!trigger && !getIntroStats().asked && getIntroMode() === 'popup'; }
 
 function markIntroClosed(stepId){
   const d = getIntroDismissed(); d.add(stepId); setIntroDismissed(d);
   const p = getIntroPinned(); if(p.delete(stepId)) setIntroPinned(p);
 }
+function markIntroPinned(stepId){
+  const p = getIntroPinned(); p.add(stepId); setIntroPinned(p);
+  const d = getIntroDismissed(); if(d.delete(stepId)) setIntroDismissed(d);
+}
+
+const INTRO_LOGO = `<div class="intro-modal-logo"><div class="intro-modal-logo-name">Smart<br>Kind OS</div><div class="intro-modal-logo-tag">Research. Position. Launch.</div></div>`;
+
+// "Seeing a lot of these?" asked once. Reuses an open popup when there is one.
+function openIntroQuestion(trigger, overlay){
+  const s = getIntroStats(); s.asked = true; setIntroStats(s);
+  if(!overlay){ overlay = document.createElement('div'); overlay.className = 'intro-overlay'; document.body.appendChild(overlay); }
+  const lead = trigger === 'pins'
+    ? 'Looks like you like keeping intros handy. Want them to stay on the page automatically?'
+    : 'Choose how step intros work from here on.';
+  const keep   = `<button type="button" data-choice="popup">Keep Showing Popups<small>An intro pops up the first time you open each step.</small></button>`;
+  const banner = `<button type="button" data-choice="banner">Show as Banners Instead<small>Intros wait in a slim bar at the top of each step. Click to read.</small></button>`;
+  const off    = `<button type="button" data-choice="off">Hide All Intros<small>No intros on steps you haven't opened yet. Pinned ones stay.</small></button>`;
+  const q = document.createElement('div');
+  q.className = 'intro-q-wrap';
+  q.innerHTML = `
+    <div class="intro-modal" role="dialog" aria-modal="true" aria-labelledby="iq-title">
+      <div class="intro-modal-head">${INTRO_LOGO}<div class="intro-modal-title" id="iq-title">Seeing a lot of these?</div></div>
+      <div class="intro-modal-body"><p>${lead} You can change this anytime in the Legend.</p>
+        <div class="intro-choice">${trigger === 'pins' ? banner + keep + off : keep + banner + off}</div>
+      </div>
+    </div>`;
+  overlay.replaceChildren(q.firstElementChild);
+  const finish = mode=>{
+    if(mode && mode !== getIntroMode()){ setIntroMode(mode); refreshVisibleIntro(); }
+    overlay.remove();
+    document.removeEventListener('keydown', onKey);
+  };
+  const onKey = e=>{ if(e.key === 'Escape') finish(null); };
+  document.addEventListener('keydown', onKey);
+  overlay.addEventListener('click', e=>{ if(e.target === overlay) finish(null); });
+  overlay.querySelectorAll('[data-choice]').forEach(b=>b.addEventListener('click', ()=>finish(b.dataset.choice)));
+}
 
 function buildIntroModal(sec, stepId){
-  const layer  = (sec.dataset.layer || '').replace(/&amp;/g,'&');
-  const title  = sec.querySelector('.step-title')?.textContent || '';
-  const lede   = sec.querySelector('.lede')?.innerHTML || '';
+  const layer = (sec.dataset.layer || '').replace(/&amp;/g,'&');
+  const title = sec.querySelector('.step-title')?.textContent || '';
+  const lede  = sec.querySelector('.lede')?.innerHTML || '';
   if(!lede) return null;
   const eyebrow = STRATEGIC_LAYERS.includes(layer) ? `Strategic Layer · ${layer}` : '';
 
@@ -2993,10 +3059,7 @@ function buildIntroModal(sec, stepId){
     <div class="intro-modal" role="dialog" aria-modal="true" aria-labelledby="imt-title">
       <button type="button" class="intro-modal-x" aria-label="Close">✕</button>
       <div class="intro-modal-head">
-        <div class="intro-modal-logo">
-          <div class="intro-modal-logo-name">Smart<br>Kind OS</div>
-          <div class="intro-modal-logo-tag">Research. Position. Launch.</div>
-        </div>
+        ${INTRO_LOGO}
         <div class="intro-modal-titles">
           <div class="intro-modal-kicker">${eyebrow}</div>
           <div class="intro-modal-title" id="imt-title">${title}</div>
@@ -3005,34 +3068,38 @@ function buildIntroModal(sec, stepId){
       <div class="intro-modal-body">
         <p>${lede}</p>
         <div class="intro-modal-actions">
-          <button class="intro-btn-dismiss">Don't show again</button>
-          <button class="intro-btn-pin">Pin to page</button>
+          <button type="button" class="intro-btn-dismiss">Got It</button>
+          <button type="button" class="intro-btn-pin">Pin to Page</button>
         </div>
       </div>
     </div>`;
 
-  const close = ()=>{
-    markIntroClosed(stepId);
-    overlay.remove();
-    document.removeEventListener('keydown', onKey);
-  };
-  const onKey = e=>{ if(e.key === 'Escape') close(); };
+  let done = false;
+  const onKey = e=>{ if(e.key === 'Escape') pin(); };
   document.addEventListener('keydown', onKey);
+  const wrapUp = trigger=>{
+    document.removeEventListener('keydown', onKey);
+    if(shouldAskIntroQuestion(trigger)) openIntroQuestion(trigger, overlay);
+    else overlay.remove();
+  };
+  function close(){ if(done) return; done = true; markIntroClosed(stepId); wrapUp(recordIntroClose()); }
+  function pin(){ if(done) return; done = true; markIntroPinned(stepId); renderPinnedBanner(sec, stepId, lede); wrapUp(recordIntroPin()); }
 
   overlay.querySelector('.intro-modal-x').addEventListener('click', close);
   overlay.querySelector('.intro-btn-dismiss').addEventListener('click', close);
-  overlay.addEventListener('click', e=>{ if(e.target === overlay) close(); });
-  overlay.querySelector('.intro-btn-pin').addEventListener('click', ()=>{
-    const p = getIntroPinned(); p.add(stepId); setIntroPinned(p);
-    overlay.remove();
-    document.removeEventListener('keydown', onKey);
-    renderPinnedBanner(sec, stepId, lede);
-  });
+  overlay.querySelector('.intro-btn-pin').addEventListener('click', pin);
+  overlay.addEventListener('click', e=>{ if(e.target === overlay) pin(); });   // clicking outside pins it
   return overlay;
 }
 
+function introAnchor(sec, el){
+  const titleEl = sec.querySelector('h1.step-title');
+  if(titleEl) titleEl.insertAdjacentElement('afterend', el);
+  else sec.prepend(el);
+}
+
 function renderPinnedBanner(sec, stepId, lede){
-  if(sec.querySelector('.intro-banner')) return;
+  sec.querySelectorAll('.intro-bar, .intro-banner').forEach(el=>el.remove());
   const banner = document.createElement('div');
   banner.className = 'intro-banner';
   banner.innerHTML = `<div class="intro-banner-body">${lede}</div>
@@ -3040,10 +3107,29 @@ function renderPinnedBanner(sec, stepId, lede){
   banner.querySelector('.intro-banner-x').addEventListener('click', ()=>{
     banner.remove();
     markIntroClosed(stepId);
+    const t = recordIntroClose();
+    if(shouldAskIntroQuestion(t)) openIntroQuestion(t);
   });
-  const titleEl = sec.querySelector('h1.step-title');
-  if(titleEl) titleEl.insertAdjacentElement('afterend', banner);
-  else sec.prepend(banner);
+  introAnchor(sec, banner);
+}
+
+// Banner mode: a slim "About this step" bar that expands to the full intro
+function renderIntroBar(sec, stepId, lede){
+  const bar = document.createElement('button');
+  bar.type = 'button';
+  bar.className = 'intro-bar';
+  bar.innerHTML = `<i class="ti ti-info-circle" aria-hidden="true"></i><span>About this step</span><span class="intro-bar-caret">▸</span>`;
+  bar.addEventListener('click', ()=>{
+    const exp = document.createElement('div');
+    exp.className = 'intro-banner';
+    exp.innerHTML = `<div class="intro-banner-body">${lede}
+        <div class="intro-banner-actions"><button type="button" class="intro-btn-pin">Pin to Page</button></div></div>
+      <button type="button" class="intro-banner-x" aria-label="Remove intro">✕</button>`;
+    exp.querySelector('.intro-banner-x').addEventListener('click', ()=>{ exp.remove(); markIntroClosed(stepId); recordIntroClose(); });
+    exp.querySelector('.intro-btn-pin').addEventListener('click', ()=>{ markIntroPinned(stepId); recordIntroPin(); renderPinnedBanner(sec, stepId, lede); });
+    bar.replaceWith(exp);
+  });
+  introAnchor(sec, bar);
 }
 
 function maybeShowIntro(id){
@@ -3052,14 +3138,34 @@ function maybeShowIntro(id){
   if(!sec) return;
   const lede = sec.querySelector('.lede');
   if(!lede) return;
-  if(getIntroPinned().has(id)){
-    renderPinnedBanner(sec, id, lede.innerHTML);
-    return;
-  }
+  if(sec.querySelector('.intro-banner, .intro-bar')) return;
+  if(getIntroPinned().has(id)){ renderPinnedBanner(sec, id, lede.innerHTML); return; }
   if(getIntroDismissed().has(id)) return;
+  const mode = getIntroMode();
+  if(mode === 'banner'){ renderIntroBar(sec, id, lede.innerHTML); return; }
+  if(mode === 'off') return;
   if(document.querySelector('.intro-overlay')) return;
   const modal = buildIntroModal(sec, id);
   if(modal) document.body.appendChild(modal);
+}
+
+// after the mode changes, update the step on screen if it hasn't been opened before
+function refreshVisibleIntro(){
+  const active = document.querySelector('.content-section.active');
+  if(!active) return;
+  const id = active.id.replace('sec-','');
+  active.querySelectorAll('.intro-bar').forEach(el=>el.remove());
+  if(!getIntroPinned().has(id) && !getIntroDismissed().has(id)) maybeShowIntro(id);
+}
+
+// Legend > Step Intros setting
+function syncIntroSetting(){
+  const mode = getIntroMode();
+  document.querySelectorAll('#introSetting [data-mode]').forEach(b=>{
+    const on = b.dataset.mode === mode;
+    b.classList.toggle('on', on);
+    b.setAttribute('aria-pressed', on ? 'true' : 'false');
+  });
 }
 
 // build nav grouped by layer, preserving order of first appearance
@@ -3175,6 +3281,12 @@ sections.forEach(s=>{
   mainEl.appendChild(sec);
 });
 
+// Legend > Step Intros setting buttons
+document.querySelectorAll('#introSetting [data-mode]').forEach(b=>{
+  b.addEventListener('click', ()=>setIntroMode(b.dataset.mode));
+});
+syncIntroSetting();
+
 function footerNav(id){
   if(id === 'home') return '';
   const idx = sections.findIndex(s=>s.id===id);
@@ -3258,7 +3370,7 @@ function renderHome(){
 
   const coreOn = document.body.classList.contains('core-only');
   const activeWb = (typeof workbooksCache !== 'undefined' && activeWorkbookId) ? workbooksCache.find(w=>w.id===activeWorkbookId) : null;
-  const wbDesc = activeWb ? `Active: ${escapeHtml(activeWb.name)}` : 'Save prompts and outputs as you go.';
+  const wbDesc = activeWb ? `Active: ${escapeHtml(activeWb.name)}` : 'Save the prompts and outputs you want to keep.';
 
   root.innerHTML = `
     <p class="db-kicker">Home</p>
