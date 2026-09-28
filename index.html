@@ -149,14 +149,14 @@
     font-size:10px;
     letter-spacing:.1em;
     text-transform:uppercase;
-    color:#8b8894;
+    color:#E4E2EA;
     padding:6px 24px;
     cursor:pointer;
     border-radius:9px;
     transition:color .12s ease;
     user-select:none;
   }
-  .layer-label:hover{color:#c4c1cc;}
+  .layer-label:hover{color:#FFFFFF;}
   .layer-label.active{color:#FBFAFD;}
   .layer-label.active i{opacity:1;}
   .layer-label .dot{
@@ -167,7 +167,7 @@
   .layer-label .layer-chevron{
     margin-left:auto;
     font-size:9px;
-    color:#6f6c78;
+    color:#E4E2EA;
     transition:transform .2s ease;
     flex-shrink:0;
   }
@@ -187,7 +187,7 @@
     text-align:left;
     background:none;
     border:none;
-    color:#c4c1cc;
+    color:#E4E2EA;
     font-family:'Inter',sans-serif;
     font-size:13.5px;
     padding:9px 14px;
@@ -319,6 +319,84 @@
   .db-help button:hover{color:var(--hotpink);}
   @media (max-width:760px){ .db-grid3{grid-template-columns:repeat(2,1fr);} .db-grid4{grid-template-columns:repeat(2,1fr);} .db-hero{flex-wrap:wrap;} }
 
+  /* ---- Help Center pages ---- */
+  .back-link{display:inline-block;background:none;border:none;padding:0;margin:0 0 16px;font-family:'Inter',sans-serif;font-size:13px;font-weight:600;color:#7C5CB8;cursor:pointer;}
+  .back-link:hover{text-decoration:underline;}
+  .hc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:6px;}
+  .nav-bottom .layer-label.active{color:var(--hotpink);}
+  /* FAQ */
+  .faq-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:6px;}
+  .faq-tile{position:relative;border:1px solid var(--rule);border-radius:14px;padding:16px 14px 14px;cursor:pointer;background:#fff;min-height:112px;font-family:'Inter',sans-serif;transition:border-color .15s,transform .15s,box-shadow .15s;}
+  .faq-tile:hover{transform:translateY(-1px);box-shadow:0 4px 14px rgba(228,18,125,.08);border-color:var(--hotpink);}
+  .faq-tile.on{border:2px solid var(--hotpink);padding:15px 13px 13px;background:#FDF3F8;}
+  .faq-num{position:absolute;top:12px;right:14px;font-family:'Fraunces',serif;font-size:22px;font-weight:700;color:#EEEDF2;}
+  .faq-tile.on .faq-num{color:#F6C9DF;}
+  .faq-q{font-size:13.5px;font-weight:600;line-height:1.35;margin:12px 0 0;color:var(--ink);}
+  .faq-ans{margin-top:14px;border-radius:14px;background:var(--paper-alt);border:0.5px solid var(--rule);padding:22px 24px;display:flex;gap:18px;align-items:flex-start;animation:faqUp .35s ease;}
+  .faq-ans > i{font-size:34px;flex-shrink:0;margin-top:2px;}
+  .faq-ans h3{font-family:'Fraunces',serif;font-size:20px;font-weight:600;margin:0 0 8px;color:var(--ink);}
+  .faq-ans p{font-size:15px;line-height:1.7;margin:0 0 10px;}
+  @keyframes faqUp{0%{opacity:0;transform:translateY(6px)}100%{opacity:1;transform:none}}
+  /* What's New */
+  .wn-hero{display:flex;gap:22px;align-items:center;border-radius:16px;padding:24px;background:linear-gradient(120deg,#FDF3F8,#F1EAFB 60%,#F4F4F6);border:1px solid #F0DDEA;margin:6px 0 24px;font-family:'Inter',sans-serif;}
+  .wn-tag{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#fff;background:var(--hotpink);border-radius:20px;padding:3px 10px;margin-bottom:10px;}
+  .wn-hero h3{font-family:'Fraunces',serif;font-size:23px;font-weight:600;margin:0 0 6px;color:var(--ink);}
+  .wn-hero p{font-size:14px;color:var(--ink-soft);margin:0;line-height:1.55;}
+  .wn-mini{width:210px;flex-shrink:0;background:#fff;border-radius:10px;border:1px solid var(--rule);box-shadow:0 8px 22px rgba(23,23,26,.10);overflow:hidden;display:flex;}
+  .wn-mini .s{width:46px;background:#17161A;padding:9px 6px;display:flex;flex-direction:column;gap:5px;}
+  .wn-mini .s span{height:4px;border-radius:2px;background:#4a4855;}
+  .wn-mini .s span.p{background:#E4127D;width:70%;}
+  .wn-mini .m{flex:1;padding:9px;}
+  .wn-mini .t{height:6px;width:60%;background:#17171A;border-radius:2px;margin-bottom:6px;}
+  .wn-mini .c{height:22px;border-radius:5px;background:#F7F7F8;border:1px solid #E5E4EA;margin-bottom:6px;}
+  .wn-mini .g{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;}
+  .wn-mini .g div{height:18px;border-radius:4px;border:1px solid #E5E4EA;}
+  .wn-filters{display:flex;gap:6px;margin-bottom:18px;flex-wrap:wrap;}
+  .wn-filters button{font-family:'Inter',sans-serif;font-size:12.5px;font-weight:600;padding:6px 14px;border-radius:20px;border:1px solid var(--rule);background:#fff;color:var(--ink-soft);cursor:pointer;}
+  .wn-filters button.on{border-color:var(--ink);background:var(--ink);color:#fff;}
+  .wn-tl{position:relative;padding-left:28px;font-family:'Inter',sans-serif;}
+  .wn-tl::before{content:'';position:absolute;left:8px;top:6px;bottom:6px;width:2px;background:linear-gradient(#E4127D,#7C5CB8,#C9C8D1);border-radius:2px;}
+  .wn-rel{position:relative;margin-bottom:20px;}
+  .wn-dot{position:absolute;left:-28px;top:2px;width:18px;height:18px;border-radius:50%;box-shadow:0 0 0 4px #fff;}
+  .wn-date{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-faint);margin:0 0 8px;}
+  .wn-item{display:flex;gap:12px;align-items:flex-start;border:1px solid var(--rule);border-radius:12px;padding:13px 15px;margin-bottom:8px;background:#fff;}
+  .wn-item > i{font-size:19px;flex-shrink:0;margin-top:1px;}
+  .wn-item b{font-size:14px;color:var(--ink);}
+  .wn-item p{font-size:13px;color:var(--ink-soft);margin:3px 0 0;line-height:1.5;}
+  .wn-pill{font-size:9.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;border-radius:10px;padding:2px 8px;margin-left:8px;vertical-align:middle;}
+  .wn-pill.new{background:#FCE1EC;color:#C0106A;}
+  .wn-pill.imp{background:#F1EAFB;color:#6A4BA6;}
+  .wn-pill.fix{background:#EEEDF2;color:#5B5A63;}
+  /* Your Experience */
+  .xp-list{border:1px solid var(--rule);border-radius:14px;padding:4px 20px;margin:8px 0 14px;background:#fff;font-family:'Inter',sans-serif;}
+  .xp-row{display:flex;align-items:center;gap:20px;padding:16px 0;border-bottom:1px solid #EEEDF2;}
+  .xp-row:last-child{border-bottom:none;}
+  .xp-l{flex:1;min-width:0;}
+  .xp-t{font-size:14px;font-weight:600;margin:0 0 3px;color:var(--ink);}
+  .xp-d{font-size:13px;color:var(--ink-soft);margin:0;line-height:1.45;}
+  .xp-sw{width:42px;height:24px;border-radius:12px;background:#d6d4de;position:relative;cursor:pointer;flex-shrink:0;border:none;padding:0;transition:background .15s;}
+  .xp-sw::after{content:'';position:absolute;top:3px;left:3px;width:18px;height:18px;border-radius:50%;background:#fff;transition:left .15s;}
+  .xp-sw.on{background:var(--hotpink);}
+  .xp-sw.on::after{left:21px;}
+  .xp-seg{display:inline-flex;border:1px solid var(--rule);border-radius:999px;padding:3px;background:var(--paper-alt);flex-shrink:0;}
+  .xp-seg button{font-family:'Inter',sans-serif;font-size:12.5px;font-weight:600;padding:7px 16px;border:none;border-radius:999px;background:transparent;color:var(--ink-soft);cursor:pointer;}
+  .xp-seg button.on{background:var(--hotpink);color:#fff;}
+  .xp-note{display:flex;gap:8px;align-items:flex-start;background:var(--paper-alt);border:0.5px solid var(--rule);border-radius:10px;padding:11px 14px;font-family:'Inter',sans-serif;font-size:13px;color:var(--ink-soft);line-height:1.5;}
+  .xp-note i{font-size:16px;color:#7C5CB8;margin-top:1px;}
+  @media (max-width:760px){ .hc-grid,.faq-grid{grid-template-columns:repeat(2,1fr);} .wn-mini{display:none;} .xp-row{flex-direction:column;align-items:flex-start;gap:10px;} }
+  /* Experience settings applied to the page */
+  body.hide-callouts details.callout.example,
+  body.hide-callouts details.callout.strengthen,
+  body.hide-callouts .table-wrap.example-wrap{display:none;}
+  body.text-large .main{zoom:1.12;}
+  body.reduce-motion *,body.reduce-motion *::before,body.reduce-motion *::after{animation:none !important;transition:none !important;}
+  body.reduce-motion .cover-tile,body.reduce-motion .cover-tagline,body.reduce-motion .wl-dot,body.reduce-motion .wl-name,body.reduce-motion .wl-cap,
+  body.reduce-motion .wl2-dot,body.reduce-motion .wl2-text,body.reduce-motion .wl3-pop,body.reduce-motion .wl3-rise,body.reduce-motion .wl4-slide{opacity:1 !important;transform:none !important;}
+  body.reduce-motion .wl4-slide > i{transform:none !important;}
+  body.reduce-motion .wl-line span{width:100% !important;}
+  body.reduce-motion .wl2-seg span{height:100% !important;}
+  body.reduce-motion .cover-tile::after,body.reduce-motion .wl-ripple{opacity:0 !important;}
+
   /* ---- Welcome slide 1 animations ---- */
   @keyframes wlPop{0%{opacity:0;transform:scale(.6)}100%{opacity:1;transform:scale(1)}}
   @keyframes wlUp{0%{opacity:0;transform:translateY(6px)}100%{opacity:1;transform:translateY(0)}}
@@ -342,6 +420,14 @@
   .wl2-text{padding:0 0 13px 13px;opacity:0;animation:wlUp .4s ease forwards;}
   .wl2-title{font-size:13px;font-weight:500;color:#17171A;margin:0 0 1px;line-height:1.3;}
   .wl2-desc{font-size:12px;color:#555560;margin:0;line-height:1.4;}
+  @keyframes wl3Pop{0%{opacity:0;transform:scale(.92) translateY(6px)}100%{opacity:1;transform:none}}
+  @keyframes wl3Rise{0%{opacity:0;transform:translateY(10px)}100%{opacity:1;transform:none}}
+  @keyframes wl4Slide{0%{opacity:0;transform:translateX(-16px)}100%{opacity:1;transform:none}}
+  @keyframes wl4Icon{0%{transform:scale(.3)}70%{transform:scale(1.18)}100%{transform:scale(1)}}
+  .wl3-pop{opacity:0;animation:wl3Pop .4s ease forwards;}
+  .wl3-rise{opacity:0;animation:wl3Rise .45s ease forwards;}
+  .wl4-slide{opacity:0;animation:wl4Slide .6s cubic-bezier(.2,.8,.3,1) forwards;}
+  .wl4-slide > i{display:inline-block;transform:scale(.3);animation:wl4Icon .5s ease forwards;animation-delay:inherit;}
   .welcome-skip{font-family:'Inter',sans-serif;font-size:12px;color:#8b8894;background:none;border:none;cursor:pointer;margin-left:14px;padding:0;}
   .welcome-skip:hover{color:#E4127D;}
   @media (prefers-reduced-motion:reduce){ .wl2-dot,.wl2-text{animation:none;opacity:1;} .wl2-seg span{animation:none;height:100%;} .wl-dot,.wl-name,.wl-cap{animation:none;opacity:1;} .wl-line span{animation:none;width:100%;} .wl-hand,.wl-ripple{animation:none;} }
@@ -1541,6 +1627,8 @@
     </div>
     <div id="navContainer"></div>
     <div class="nav-bottom">
+      <div class="layer-label" id="helpCenterBtn" role="button" tabindex="0"><i class="ti ti-help-circle" style="font-size:14px;color:#C9C8D1;" aria-hidden="true"></i><span>Help Center</span></div>
+      <div id="helpSearchResults"></div>
       <div class="layer-label" id="logOutBtn" role="button" tabindex="0"><i class="ti ti-logout" style="font-size:14px;color:#E4127D;" aria-hidden="true"></i><span>Log Out</span></div>
     </div>
   </nav>
@@ -1951,6 +2039,86 @@ function soloCard(s){
     <div><p class="sp-eyebrow">Step ${String(s.num).padStart(2,'0')} · ${s.layer}</p><p class="sp-title">${s.title}</p><p class="sp-desc">${s.desc}</p></div>
     <i class="ti ti-arrow-right sp-arrow" aria-hidden="true"></i>
   </div>`;
+}
+
+const HELP_TILES = [
+  {id:'welcome',         icon:'ti-sparkles',               color:'#E4127D', title:'Welcome',                   desc:'Replay the quick tour.'},
+  {id:'overview',        icon:'ti-layout-grid',            color:'#7C5CB8', title:'Overview',                  desc:'What Smart Kind is and its six layers.'},
+  {id:'howto',           icon:'ti-route',                  color:'#A9A7B6', title:'How to Use Smart Kind',     desc:'The recommended workflow.'},
+  {id:'legend',          icon:'ti-key',                    color:'#E4127D', title:'Legend',                    desc:'What everything on the page means.'},
+  {id:'faq',             icon:'ti-message-question',       color:'#7C5CB8', title:'FAQ',                       desc:'Answers to common questions.'},
+  {id:'whatsnew',        icon:'ti-confetti',               color:'#A9A7B6', title:"What's New",                desc:'The latest updates.'},
+  {id:'experience',      icon:'ti-adjustments-horizontal', color:'#E4127D', title:'Your Experience',           desc:'Adjust intros, callouts, and display.'},
+  {id:'confidentiality', icon:'ti-shield-lock',            color:'#7C5CB8', title:'Data &amp; Confidentiality', desc:"What's saved and what isn't."},
+  {id:'contactus',       icon:'ti-mail',                   color:'#A9A7B6', title:'Contact Us',                desc:'Get in touch.'},
+];
+function helpTile(t){
+  const go = t.id === 'welcome' ? 'showWelcomeSequence(true,true)' : `showSection('${t.id}')`;
+  return `<div class="db-tool" role="button" tabindex="0" onclick="${go}" onkeydown="if(event.key==='Enter'){${go}}">
+    <i class="ti ${t.icon}" style="font-size:20px;color:${t.color};" aria-hidden="true"></i>
+    <p class="db-tname">${t.title}</p><p class="db-tdesc">${t.desc}</p></div>`;
+}
+const BACK_TO_HELP = `<button type="button" class="back-link" onclick="showSection('helpcenter')">← Help Center</button>`;
+
+const FAQ_DATA = [
+  {icon:'ti-cube', color:'#E4127D', q:'What is Smart Kind OS?', a:[
+    "Smart Kind is an AI-collaborative marketing tool built on prompts shaped by AI model guidance, many of them customizable, and a framework grounded in marketing methodologies, processes, and standards.",
+    "Use it with the AI model of your choice to go from raw market and competitive intelligence to insight-backed positioning to campaign strategy and content that resonates. Instead of guessing at what makes your product different, you walk away knowing exactly what sets you apart, and with a campaign already built to prove it.",
+    "You don't have to build a full campaign to get value from it, either. Several steps work as fast, standalone tools: a quick competitive read before a leadership meeting, a persona map, or a market read, with no earlier steps required."]},
+  {icon:'ti-users-group', color:'#7C5CB8', q:'Who is it built for?', a:[
+    "Smart Kind was developed by a B2B SaaS product marketer, but if your job is turning research into positioning, messaging, and content that actually resonates, this was built to support you.",
+    "The framework carries you through a strategic sequence for AI-collaborative work. If you're newer to marketing, you get a credible, structured starting point. If you're experienced, you get the same rigor you already bring, just faster execution.",
+    "The bottom line: it can be used by any B2B marketer who owns campaign strategy and content, at any experience level."]},
+  {icon:'ti-arrows-exchange', color:'#A9A7B6', q:'What does AI-collaborative mean?', a:[
+    "AI-collaborative means combining your judgment with AI's capabilities: AI handles the research and drafting, you provide the direction and decide what's true.",
+    "That direction has two parts: how you prompt, and the framework around it. Every major AI model's guidance agrees that clear, specific prompts produce the best output. But a solid prompt still needs a strategic framework behind it, aligned with real marketing standards, to carry that direction across more than one step.",
+    "Smart Kind is built on that combination. Its prompts are specific and shaped by AI model guidance, and its six strategic layers connect them into a sequence that moves from research to a launch-ready campaign.",
+    "That's AI-collaborative in practice: sharper prompts, a stronger framework, your judgment still in charge."]},
+  {icon:'ti-plug-connected', color:'#E4127D', q:'Do I need to use my own AI tool?', a:[
+    "Smart Kind is an AI-collaborative tool you use in conjunction with the AI model of your choice. Whatever model you're already using becomes the engine that runs Smart Kind's six strategic layers of step-by-step prompt sequences.",
+    "The sequences draw on established marketing and research methodologies to carry you from market research to campaign content. You'll also find prompts that can be customized directly in Smart Kind, so that you can incorporate your specific product, market, and audience.",
+    "That means you already have everything you need to get started."]},
+  {icon:'ti-arrows-diff', color:'#7C5CB8', q:'How is this different from prompting AI on my own?', a:[
+    "Every major AI model's own guidance points to the same principle: results depend on the context and specificity you give it, not just the tool itself.",
+    "Smart Kind builds that direction in. Its prompts are shaped by AI model guidance, many of them customizable to your product and market. Its six strategic layers are grounded in real marketing methodologies, carrying you from a blank chat to a launch-ready campaign.",
+    "You run it yourself, prompt by prompt, in whatever AI chat tool you use, reviewing each output before it feeds the next step. Research and competitive intelligence feed positioning, positioning feeds foundational messaging and campaign strategy, and then you're ready to create content that resonates."]},
+  {icon:'ti-trophy', color:'#A9A7B6', q:'What can I walk away with?', a:[
+    "Moving through Smart Kind's six strategic layers gives you a complete, launch-ready campaign grounded in real research: competitive differentiation you've reviewed, a positioning statement that's been evaluated against your competitors, messaging built for your actual buyers or end users, and content ready to put in front of them.",
+    "In short, you walk away knowing exactly what makes you different, and with a campaign already built to prove it."]},
+];
+function showFaq(n){
+  document.querySelectorAll('.faq-tile').forEach((t,i)=>t.classList.toggle('on', i===n));
+  const f = FAQ_DATA[n], box = document.getElementById('faqAnswer');
+  if(!box) return;
+  box.innerHTML = `<div class="faq-ans"><i class="ti ${f.icon}" style="color:${f.color};" aria-hidden="true"></i><div><h3>${f.q}</h3>${f.a.map(p=>`<p>${p}</p>`).join('')}</div></div>`;
+}
+
+const WN_DATA = [
+  {date:'September 2026', dot:'#E4127D', items:[
+    {t:'new', icon:'ti-home',                   color:'#E4127D', h:'Home dashboard',          p:'See your progress across all six layers, and get back to your last step in one click.'},
+    {t:'new', icon:'ti-layout-grid',            color:'#7C5CB8', h:'A new Help Center',       p:'Every guide now lives on one page of tiles, including this one.'},
+    {t:'new', icon:'ti-adjustments-horizontal', color:'#A9A7B6', h:'Your Experience settings', p:'Choose how step intros appear, hide examples and pro tips, enlarge text, and reduce motion.'},
+    {t:'imp', icon:'ti-info-circle',            color:'#E4127D', h:'Flexible step intros',    p:'Pin intros to the page, show them as banners, or hide them.'},
+    {t:'new', icon:'ti-sparkles',               color:'#7C5CB8', h:'Welcome tour',            p:'A quick four-slide introduction you can replay anytime from the Help Center.'},
+    {t:'fix', icon:'ti-tool',                   color:'#A9A7B6', h:'Smoother start',          p:'Fixed an issue that could stop Get Started from opening Smart Kind.'},
+  ]},
+  {date:'Earlier Updates', dot:'#7C5CB8', items:[
+    {t:'new', icon:'ti-target', color:'#E4127D', h:'Product Comparison step',     p:'A head-to-head product matchup with outputs ready for battle cards.'},
+    {t:'imp', icon:'ti-search', color:'#7C5CB8', h:'Sharper Market Intelligence', p:'Industry Research and Market & Segment Research now zoom from the big picture to your buyers.'},
+    {t:'imp', icon:'ti-player-play', color:'#A9A7B6', h:'Clickable Solo Prompts', p:'Jump straight into any standalone step from a single card.'},
+  ]},
+];
+const WN_LABEL = {new:'New', imp:'Improved', fix:'Fixed'};
+function renderWhatsNew(filter){
+  document.querySelectorAll('.wn-filters button').forEach(b=>b.classList.toggle('on', b.dataset.f === filter));
+  const tl = document.getElementById('wnTimeline');
+  if(!tl) return;
+  tl.innerHTML = WN_DATA.map(r=>{
+    const items = r.items.filter(x=>filter==='all' || x.t===filter);
+    if(!items.length) return '';
+    return `<div class="wn-rel"><span class="wn-dot" style="background:${r.dot};"></span><p class="wn-date">${r.date}</p>` +
+      items.map(x=>`<div class="wn-item"><i class="ti ${x.icon}" style="color:${x.color};" aria-hidden="true"></i><div><b>${x.h}</b><span class="wn-pill ${x.t}">${WN_LABEL[x.t]}</span><p>${x.p}</p></div></div>`).join('') + `</div>`;
+  }).join('');
 }
 
 const sections = [
@@ -2593,7 +2761,14 @@ Format this so it can be shared with stakeholders outside this conversation, suc
   </details>
 `},
 
+{id:'helpcenter', layer:'Help Hub', title:'Help Center', kicker:'Help Center', html: `
+  <h2 class="step-kicker">Help Center</h2>
+  <h1 class="step-title">How Can We Help?</h1>
+  <div class="hc-grid">${HELP_TILES.map(helpTile).join('')}</div>
+`},
+
 {id:'overview', layer:'Help Center', title:'Overview', kicker:'About Smart Kind', html: `
+  ${BACK_TO_HELP}
   <h2 class="step-kicker">About Smart Kind</h2>
   <h1 class="step-title">Overview</h1>
   <p class="lede">Smart Kind OS is the strategic framework for AI-collaborative marketing. Its prompts are shaped by AI model guidance, and its six strategic layers are grounded in real marketing methodology. Pair it with the AI model of your choice, and you walk away knowing exactly what makes you different, and with a campaign already built to prove it.</p>
@@ -2610,6 +2785,7 @@ Format this so it can be shared with stakeholders outside this conversation, suc
 `},
 
 {id:'howto', layer:'Help Center', title:'How to Use Smart Kind', kicker:'Orientation', html: `
+  ${BACK_TO_HELP}
   <h2 class="step-kicker">Orientation</h2>
   <h1 class="step-title">How to Use Smart Kind</h1>
   <p class="lede">Smart Kind runs inside one AI conversation, so what you learn early shapes everything that follows. Copy each prompt into your chat, review what comes back, and carry the strongest findings forward.</p>
@@ -2640,43 +2816,91 @@ Format this so it can be shared with stakeholders outside this conversation, suc
 `},
 
 {id:'legend', layer:'Help Center', title:'Legend', kicker:'Reading This Framework', html: `
+  ${BACK_TO_HELP}
   <h2 class="step-kicker">Reading This Framework</h2>
   <h1 class="step-title">Legend</h1>
   <p class="lede">A quick reference for the visual language used throughout this framework — what the badges mean, and what each callout box is telling you.</p>
-
-  <h3 class="block-title">Prompt Box</h3>
-  <p>The core building block of this framework. Everything inside one of these is written to be copied in full and pasted directly into your AI chat.</p>
-  ${promptCard('Sample', `Everything inside a box like this is written to be copied in full and pasted directly into your AI chat. Text in [brackets] is a placeholder — swap it for your own details before you send it.`)}
-
-  <h3 class="block-title">Keyword Chips</h3>
-  <p>Some blanks come with a starting vocabulary for that specific prompt. Click into one of these blanks and a small popup box appears right there with relevant keywords to choose from. You can also just type directly into any blank at any time, because chips and typed text work together, not one instead of the other.</p>
-  <p>Chips are a starting point, not a finished answer. They exist to jog your thinking or save you from typing a common term from scratch, not to replace the specific detail that actually makes a prompt sharp. The strongest results usually come from clicking a relevant chip or two, then adding your own context in that same blank, the exact nuance a generic keyword can't capture on its own.</p>
-  ${promptCard('Try It', `This step usually asks about [industry]. Click a chip below, then keep typing to add your own detail.`)}
-
-  <h3 class="block-title">⚡ Core Prompt Badges ⚡</h3>
-  <p>Some prompts carry a <span class="core-badge">⚡ Core Prompt</span> badge. Together they make up the fastest path through Smart Kind, from research to content. If you're short on time, just getting started, or working a lower-stakes campaign, you can follow just the Core Prompts end to end and still walk away with real research, positioning, a theme, an architecture, a measurement plan, and content. The prompts without a badge add depth and grounding, so expect thinner output when you skip them. Come back and run the rest whenever you want more depth.</p>
-  <p>There's also a <strong>Core Prompts</strong> checkbox at the top of the menu, with a matching tile on your dashboard. Check it and every Example, Pro Tip, and non-core prompt hides itself across the whole framework, leaving just the Core Prompts and Validate checkpoints on whatever step you're viewing. Uncheck it anytime to bring everything back. Nothing is deleted. It's just out of view.</p>
-
-  <h3 class="block-title">Memory Logging</h3>
-  <p>Many steps end with a Memory Logging prompt. It asks your AI model to recap the key findings from that step so they carry forward through the rest of your conversation. It works inside your current AI chat, and nothing is saved to Smart Kind. If your conversation gets too long, use Continuing in a New Chat to summarize your progress and pick up in a fresh chat.</p>
 
   <h3 class="block-title">Step Intros</h3>
   <p>The first time you open a step, a short intro explains what it does. Pin it to keep it at the top of the page, or click Got It to close it. Choose how intros appear:</p>
   <div class="intro-setting" id="introSetting">
     <button type="button" data-mode="popup">Popups<small>An intro pops up the first time you open each step.</small></button>
     <button type="button" data-mode="banner">Banners<small>Intros wait in a slim bar at the top of each step. Click to read.</small></button>
-    <button type="button" data-mode="off">Hidden<small>No intros on steps you haven't opened yet.</small></button>
+    <button type="button" data-mode="off">Hidden<small>No intros on any step.</small></button>
   </div>
-  <p class="intro-setting-note">Changes apply to steps you haven't opened yet. Pinned intros always stay.</p>
+  <p class="intro-setting-note">Your choice applies to every step, including ones you've already opened.</p>
+
+  <h3 class="block-title">Prompt Box</h3>
+  <p>The core building block of this framework. Everything inside one of these is written to be copied in full and pasted directly into your AI chat.</p>
+  ${promptCard('Sample', `Everything inside a box like this is written to be copied in full and pasted directly into your AI chat. Text in [brackets] is a placeholder — swap it for your own details before you send it.`)}
+
+  <h3 class="block-title">⚡ Core Prompt Badges ⚡</h3>
+  <p>The <span class="core-badge">⚡ Core Prompt</span> badge marks the fastest path through Smart Kind. Short on time? Run just the Core Prompts from research to content. Check <strong>Core Prompts</strong> at the top of the menu to hide everything else. Uncheck it to bring it all back, and run the rest anytime for more depth.</p>
+
+  <h3 class="block-title">Keyword Chips</h3>
+  <p>Some blanks offer keyword chips, a starting vocabulary built for that prompt. Click a blank to pick a chip, type your own words, or do both. The sharpest prompts pair a chip with your own detail.</p>
+  ${promptCard('Try It', `This step usually asks about [industry]. Click a chip below, then keep typing to add your own detail.`)}
 
   <h3 class="block-title">Callout Boxes</h3>
   <p>You'll run into three types of callout boxes as you work through Smart Kind OS:</p>
   ${calloutHTML('example','📋','Example','Shows what a filled‑in version of the prompt looks like, using a running example (a construction payment and lien management software company) to demonstrate how to replace bracketed placeholders with your own details. This is illustrative only — the framework works for any B2B product or industry.')}
   ${calloutHTML('validate','✅','Validate Before Moving On','A checkpoint reminding you to fact‑check AI‑generated research against real sources (analyst reports, first‑party data, credible publications) before it becomes the foundation for positioning or messaging. AI research can sound authoritative and still be wrong — don’t let unverified claims travel downstream into customer‑facing content.')}
   ${calloutHTML('strengthen','💬','Pro Tip','Optional guidance called out along the way — places where real customer or sales input (call notes, win/loss interviews, support tickets, customer quotes) would strengthen the output, extra prompts you can run for a head start, or context worth knowing before you proceed. None of these are required to keep moving — they’re just useful if you have the time or the input on hand.')}
+
+  <h3 class="block-title">Memory Logging</h3>
+  <p>Many steps end with a Memory Logging prompt. It asks your AI model to recap the key findings from that step so they carry forward through the rest of your conversation. It works inside your current AI chat, and nothing is saved to Smart Kind. If your conversation gets too long, use Continuing in a New Chat to summarize your progress and pick up in a fresh chat.</p>
+`},
+
+{id:'faq', layer:'Help Center', title:'FAQ', kicker:'Help Center', html: `
+  ${BACK_TO_HELP}
+  <h2 class="step-kicker">Help Center</h2>
+  <h1 class="step-title">Frequently Asked Questions</h1>
+  <div class="faq-grid">${FAQ_DATA.map((f,n)=>`<div class="faq-tile${n===0?' on':''}" role="button" tabindex="0" onclick="showFaq(${n})" onkeydown="if(event.key==='Enter')showFaq(${n})"><span class="faq-num">0${n+1}</span><i class="ti ${f.icon}" style="font-size:24px;color:${f.color};" aria-hidden="true"></i><p class="faq-q">${f.q}</p></div>`).join('')}</div>
+  <div id="faqAnswer"></div>
+`},
+
+{id:'whatsnew', layer:'Help Center', title:"What's New", kicker:'Help Center', html: `
+  ${BACK_TO_HELP}
+  <h2 class="step-kicker">Help Center</h2>
+  <h1 class="step-title">What's New</h1>
+  <div class="wn-hero">
+    <div style="flex:1;">
+      <span class="wn-tag">Latest</span>
+      <h3>Meet your new Home dashboard</h3>
+      <p>Pick up where you left off, see your progress across all six layers, and reach every tool in one click.</p>
+    </div>
+    <div class="wn-mini" aria-hidden="true"><div class="s"><span class="p"></span><span></span><span></span><span></span><span></span><span></span><span></span></div><div class="m"><div class="t"></div><div class="c"></div><div class="g"><div></div><div></div><div></div><div></div><div></div><div></div></div></div></div>
+  </div>
+  <div class="wn-filters"><button type="button" class="on" data-f="all" onclick="renderWhatsNew('all')">All</button><button type="button" data-f="new" onclick="renderWhatsNew('new')">New</button><button type="button" data-f="imp" onclick="renderWhatsNew('imp')">Improved</button><button type="button" data-f="fix" onclick="renderWhatsNew('fix')">Fixed</button></div>
+  <div class="wn-tl" id="wnTimeline"></div>
+`},
+
+{id:'experience', layer:'Help Center', title:'Your Experience', kicker:'Help Center', html: `
+  ${BACK_TO_HELP}
+  <h2 class="step-kicker">Help Center</h2>
+  <h1 class="step-title">Your Experience</h1>
+
+  <h3 class="block-title">Step Intros</h3>
+  <p>The first time you open a step, a short intro explains what it does. Choose how intros appear:</p>
+  <div class="intro-setting">
+    <button type="button" data-mode="popup">Popups<small>An intro pops up the first time you open each step.</small></button>
+    <button type="button" data-mode="banner">Banners<small>Intros wait in a slim bar at the top of each step. Click to read.</small></button>
+    <button type="button" data-mode="off">Hidden<small>No intros on any step.</small></button>
+  </div>
+  <p class="intro-setting-note">Your choice applies to every step, including ones you've already opened.</p>
+
+  <h3 class="block-title">Page Settings</h3>
+  <div class="xp-list">
+    <div class="xp-row"><div class="xp-l"><p class="xp-t">Core Prompts Only</p><p class="xp-d">Show only the fastest path through each step. Same as the checkbox in the menu.</p></div><button type="button" class="xp-sw" data-set="core" aria-label="Core Prompts Only"></button></div>
+    <div class="xp-row"><div class="xp-l"><p class="xp-t">Hide Examples and Pro Tips</p><p class="xp-d">A cleaner page. Every prompt stays.</p></div><button type="button" class="xp-sw" data-set="callouts" aria-label="Hide Examples and Pro Tips"></button></div>
+    <div class="xp-row"><div class="xp-l"><p class="xp-t">Text Size</p><p class="xp-d">Larger text for easier reading.</p></div><div class="xp-seg" data-set="text"><button type="button" data-v="standard">Standard</button><button type="button" data-v="large">Large</button></div></div>
+    <div class="xp-row"><div class="xp-l"><p class="xp-t">Reduce Motion</p><p class="xp-d">Turn off animations across Smart Kind.</p></div><button type="button" class="xp-sw" data-set="motion" aria-label="Reduce Motion"></button></div>
+  </div>
+  <div class="xp-note"><i class="ti ti-info-circle" aria-hidden="true"></i><span>Validate checkpoints always stay visible, since they protect the quality of your work. Workbooks are always available.</span></div>
 `},
 
 {id:'confidentiality', layer:'Help Center', title:'Data &amp; Confidentiality', kicker:'Before You Begin', html: `
+  ${BACK_TO_HELP}
   <h2 class="step-kicker">Before You Begin</h2>
   <h1 class="step-title">Data &amp; Confidentiality</h1>
   <p class="lede">Smart Kind OS runs inside a general AI chat environment — read this before you start.</p>
@@ -2691,6 +2915,7 @@ Format this so it can be shared with stakeholders outside this conversation, suc
 `},
 
 {id:'contactus', layer:'Help Center', title:'Contact Us', kicker:'Get in touch', html: `
+  ${BACK_TO_HELP}
   <h2 class="step-kicker">Get in touch</h2>
   <h1 class="step-title">Contact Us</h1>
   <p class="lede">Have a question, a suggestion, or something to share? We'd love to hear from you.</p>
@@ -2840,17 +3065,17 @@ function buildWelcomeSlide(slideNum){
       <p style="font-size:15px;font-style:italic;color:#555560;margin:0 0 22px;line-height:1.5;">Prompts, callouts, and tools, each one built to move you forward.</p>
       <p style="font-size:10px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:#8b8894;margin:0 0 10px;">Prompt callouts</p>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:18px;">
-        <div style="display:flex;align-items:flex-start;gap:10px;background:#F7F7F8;border-radius:10px;padding:10px 12px;border:0.5px solid #E5E4EA;"><span style="font-size:18px;line-height:1;">⚡</span><div><p style="font-size:12px;font-weight:500;color:#17171A;margin:0 0 2px;">Core Prompt</p><p style="font-size:11px;color:#555560;margin:0;line-height:1.4;">Run this one. It's essential to the step.</p></div></div>
-        <div style="display:flex;align-items:flex-start;gap:10px;background:#F7F7F8;border-radius:10px;padding:10px 12px;border:0.5px solid #E5E4EA;"><span style="font-size:18px;line-height:1;">✅</span><div><p style="font-size:12px;font-weight:500;color:#17171A;margin:0 0 2px;">Validate</p><p style="font-size:11px;color:#555560;margin:0;line-height:1.4;">Review before moving to the next step.</p></div></div>
-        <div style="display:flex;align-items:flex-start;gap:10px;background:#F7F7F8;border-radius:10px;padding:10px 12px;border:0.5px solid #E5E4EA;"><span style="font-size:18px;line-height:1;">💬</span><div><p style="font-size:12px;font-weight:500;color:#17171A;margin:0 0 2px;">Pro Tip</p><p style="font-size:11px;color:#555560;margin:0;line-height:1.4;">Ways to get stronger outputs.</p></div></div>
-        <div style="display:flex;align-items:flex-start;gap:10px;background:#F7F7F8;border-radius:10px;padding:10px 12px;border:0.5px solid #E5E4EA;"><span style="font-size:18px;line-height:1;">📋</span><div><p style="font-size:12px;font-weight:500;color:#17171A;margin:0 0 2px;">Example</p><p style="font-size:11px;color:#555560;margin:0;line-height:1.4;">See what a filled prompt looks like.</p></div></div>
+        <div class="wl3-pop" style="animation-delay:0.20s;display:flex;align-items:flex-start;gap:10px;background:#F7F7F8;border-radius:10px;padding:10px 12px;border:0.5px solid #E5E4EA;"><span style="font-size:18px;line-height:1;">⚡</span><div><p style="font-size:12px;font-weight:500;color:#17171A;margin:0 0 2px;">Core Prompt</p><p style="font-size:11px;color:#555560;margin:0;line-height:1.4;">Run this one. It's essential to the step.</p></div></div>
+        <div class="wl3-pop" style="animation-delay:0.35s;display:flex;align-items:flex-start;gap:10px;background:#F7F7F8;border-radius:10px;padding:10px 12px;border:0.5px solid #E5E4EA;"><span style="font-size:18px;line-height:1;">✅</span><div><p style="font-size:12px;font-weight:500;color:#17171A;margin:0 0 2px;">Validate</p><p style="font-size:11px;color:#555560;margin:0;line-height:1.4;">Review before moving to the next step.</p></div></div>
+        <div class="wl3-pop" style="animation-delay:0.50s;display:flex;align-items:flex-start;gap:10px;background:#F7F7F8;border-radius:10px;padding:10px 12px;border:0.5px solid #E5E4EA;"><span style="font-size:18px;line-height:1;">💬</span><div><p style="font-size:12px;font-weight:500;color:#17171A;margin:0 0 2px;">Pro Tip</p><p style="font-size:11px;color:#555560;margin:0;line-height:1.4;">Ways to get stronger outputs.</p></div></div>
+        <div class="wl3-pop" style="animation-delay:0.65s;display:flex;align-items:flex-start;gap:10px;background:#F7F7F8;border-radius:10px;padding:10px 12px;border:0.5px solid #E5E4EA;"><span style="font-size:18px;line-height:1;">📋</span><div><p style="font-size:12px;font-weight:500;color:#17171A;margin:0 0 2px;">Example</p><p style="font-size:11px;color:#555560;margin:0;line-height:1.4;">See what a filled prompt looks like.</p></div></div>
       </div>
       <p style="font-size:10px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:#8b8894;margin:0 0 10px;">Tools available to you</p>
       <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;">
-        <div style="background:#F7F7F8;border-radius:10px;padding:10px;border:0.5px solid #E5E4EA;"><i class="ti ti-square-check" style="font-size:17px;color:#E4127D;" aria-hidden="true"></i><p style="font-size:11.5px;font-weight:500;color:#17171A;margin:6px 0 2px;line-height:1.3;">Core Prompts</p><p style="font-size:10.5px;color:#555560;margin:0;line-height:1.4;">Hide examples and pro tips to see only the essentials.</p></div>
-        <div style="background:#F7F7F8;border-radius:10px;padding:10px;border:0.5px solid #E5E4EA;"><i class="ti ti-player-play" style="font-size:17px;color:#7C5CB8;" aria-hidden="true"></i><p style="font-size:11.5px;font-weight:500;color:#17171A;margin:6px 0 2px;line-height:1.3;">Solo Prompts</p><p style="font-size:10.5px;color:#555560;margin:0;line-height:1.4;">Run one step on its own. No earlier steps required.</p></div>
-        <div style="background:#F7F7F8;border-radius:10px;padding:10px;border:0.5px solid #E5E4EA;"><i class="ti ti-message-forward" style="font-size:17px;color:#A9A7B6;" aria-hidden="true"></i><p style="font-size:11.5px;font-weight:500;color:#17171A;margin:6px 0 2px;line-height:1.3;">Continuing in a New Chat</p><p style="font-size:10.5px;color:#555560;margin:0;line-height:1.4;">Carry your progress into a fresh AI conversation.</p></div>
-        <div style="background:#F7F7F8;border-radius:10px;padding:10px;border:0.5px solid #E5E4EA;"><i class="ti ti-bookmark" style="font-size:17px;color:#E4127D;" aria-hidden="true"></i><p style="font-size:11.5px;font-weight:500;color:#17171A;margin:6px 0 2px;line-height:1.3;">Workbooks</p><p style="font-size:10.5px;color:#555560;margin:0;line-height:1.4;">Save the prompts and outputs you want to keep.</p></div>
+        <div class="wl3-rise" style="animation-delay:0.95s;background:#F7F7F8;border-radius:10px;padding:10px;border:0.5px solid #E5E4EA;"><i class="ti ti-square-check" style="font-size:17px;color:#E4127D;" aria-hidden="true"></i><p style="font-size:11.5px;font-weight:500;color:#17171A;margin:6px 0 2px;line-height:1.3;">Core Prompts</p><p style="font-size:10.5px;color:#555560;margin:0;line-height:1.4;">Hide examples and pro tips to see only the essentials.</p></div>
+        <div class="wl3-rise" style="animation-delay:1.10s;background:#F7F7F8;border-radius:10px;padding:10px;border:0.5px solid #E5E4EA;"><i class="ti ti-player-play" style="font-size:17px;color:#7C5CB8;" aria-hidden="true"></i><p style="font-size:11.5px;font-weight:500;color:#17171A;margin:6px 0 2px;line-height:1.3;">Solo Prompts</p><p style="font-size:10.5px;color:#555560;margin:0;line-height:1.4;">Run one step on its own. No earlier steps required.</p></div>
+        <div class="wl3-rise" style="animation-delay:1.25s;background:#F7F7F8;border-radius:10px;padding:10px;border:0.5px solid #E5E4EA;"><i class="ti ti-message-forward" style="font-size:17px;color:#A9A7B6;" aria-hidden="true"></i><p style="font-size:11.5px;font-weight:500;color:#17171A;margin:6px 0 2px;line-height:1.3;">Continuing in a New Chat</p><p style="font-size:10.5px;color:#555560;margin:0;line-height:1.4;">Carry your progress into a fresh AI conversation.</p></div>
+        <div class="wl3-rise" style="animation-delay:1.40s;background:#F7F7F8;border-radius:10px;padding:10px;border:0.5px solid #E5E4EA;"><i class="ti ti-bookmark" style="font-size:17px;color:#E4127D;" aria-hidden="true"></i><p style="font-size:11.5px;font-weight:500;color:#17171A;margin:6px 0 2px;line-height:1.3;">Workbooks</p><p style="font-size:10.5px;color:#555560;margin:0;line-height:1.4;">Save the prompts and outputs you want to keep.</p></div>
       </div>
     </div>
     <div style="padding:14px 28px;border-top:0.5px solid #E5E4EA;display:flex;align-items:center;justify-content:space-between;">
@@ -2873,11 +3098,11 @@ function buildWelcomeSlide(slideNum){
 
       <p style="font-size:10px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:#8b8894;margin:0 0 6px;">Data & confidentiality</p>
       <p style="font-size:19px;font-weight:500;color:#17171A;margin:0 0 8px;line-height:1.25;">Smart Kind doesn't store what you type.</p>
-      <p style="font-size:15px;font-style:italic;color:#555560;margin:0 0 20px;line-height:1.5;">Your product details, research, and campaign work stay in your AI conversation — not here.</p>
+      <p style="font-size:15px;font-style:italic;color:#555560;margin:0 0 20px;line-height:1.5;">Your product details, research, and campaign work stay in your AI conversation, not here.</p>
 
       <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:20px;">
 
-        <div style="display:flex;align-items:flex-start;gap:12px;background:#F7F7F8;border-radius:10px;padding:12px 14px;border:0.5px solid #E5E4EA;">
+        <div class="wl4-slide" style="animation-delay:0.25s;display:flex;align-items:flex-start;gap:12px;background:#F7F7F8;border-radius:10px;padding:12px 14px;border:0.5px solid #E5E4EA;">
           <i class="ti ti-device-floppy" style="font-size:20px;color:#E4127D;flex-shrink:0;margin-top:1px;" aria-hidden="true"></i>
           <div>
             <p style="font-size:13px;font-weight:500;color:#17171A;margin:0 0 2px;">What Smart Kind saves</p>
@@ -2885,7 +3110,7 @@ function buildWelcomeSlide(slideNum){
           </div>
         </div>
 
-        <div style="display:flex;align-items:flex-start;gap:12px;background:#F7F7F8;border-radius:10px;padding:12px 14px;border:0.5px solid #E5E4EA;">
+        <div class="wl4-slide" style="animation-delay:0.60s;display:flex;align-items:flex-start;gap:12px;background:#F7F7F8;border-radius:10px;padding:12px 14px;border:0.5px solid #E5E4EA;">
           <i class="ti ti-eye-off" style="font-size:20px;color:#7C5CB8;flex-shrink:0;margin-top:1px;" aria-hidden="true"></i>
           <div>
             <p style="font-size:13px;font-weight:500;color:#17171A;margin:0 0 2px;">What Smart Kind can't see</p>
@@ -2893,7 +3118,7 @@ function buildWelcomeSlide(slideNum){
           </div>
         </div>
 
-        <div style="display:flex;align-items:flex-start;gap:12px;background:#F7F7F8;border-radius:10px;padding:12px 14px;border:0.5px solid #E5E4EA;">
+        <div class="wl4-slide" style="animation-delay:0.95s;display:flex;align-items:flex-start;gap:12px;background:#F7F7F8;border-radius:10px;padding:12px 14px;border:0.5px solid #E5E4EA;">
           <i class="ti ti-help-circle" style="font-size:20px;color:#C9C8D1;flex-shrink:0;margin-top:1px;" aria-hidden="true"></i>
           <div>
             <p style="font-size:13px;font-weight:500;color:#17171A;margin:0 0 2px;">Want the full details?</p>
@@ -2993,7 +3218,7 @@ const LS_INTRO_MODE  = 'campaignos_introMode';   // popup | banner | off
 const LS_INTRO_STATS = 'campaignos_introStats';  // closes in a row, total pins, question asked
 
 function getIntroMode(){ try { return localStorage.getItem(LS_INTRO_MODE) || 'popup'; } catch(e){ return 'popup'; } }
-function setIntroMode(m){ try { localStorage.setItem(LS_INTRO_MODE, m); } catch(e){} syncIntroSetting(); }
+function setIntroMode(m){ applyIntroMode(m); }
 function getIntroStats(){
   try { return Object.assign({streak:0, pins:0, asked:false}, JSON.parse(localStorage.getItem(LS_INTRO_STATS) || '{}')); }
   catch(e){ return {streak:0, pins:0, asked:false}; }
@@ -3002,7 +3227,23 @@ function setIntroStats(s){ try { localStorage.setItem(LS_INTRO_STATS, JSON.strin
 // returns a trigger name when it's time to ask "Seeing a lot of these?"
 function recordIntroClose(){ const s = getIntroStats(); s.streak++; setIntroStats(s); return s.streak >= 2 ? 'closes' : null; }
 function recordIntroPin(){ const s = getIntroStats(); s.streak = 0; s.pins++; setIntroStats(s); return s.pins >= 3 ? 'pins' : null; }
-function shouldAskIntroQuestion(trigger){ return !!trigger && !getIntroStats().asked && getIntroMode() === 'popup'; }
+function shouldAskIntroQuestion(trigger){
+  if(!trigger) return false;
+  const mode = getIntroMode();
+  if(mode === 'popup')  return !getIntroStats().asked;   // asked once
+  if(mode === 'banner') return trigger === 'closes';      // banner users: two X's in a row brings it back
+  return false;
+}
+
+// Any mode choice resets every step to that mode, visited or not
+function applyIntroMode(mode){
+  try { localStorage.setItem(LS_INTRO_MODE, mode); } catch(e){}
+  setIntroDismissed(new Set());
+  setIntroPinned(new Set());
+  const s = getIntroStats(); s.streak = 0; s.pins = 0; setIntroStats(s);
+  document.querySelectorAll('.intro-banner, .intro-bar').forEach(el=>el.remove());
+  syncIntroSetting();
+}
 
 function markIntroClosed(stepId){
   const d = getIntroDismissed(); d.add(stepId); setIntroDismissed(d);
@@ -3017,26 +3258,26 @@ const INTRO_LOGO = `<div class="intro-modal-logo"><div class="intro-modal-logo-n
 
 // "Seeing a lot of these?" asked once. Reuses an open popup when there is one.
 function openIntroQuestion(trigger, overlay){
-  const s = getIntroStats(); s.asked = true; setIntroStats(s);
+  const s = getIntroStats(); s.asked = true; s.streak = 0; setIntroStats(s);
   if(!overlay){ overlay = document.createElement('div'); overlay.className = 'intro-overlay'; document.body.appendChild(overlay); }
   const lead = trigger === 'pins'
     ? 'Looks like you like keeping intros handy. Want them to stay on the page automatically?'
     : 'Choose how step intros work from here on.';
   const keep   = `<button type="button" data-choice="popup">Keep Showing Popups<small>An intro pops up the first time you open each step.</small></button>`;
   const banner = `<button type="button" data-choice="banner">Show as Banners Instead<small>Intros wait in a slim bar at the top of each step. Click to read.</small></button>`;
-  const off    = `<button type="button" data-choice="off">Hide All Intros<small>No intros on steps you haven't opened yet. Pinned ones stay.</small></button>`;
+  const off    = `<button type="button" data-choice="off">Hide All Intros<small>No intros on any step.</small></button>`;
   const q = document.createElement('div');
   q.className = 'intro-q-wrap';
   q.innerHTML = `
     <div class="intro-modal" role="dialog" aria-modal="true" aria-labelledby="iq-title">
       <div class="intro-modal-head">${INTRO_LOGO}<div class="intro-modal-title" id="iq-title">Seeing a lot of these?</div></div>
-      <div class="intro-modal-body"><p>${lead} You can change this anytime in the Legend.</p>
+      <div class="intro-modal-body"><p>${lead} You can change this anytime in the Legend or Your Experience.</p>
         <div class="intro-choice">${trigger === 'pins' ? banner + keep + off : keep + banner + off}</div>
       </div>
     </div>`;
   overlay.replaceChildren(q.firstElementChild);
   const finish = mode=>{
-    if(mode && mode !== getIntroMode()){ setIntroMode(mode); refreshVisibleIntro(); }
+    if(mode) applyIntroMode(mode);
     overlay.remove();
     document.removeEventListener('keydown', onKey);
   };
@@ -3046,7 +3287,7 @@ function openIntroQuestion(trigger, overlay){
   overlay.querySelectorAll('[data-choice]').forEach(b=>b.addEventListener('click', ()=>finish(b.dataset.choice)));
 }
 
-function buildIntroModal(sec, stepId){
+function buildIntroModal(sec, stepId, fromBar){
   const layer = (sec.dataset.layer || '').replace(/&amp;/g,'&');
   const title = sec.querySelector('.step-title')?.textContent || '';
   const lede  = sec.querySelector('.lede')?.innerHTML || '';
@@ -3084,9 +3325,10 @@ function buildIntroModal(sec, stepId){
   };
   function close(){ if(done) return; done = true; markIntroClosed(stepId); wrapUp(recordIntroClose()); }
   function pin(){ if(done) return; done = true; markIntroPinned(stepId); renderPinnedBanner(sec, stepId, lede); wrapUp(recordIntroPin()); }
+  function backToBar(){ if(done) return; done = true; document.removeEventListener('keydown', onKey); overlay.remove(); renderIntroBar(sec, stepId, lede); }
 
   overlay.querySelector('.intro-modal-x').addEventListener('click', close);
-  overlay.querySelector('.intro-btn-dismiss').addEventListener('click', close);
+  overlay.querySelector('.intro-btn-dismiss').addEventListener('click', fromBar ? backToBar : close);
   overlay.querySelector('.intro-btn-pin').addEventListener('click', pin);
   overlay.addEventListener('click', e=>{ if(e.target === overlay) pin(); });   // clicking outside pins it
   return overlay;
@@ -3113,21 +3355,17 @@ function renderPinnedBanner(sec, stepId, lede){
   introAnchor(sec, banner);
 }
 
-// Banner mode: a slim "About this step" bar that expands to the full intro
+// Banner mode: a slim "About this step" bar. Clicking it opens the standard popup for this step only.
 function renderIntroBar(sec, stepId, lede){
+  if(sec.querySelector('.intro-bar, .intro-banner')) return;
   const bar = document.createElement('button');
   bar.type = 'button';
   bar.className = 'intro-bar';
   bar.innerHTML = `<i class="ti ti-info-circle" aria-hidden="true"></i><span>About this step</span><span class="intro-bar-caret">▸</span>`;
   bar.addEventListener('click', ()=>{
-    const exp = document.createElement('div');
-    exp.className = 'intro-banner';
-    exp.innerHTML = `<div class="intro-banner-body">${lede}
-        <div class="intro-banner-actions"><button type="button" class="intro-btn-pin">Pin to Page</button></div></div>
-      <button type="button" class="intro-banner-x" aria-label="Remove intro">✕</button>`;
-    exp.querySelector('.intro-banner-x').addEventListener('click', ()=>{ exp.remove(); markIntroClosed(stepId); recordIntroClose(); });
-    exp.querySelector('.intro-btn-pin').addEventListener('click', ()=>{ markIntroPinned(stepId); recordIntroPin(); renderPinnedBanner(sec, stepId, lede); });
-    bar.replaceWith(exp);
+    if(document.querySelector('.intro-overlay')) return;
+    const modal = buildIntroModal(sec, stepId, true);
+    if(modal){ bar.remove(); document.body.appendChild(modal); }
   });
   introAnchor(sec, bar);
 }
@@ -3161,7 +3399,7 @@ function refreshVisibleIntro(){
 // Legend > Step Intros setting
 function syncIntroSetting(){
   const mode = getIntroMode();
-  document.querySelectorAll('#introSetting [data-mode]').forEach(b=>{
+  document.querySelectorAll('.intro-setting [data-mode]').forEach(b=>{
     const on = b.dataset.mode === mode;
     b.classList.toggle('on', on);
     b.setAttribute('aria-pressed', on ? 'true' : 'false');
@@ -3173,7 +3411,7 @@ const layerOrder = [];
 sections.forEach(s=>{ if(s.layer !== 'Sidebar Tools' && !layerOrder.includes(s.layer)) layerOrder.push(s.layer); });
 
 layerOrder.forEach(layer=>{
-  if(layer === 'Top Menu' || layer === 'Home') return; // top menu items live above the divider; Home opens from the logo
+  if(layer === 'Top Menu' || layer === 'Home' || layer === 'Help Center' || layer === 'Help Hub') return; // top menu items live above the divider; Home opens from the logo
   const group = document.createElement('div');
   group.className = 'layer-group';
   const lc = layerColors[layer];
@@ -3281,14 +3519,41 @@ sections.forEach(s=>{
   mainEl.appendChild(sec);
 });
 
+// FAQ and What's New start filled in
+showFaq(0);
+renderWhatsNew('all');
+
+// Your Experience settings (saved in this browser)
+const LS_UX = 'campaignos_experience';
+function getUX(){ try { return Object.assign({callouts:false, text:'standard', motion:false}, JSON.parse(localStorage.getItem(LS_UX)||'{}')); } catch(e){ return {callouts:false, text:'standard', motion:false}; } }
+function setUX(u){ try { localStorage.setItem(LS_UX, JSON.stringify(u)); } catch(e){} applyUX(); }
+function applyUX(){
+  const u = getUX();
+  document.body.classList.toggle('hide-callouts', !!u.callouts);
+  document.body.classList.toggle('text-large', u.text === 'large');
+  document.body.classList.toggle('reduce-motion', !!u.motion);
+  document.querySelectorAll('.xp-sw[data-set="callouts"]').forEach(b=>b.classList.toggle('on', !!u.callouts));
+  document.querySelectorAll('.xp-sw[data-set="motion"]').forEach(b=>b.classList.toggle('on', !!u.motion));
+  document.querySelectorAll('.xp-seg[data-set="text"] button').forEach(b=>b.classList.toggle('on', b.dataset.v === u.text));
+}
+document.querySelectorAll('.xp-sw[data-set="callouts"]').forEach(b=>b.addEventListener('click', ()=>{ const u=getUX(); u.callouts=!u.callouts; setUX(u); }));
+document.querySelectorAll('.xp-sw[data-set="motion"]').forEach(b=>b.addEventListener('click', ()=>{ const u=getUX(); u.motion=!u.motion; setUX(u); }));
+document.querySelectorAll('.xp-seg[data-set="text"] button').forEach(b=>b.addEventListener('click', ()=>{ const u=getUX(); u.text=b.dataset.v; setUX(u); }));
+document.querySelectorAll('.xp-sw[data-set="core"]').forEach(b=>b.addEventListener('click', ()=>{
+  const t = document.getElementById('coreOnlyToggle');
+  t.checked = !t.checked;
+  t.dispatchEvent(new Event('change'));
+}));
+applyUX();
+
 // Legend > Step Intros setting buttons
-document.querySelectorAll('#introSetting [data-mode]').forEach(b=>{
+document.querySelectorAll('.intro-setting [data-mode]').forEach(b=>{
   b.addEventListener('click', ()=>setIntroMode(b.dataset.mode));
 });
 syncIntroSetting();
 
 function footerNav(id){
-  if(id === 'home') return '';
+  if(id === 'home' || id === 'helpcenter') return '';
   const idx = sections.findIndex(s=>s.id===id);
   if(idx === -1) return '';
   const prev = sections[idx-1];
@@ -3408,7 +3673,7 @@ function renderHome(){
       </div>
     </div>
     <div class="db-help">
-      <button type="button" data-go="overview"><i class="ti ti-help-circle" style="font-size:15px;color:#A9A7B6;" aria-hidden="true"></i>Help Center</button>
+      <button type="button" data-go="helpcenter"><i class="ti ti-help-circle" style="font-size:15px;color:#A9A7B6;" aria-hidden="true"></i>Help Center</button>
       <button type="button" data-replay="1"><i class="ti ti-refresh" style="font-size:15px;color:#A9A7B6;" aria-hidden="true"></i>Replay the Intro</button>
     </div>`;
 
@@ -3426,6 +3691,10 @@ function renderHome(){
   root.querySelector('[data-replay]').addEventListener('click', ()=>showWelcomeSequence(true));
 }
 
+function secDefForNav(id){
+  const s = sections.find(x=>x.id===id);
+  return !!s && (s.layer === 'Help Center' || s.layer === 'Help Hub');
+}
 function showSection(id){
   const secEl = document.getElementById('sec-'+id);
   if(!secEl) return;
@@ -3447,6 +3716,8 @@ function showSection(id){
                        document.querySelector(`.layer-group[data-section-id="${id}"] .layer-label`);
     if(layerLabel) layerLabel.classList.add('active');
   }
+  const hcBtn = document.getElementById('helpCenterBtn');
+  if(hcBtn && secDefForNav(id)) hcBtn.classList.add('active');
   if(typeof updateShortcutActive === 'function') updateShortcutActive(id);
   mainEl.scrollTo({top:0,behavior:'instant'});
   window.scrollTo({top:0,behavior:'instant'});
@@ -3779,6 +4050,8 @@ function logOut(){
   cover.classList.remove('dismissed');
 }
 document.getElementById('logOutBtn').addEventListener('click', logOut);
+document.getElementById('helpCenterBtn').addEventListener('click', ()=>showSection('helpcenter'));
+document.getElementById('helpCenterBtn').addEventListener('keydown', e=>{ if(e.key==='Enter') showSection('helpcenter'); });
 document.getElementById('logOutBtn').addEventListener('keydown', e=>{ if(e.key==='Enter') logOut(); });
 
 // mark previously-visited nav items
@@ -3820,6 +4093,19 @@ navSearchInput.addEventListener('input', ()=>{
       if(!hasActive) group.classList.remove('expanded');
     }
   });
+  const hr = document.getElementById('helpSearchResults');
+  if(hr){
+    hr.innerHTML = '';
+    if(q){
+      sections.filter(s=>s.layer === 'Help Center' && searchIndex[s.id] && searchIndex[s.id].includes(q)).forEach(s=>{
+        const b = document.createElement('button');
+        b.className = 'nav-item';
+        b.innerHTML = `<span class="num">—</span><span>${s.title}</span>`;
+        b.addEventListener('click', ()=>showSection(s.id));
+        hr.appendChild(b);
+      });
+    }
+  }
 });
 
 // core prompts only toggle
@@ -3827,6 +4113,7 @@ const coreOnlyToggle = document.getElementById('coreOnlyToggle');
 function applyCoreOnly(active){
   document.body.classList.toggle('core-only', active);
   coreOnlyToggle.checked = active;
+  document.querySelectorAll('.xp-sw[data-set="core"]').forEach(b=>b.classList.toggle('on', active));
   const tile = document.querySelector('.db-core-tile');
   if(tile){
     tile.classList.toggle('on', active);
