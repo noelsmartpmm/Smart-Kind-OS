@@ -267,7 +267,7 @@
   }
   .checkpoint strong{color:var(--hotpink);font-style:normal;font-family:'Inter',sans-serif;font-weight:800;letter-spacing:.02em;text-transform:uppercase;font-size:12px;display:block;margin-bottom:4px;}
 
-  /* ---- Solo Prompts cards ---- */
+  /* ---- Solo Steps cards ---- */
   .sp-label{font-family:'Inter',sans-serif;font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-faint);margin:8px 0 12px;}
   .sp-list{display:flex;flex-direction:column;gap:10px;margin-bottom:24px;}
   .sp-card{display:flex;align-items:center;gap:16px;padding:16px 18px;background:#fff;border:1px solid var(--rule);border-radius:12px;cursor:pointer;transition:border-color .15s,box-shadow .15s,transform .15s;font-family:'Inter',sans-serif;}
@@ -1644,7 +1644,7 @@
 const AUTH_REQUIRED = false;
 
 const layerColors = {
-  'Solo Prompts':             {c:'#7C5CB8', soft:'#F1EAFB', icon:'ti-player-play',    iconPlain:true},
+  'Solo Steps':             {c:'#7C5CB8', soft:'#F1EAFB', icon:'ti-player-play',    iconPlain:true},
   'Continuing in a New Chat': {c:'#C9C8D1', soft:'#F4F4F6', icon:'ti-message-forward', iconPlain:true, iconDark:true},
   'Workbooks':                {c:'#E4127D', soft:'#FCE1EC', icon:'ti-bookmark',         iconPlain:true},
   'Campaign Initialization':  {c:'#7C5CB8', soft:'#F1EAFB', icon:'ti-flag',            iconPlain:true},
@@ -2105,7 +2105,7 @@ const WN_DATA = [
   {date:'Earlier Updates', dot:'#7C5CB8', items:[
     {t:'new', icon:'ti-target', color:'#E4127D', h:'Product Comparison step',     p:'A head-to-head product matchup with outputs ready for battle cards.'},
     {t:'imp', icon:'ti-search', color:'#7C5CB8', h:'Sharper Market Intelligence', p:'Industry Research and Market & Segment Research now zoom from the big picture to your buyers.'},
-    {t:'imp', icon:'ti-player-play', color:'#A9A7B6', h:'Clickable Solo Prompts', p:'Jump straight into any standalone step from a single card.'},
+    {t:'imp', icon:'ti-player-play', color:'#A9A7B6', h:'Clickable Solo Steps', p:'Jump straight into any standalone step from a single card.'},
   ]},
 ];
 const WN_LABEL = {new:'New', imp:'Improved', fix:'Fixed'};
@@ -2124,9 +2124,9 @@ function renderWhatsNew(filter){
 const sections = [
 {id:'home', layer:'Home', title:'Home', kicker:null, html: `<div id="homeRoot"></div>`},
 
-{id:'quickstart', layer:'Top Menu', title:'Solo Prompts', kicker:'Standalone Tools', html: `
+{id:'quickstart', layer:'Top Menu', title:'Solo Steps', kicker:'Standalone Tools', html: `
   <h2 class="step-kicker">Standalone Tools</h2>
-  <h1 class="step-title">Solo Prompts</h1>
+  <h1 class="step-title">Solo Steps</h1>
   <p class="lede">Several parts of Smart Kind work as fast, standalone tools with no earlier output required. Need a quick competitive read before a leadership meeting, a persona map, or a market read? Run one and you'll have something finished, not something half-built.</p>
 
   <p class="sp-label">Pick a Starting Point</p>
@@ -2134,7 +2134,7 @@ const sections = [
 
   ${calloutCollapsible('example','📋','Example','You need a fast competitive read before a leadership meeting. Open a new chat and run Competitive Profile on its own. You\'ll walk away with a usable, company-level competitive profile, not a partial answer waiting on other steps.')}
 
-  ${workbookSaveBox('quickstart','Solo Prompts')}
+  ${workbookSaveBox('quickstart','Solo Steps')}
 `},
 
 {id:'statesummary', layer:'Top Menu', title:'Continuing in a New Chat', kicker:'Utility', html: `
@@ -2992,7 +2992,7 @@ function buildWelcomeSlide(slideNum){
           <div style="border-top:1px solid #2b2830;margin:16px -16px 10px;"></div>
           <div style="display:flex;flex-direction:column;gap:8px;opacity:.75;">
             <div style="display:flex;align-items:center;gap:6px;"><span style="width:8px;height:8px;border:1px solid #c4c1cc;border-radius:2px;"></span><span style="font-size:7.5px;font-weight:700;letter-spacing:.08em;color:#8b8894;">CORE PROMPTS</span></div>
-            <div style="display:flex;align-items:center;gap:6px;"><i class="ti ti-player-play" style="font-size:9px;color:#7C5CB8;" aria-hidden="true"></i><span style="font-size:7.5px;font-weight:700;letter-spacing:.08em;color:#8b8894;">SOLO PROMPTS</span></div>
+            <div style="display:flex;align-items:center;gap:6px;"><i class="ti ti-player-play" style="font-size:9px;color:#7C5CB8;" aria-hidden="true"></i><span style="font-size:7.5px;font-weight:700;letter-spacing:.08em;color:#8b8894;">SOLO STEPS</span></div>
             <div style="display:flex;align-items:center;gap:6px;"><i class="ti ti-message-forward" style="font-size:9px;color:#C9C8D1;" aria-hidden="true"></i><span style="font-size:7.5px;font-weight:700;letter-spacing:.08em;color:#8b8894;">CONTINUING IN A NEW CHAT</span></div>
           </div>
         </div>
@@ -3073,7 +3073,7 @@ function buildWelcomeSlide(slideNum){
       <p style="font-size:10px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:#8b8894;margin:0 0 10px;">Tools available to you</p>
       <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;">
         <div class="wl3-rise" style="animation-delay:0.95s;background:#F7F7F8;border-radius:10px;padding:10px;border:0.5px solid #E5E4EA;"><i class="ti ti-square-check" style="font-size:17px;color:#E4127D;" aria-hidden="true"></i><p style="font-size:11.5px;font-weight:500;color:#17171A;margin:6px 0 2px;line-height:1.3;">Core Prompts</p><p style="font-size:10.5px;color:#555560;margin:0;line-height:1.4;">Hide examples and pro tips to see only the essentials.</p></div>
-        <div class="wl3-rise" style="animation-delay:1.10s;background:#F7F7F8;border-radius:10px;padding:10px;border:0.5px solid #E5E4EA;"><i class="ti ti-player-play" style="font-size:17px;color:#7C5CB8;" aria-hidden="true"></i><p style="font-size:11.5px;font-weight:500;color:#17171A;margin:6px 0 2px;line-height:1.3;">Solo Prompts</p><p style="font-size:10.5px;color:#555560;margin:0;line-height:1.4;">Run one step on its own. No earlier steps required.</p></div>
+        <div class="wl3-rise" style="animation-delay:1.10s;background:#F7F7F8;border-radius:10px;padding:10px;border:0.5px solid #E5E4EA;"><i class="ti ti-player-play" style="font-size:17px;color:#7C5CB8;" aria-hidden="true"></i><p style="font-size:11.5px;font-weight:500;color:#17171A;margin:6px 0 2px;line-height:1.3;">Solo Steps</p><p style="font-size:10.5px;color:#555560;margin:0;line-height:1.4;">Run one step on its own. No earlier steps required.</p></div>
         <div class="wl3-rise" style="animation-delay:1.25s;background:#F7F7F8;border-radius:10px;padding:10px;border:0.5px solid #E5E4EA;"><i class="ti ti-message-forward" style="font-size:17px;color:#A9A7B6;" aria-hidden="true"></i><p style="font-size:11.5px;font-weight:500;color:#17171A;margin:6px 0 2px;line-height:1.3;">Continuing in a New Chat</p><p style="font-size:10.5px;color:#555560;margin:0;line-height:1.4;">Carry your progress into a fresh AI conversation.</p></div>
         <div class="wl3-rise" style="animation-delay:1.40s;background:#F7F7F8;border-radius:10px;padding:10px;border:0.5px solid #E5E4EA;"><i class="ti ti-bookmark" style="font-size:17px;color:#E4127D;" aria-hidden="true"></i><p style="font-size:11.5px;font-weight:500;color:#17171A;margin:6px 0 2px;line-height:1.3;">Workbooks</p><p style="font-size:10.5px;color:#555560;margin:0;line-height:1.4;">Save the prompts and outputs you want to keep.</p></div>
       </div>
@@ -3658,7 +3658,7 @@ function renderHome(){
       </div>
       <div class="db-tool" role="button" tabindex="0" data-go="quickstart">
         <i class="ti ti-player-play" style="font-size:20px;color:#7C5CB8;" aria-hidden="true"></i>
-        <p class="db-tname">Solo Prompts</p>
+        <p class="db-tname">Solo Steps</p>
         <p class="db-tdesc">Run one step on its own. No earlier steps required.</p>
       </div>
       <div class="db-tool" role="button" tabindex="0" data-go="statesummary">
